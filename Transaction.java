@@ -22,10 +22,10 @@ public class Transaction extends Account
      */
     private String type;
     
-    public Transaction(String id, double amount, String type)
+    public Transaction(String userID, double amount, String type)
     {
         super();
-        this.userID = id;
+        this.userID = userID;
         this.amount = amount;
         this.reqDate = LocalDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.exeDate = null;
