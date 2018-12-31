@@ -4,14 +4,14 @@ import java.util.*;
 
 public class Portfolio
 {
-    private ArrayList<Asset> portfolio;
+    private Set<Asset> portfolio; //TODO Double check to make sure Set is better than ArrayList
     private String nameOfPortFolio;
     private ZonedDateTime timeCreated;
-    private String ownerFirst;
+    private String ownerFirst; //TODO necessary to have owner information?
     private String ownerMiddle;
     private String ownerLast;
-    private double totalReturns;
-    private double portfolioValue;
+    private double totalReturns; // TODO necessary to have this?
+    private double portfolioValue; // TODO consider making this type Balance
     
     public Portfolio(String name, String first, String middle, String last)
     {
@@ -27,7 +27,5 @@ public class Portfolio
         portfolio.add(asset);
     }
     
-    /*public double sellAsset(Asset asset)
-    {
-    }*/
+
 }

@@ -17,7 +17,9 @@ public class User
     private ZonedDateTime timeCreated; // Timestamp at which point the user was created in Luca
     private String userStatus; // REGULAR or ADMIN
     private boolean adminPriv; // True if ADMIN and False if REGULAR // TODO will need more formal Java Security implementation
-    private double amountInvested; // Amount user has invested into the portfolio
+    private double contribution; // Amount user has invested into the portfolio
+    private Balance userBalance; // The amount user has. // TODO Decide if this will represent current value of investment or something else
+    private Set<User> allUsers; // TODO Determine if this should be in User or Account class
     
     /**
      * Main method that prints out the user information
@@ -29,7 +31,7 @@ public class User
         System.out.println("Name: " + user.getFirstName().toUpperCase() + " " + user.getMiddleInit().toUpperCase() + "." + " " + user.getLastName().toUpperCase());
         System.out.println("Username: " + user.getUsername() + " (" + user.getUserStatus() + ")");
         System.out.println("Password: " + user.getPassword());
-        System.out.println("Amount Invested: $" + user.getAmountInvested());
+        System.out.println("Amount Invested: $" + user.getContribution());
         System.out.println("Time of User Creation: " + user.formattedTimeCreated(user.getTimeCreated()));
     }
     
@@ -40,9 +42,9 @@ public class User
      * @param last Last name of the user (case does not matter)
      * @param password Password for logging in
      * @param adminPriv Boolean that allows for admin privileges
-     * @param amountInvested Amount of money invested into Hesiod Financial
+     * @param contribution Amount of money invested into Hesiod Financial
      */
-    public User(String first, String middleInit, String last, String password, boolean adminPriv, double amountInvested)
+    public User(String first, String middleInit, String last, String password, boolean adminPriv, double contribution)
     {
         this.firstName = first.toUpperCase();
         this.middleInit = middleInit.toUpperCase();
@@ -83,7 +85,7 @@ public class User
         else
             this.userStatus = UserStatus.REGULAR.name();
         
-        this.amountInvested = amountInvested;
+        this.contribution = contribution;
     }
     
     public enum UserStatus
@@ -130,14 +132,19 @@ public class User
         return userStatus;
     }
     
-    public double getAmountInvested()
+    public double getContribution()
     {
-        return amountInvested;
+        return contribution;
     }
     
     public ZonedDateTime getTimeCreated()
     {
         return timeCreated;
+    }
+    
+    public boolean getAdminPriv()
+    {
+        return adminPriv;
     }
     
     public String formattedTimeCreated(ZonedDateTime time)

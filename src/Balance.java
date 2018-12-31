@@ -8,25 +8,41 @@ import java.util.Stack;
  */
 public class Balance
 {
-    private double currentAmount = 0;
+    private double amount;
     private ZonedDateTime balanceTimeStamp;
-    private static Stack<> balanceHistory; // TODO reconsider having the Stack be made of Transactions
-    // private ZonedDateTime balanceTimeStamp; The time stamp associated with the exeDate should be fine
+    private static Stack<Double> balanceHistory;
     
-    public Balance() // TODO probably need to make this not an empty constructor
+    public Balance(double amount)
     {
-       // this.currentAmount; // TODO update current amount to represent current balance
-        // balanceHistory.push(something needs to go in here)
+        this.amount = amount;
         this.balanceTimeStamp = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
+        balanceHistory.add(amount);
     }
     
     public double getCurrentAmount()
     {
-        return currentAmount;
+        double current = balanceHistory.pop();
+        return current;
     }
     
-    public static Stack<Transaction> getBalanceHistory()
+    public double getAmount()
     {
-        return balanceHistory;
+        return amount;
     }
+    
+    public ZonedDateTime getBalanceTimeStamp()
+    {
+        return balanceTimeStamp;
+    }
+    
+    public void setAmount(double amount)
+    {
+        this.amount = amount;
+    }
+    
+    public void setBalanceTimeStamp(ZonedDateTime balanceTimeStamp)
+    {
+        this.balanceTimeStamp = balanceTimeStamp;
+    }
+    
 }

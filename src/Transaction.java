@@ -1,45 +1,95 @@
+import javax.xml.crypto.dsig.TransformService;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-public class Transaction
+public class Transaction implements Banking, Trading
 {
-    private String userID;
+    private User reqUser;
+    private User adminUser;
     private double amount;
-    private ZonedDateTime reqDate;
-    private ZonedDateTime exeDate;
+    private ZonedDateTime reqDate; // Set when the transaction is requested by a regular user
+    private ZonedDateTime exeDate; // Set when the transaction is acted upon by an admin user
     /**
+     * Status is first initialized by the regular or admin user, but only changed by the admin user
      * OPEN: transaction has been placed, but not acted upon (default)
-     * DEPOSITED: amount has been added to withdrawable funds (banking only)
-     * WITHDRAWN: amount has been removed from withdrawable funds (banking only)
+     * DEPOSITED: amount has been added to the Bank (banking only)
+     * WITHDRAWN: amount has been removed from the Bank (banking only)
      * EXECUTED: transaction has been placed and order has been completed (trading only)
-     * CANCELLED: the order was placed, but cancelled by the user (general)
-     * DENIED: the order has been placed, but was denied execution (general)
+     * // TODO Consider splitting EXECUTED into BUY, SELL, etc.
+     * CANCELLED: the order was placed, but cancelled by the user
+     * DENIED: the order has been placed, but was denied execution
      */
     private String status;
     /**
-     * BANKING: deposit or withdrawal
+     * BANKING: deposit or withdraw
      * TRADING: buy/sell or short/cover
      */
     private String type;
-    private String orderID;
+    private int orderID;
     
-    // TODO change id to User user
-    public Transaction(String id, double amount, String type)
+    public Transaction(User requestedBy, double amount, String type)
     {
-        super();
-        this.userID = id;
+        this.reqUser = requestedBy;
         this.amount = amount;
         this.reqDate = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
-        this.exeDate = null;
-        this.status = "Open";
+        this.status = "Open"; // TODO How does this interact with the enum Status?
         this.type = type;
-        this.orderID = reqDate.getYear() + "" + reqDate.getMonthValue() + "" + reqDate.getDayOfMonth() + "" + reqDate.getHour() + "" + reqDate.getMinute() + "" + reqDate.getSecond();
+        this.orderID = Integer.parseInt(reqDate.getYear() + "" + reqDate.getMonthValue() + "" + reqDate.getDayOfMonth() +
+                "" + reqDate.getHour() + "" + reqDate.getMinute() + "" + reqDate.getSecond());
     }
     
-    
-    public String getUserID()
+    // TODO Remember that each transaction type will be used in the requestTransaction and makeTransaction methods. So write these as the ACTIONS (assuming privileges have already been checked)
+    // Deposits money into the bank and updates the bankBalance
+    // TODO Figure out how to connect Bank and Portfolio to allow transactions between them
+    public void deposit(Transaction transaction) // TODO Make into try/catch to consider negative amounts
     {
-        return userID;
+    
+    }
+    
+    public void withdraw(double amount)
+    {
+    
+    }
+    
+    public void buyOrder(double amount)
+    {
+    
+    }
+    
+    public void sellOrder(double amount)
+    {
+    
+    }
+    
+    public void shortOrder(double amount)
+    {
+    
+    }
+    
+    public void coverOrder(double amount)
+    {
+    
+    }
+    
+    public enum Status
+    {
+        OPEN, DEPOSITED, WITHDRAWN, EXECUTED, CANCELLED, DENIED;
+    }
+    
+    public enum Type
+    {
+        DEPOSIT, WITHDRAW, BUY, SELL, SHORT, COVER;
+    }
+    
+    // Getter methods
+    public User getReqUser()
+    {
+        return reqUser;
+    }
+    
+    public User getAdminUser()
+    {
+        return adminUser;
     }
     
     public double getAmount()
@@ -47,14 +97,14 @@ public class Transaction
         return amount;
     }
     
-    public ZonedDateTime getExeDate()
-    {
-        return exeDate;
-    }
-    
     public ZonedDateTime getReqDate()
     {
         return reqDate;
+    }
+    
+    public ZonedDateTime getExeDate()
+    {
+        return exeDate;
     }
     
     public String getStatus()
@@ -67,14 +117,20 @@ public class Transaction
         return type;
     }
     
-    public String getOrderID()
+    public int getOrderID()
     {
         return orderID;
     }
     
-    public void setUserID(String userID)
+    // Setter methods
+    public void setReqUser(User reqUser)
     {
-        this.userID = userID;
+        this.reqUser = reqUser;
+    }
+    
+    public void setAdminUser(User adminUser)
+    {
+        this.adminUser = adminUser;
     }
     
     public void setAmount(double amount)
@@ -82,14 +138,14 @@ public class Transaction
         this.amount = amount;
     }
     
-    public void setExeDate(ZonedDateTime exeDate)
-    {
-        this.exeDate = exeDate;
-    }
-    
     public void setReqDate(ZonedDateTime reqDate)
     {
         this.reqDate = reqDate;
+    }
+    
+    public void setExeDate(ZonedDateTime exeDate)
+    {
+        this.exeDate = exeDate;
     }
     
     public void setStatus(String status)
@@ -102,11 +158,10 @@ public class Transaction
         this.type = type;
     }
     
-    
-    /*public ArrayList<Transaction> getOrderHistory()
+    public void setOrderID(int orderID)
     {
-        return orderHistory;
-    } */
+        this.orderID = orderID;
+    }
     
 }
 

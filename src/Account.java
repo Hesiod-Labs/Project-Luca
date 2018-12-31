@@ -1,7 +1,27 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Account
 {
+    private Balance accountBalance;
+    private Set<User> allUsers;
+    private Portfolio portfolio;
+    
+    public Account(Balance initialAmount)
+    {
+        this.accountBalance = initialAmount;
+    }
+    
+    public void addUser(User user)
+    {
+        if(! allUsers.contains(user))
+            allUsers.add(user);
+        else
+        allUsers.add(user);
+    }
+    
+    
+    
+    /*
     private double totalFunds; // includes both portfolio and withdrawable funds
     private double portfolioValue; // current value of the portfolio (updated with profits and losses)
     private double portfolioFunds; // funds used to invest in the portfolio
@@ -77,4 +97,5 @@ public class Account
         
         return count;
     }
+    */
 }
