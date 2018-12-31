@@ -1,25 +1,48 @@
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.Set;
 
-public class Portfolio
+public class Portfolio implements Trading
 {
-    private Set<Asset> portfolio; //TODO Double check to make sure Set is better than ArrayList
+    private Set<Asset> portfolio;
     private String nameOfPortFolio;
+    private Balance portfolioBalance;
     private ZonedDateTime timeCreated;
-    private String ownerFirst; //TODO necessary to have owner information?
-    private String ownerMiddle;
-    private String ownerLast;
-    private double totalReturns; // TODO necessary to have this?
-    private double portfolioValue; // TODO consider making this type Balance
     
-    public Portfolio(String name, String first, String middle, String last)
+    public Portfolio(String name, Balance portfolioBalance)
     {
         this.nameOfPortFolio = name;
-        this.ownerFirst = first;
-        this.ownerMiddle = middle;
-        this.ownerLast = last;
+        this.portfolioBalance = portfolioBalance;
         this.timeCreated = ZonedDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+    }
+    
+    // TODO Fix how updateBalance works and how it interacts between portfolioBalance and bankBalance
+    public void buyOrder(Transaction transaction)
+    {
+        portfolioBalance.updateBalance(transaction);
+        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setStatus(Transaction.Status.EXECUTED);
+    }
+    
+    public void sellOrder(Transaction transaction)
+    {
+        portfolioBalance.updateBalance(transaction);
+        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setStatus(Transaction.Status.EXECUTED);
+    }
+    
+    public void shortOrder(Transaction transaction)
+    {
+        portfolioBalance.updateBalance(transaction);
+        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setStatus(Transaction.Status.EXECUTED);
+    }
+    
+    public void coverOrder(Transaction transaction)
+    {
+        portfolioBalance.updateBalance(transaction);
+        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setStatus(Transaction.Status.EXECUTED);
     }
     
     public void addAsset(Asset asset)
@@ -27,5 +50,4 @@ public class Portfolio
         portfolio.add(asset);
     }
     
-
 }

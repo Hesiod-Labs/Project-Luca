@@ -1,8 +1,7 @@
-import javax.xml.crypto.dsig.TransformService;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-public class Transaction implements Banking, Trading
+public class Transaction
 {
     private User reqUser;
     private User adminUser;
@@ -19,12 +18,12 @@ public class Transaction implements Banking, Trading
      * CANCELLED: the order was placed, but cancelled by the user
      * DENIED: the order has been placed, but was denied execution
      */
-    private String status;
+    private Status status;
     /**
      * BANKING: deposit or withdraw
      * TRADING: buy/sell or short/cover
      */
-    private String type;
+    private Type type;
     private int orderID;
     
     public Transaction(User requestedBy, double amount, String type)
@@ -32,44 +31,12 @@ public class Transaction implements Banking, Trading
         this.reqUser = requestedBy;
         this.amount = amount;
         this.reqDate = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
-        this.status = "Open"; // TODO How does this interact with the enum Status?
-        this.type = type;
+        this.status = Status.OPEN;
+        this.type = Type.valueOf(type.toUpperCase());
         this.orderID = Integer.parseInt(reqDate.getYear() + "" + reqDate.getMonthValue() + "" + reqDate.getDayOfMonth() +
                 "" + reqDate.getHour() + "" + reqDate.getMinute() + "" + reqDate.getSecond());
     }
     
-    // TODO Remember that each transaction type will be used in the requestTransaction and makeTransaction methods. So write these as the ACTIONS (assuming privileges have already been checked)
-    // Deposits money into the bank and updates the bankBalance
-    // TODO Figure out how to connect Bank and Portfolio to allow transactions between them
-    public void deposit(Transaction transaction) // TODO Make into try/catch to consider negative amounts
-    {
-    
-    }
-    
-    public void withdraw(double amount)
-    {
-    
-    }
-    
-    public void buyOrder(double amount)
-    {
-    
-    }
-    
-    public void sellOrder(double amount)
-    {
-    
-    }
-    
-    public void shortOrder(double amount)
-    {
-    
-    }
-    
-    public void coverOrder(double amount)
-    {
-    
-    }
     
     public enum Status
     {
@@ -107,12 +74,12 @@ public class Transaction implements Banking, Trading
         return exeDate;
     }
     
-    public String getStatus()
+    public Status getStatus()
     {
         return status;
     }
     
-    public String getType()
+    public Type getType()
     {
         return type;
     }
@@ -148,12 +115,12 @@ public class Transaction implements Banking, Trading
         this.exeDate = exeDate;
     }
     
-    public void setStatus(String status)
+    public void setStatus(Status status)
     {
         this.status = status;
     }
     
-    public void setType(String type)
+    public void setType(Type type)
     {
         this.type = type;
     }

@@ -8,6 +8,7 @@ import java.util.Stack;
  */
 public class Balance
 {
+    public double current;
     private double amount;
     private ZonedDateTime balanceTimeStamp;
     private static Stack<Double> balanceHistory;
@@ -19,9 +20,22 @@ public class Balance
         balanceHistory.add(amount);
     }
     
-    public double getCurrentAmount()
+    public void updateBalance(Transaction transaction)
     {
-        double current = balanceHistory.pop();
+        Transaction.Type type = transaction.getType();
+        switch(type) {
+            case DEPOSIT: setCurrent(getCurrent() + amount);
+            case WITHDRAW: setCurrent(getCurrent() - amount);
+            case BUY: setCurrent(getCurrent() + amount);
+            case SELL: setCurrent(getCurrent() - amount);
+            case SHORT: setCurrent(getCurrent() + amount);
+            case COVER: setCurrent(getCurrent() - amount);
+        }
+        balanceHistory.add(amount);
+    }
+    
+    public double getCurrent()
+    {
         return current;
     }
     
@@ -45,4 +59,8 @@ public class Balance
         this.balanceTimeStamp = balanceTimeStamp;
     }
     
+    public void setCurrent(double current)
+    {
+        this.current = current;
+    }
 }
