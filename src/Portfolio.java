@@ -4,16 +4,16 @@ import java.util.Set;
 
 public class Portfolio implements Trading
 {
-    private Set<Asset> portfolio;
-    private String nameOfPortFolio;
-    private Balance portfolioBalance;
-    private ZonedDateTime timeCreated;
+    private static Set<Asset> portfolio;
+    private static String nameOfPortFolio;
+    private static Balance portfolioBalance;
+    private static ZonedDateTime timeCreated;
     
     public Portfolio(String name, Balance portfolioBalance)
     {
-        this.nameOfPortFolio = name;
-        this.portfolioBalance = portfolioBalance;
-        this.timeCreated = ZonedDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        Portfolio.nameOfPortFolio = name;
+        Portfolio.portfolioBalance = portfolioBalance;
+        Portfolio.timeCreated = ZonedDateTime.now().truncatedTo(ChronoUnit.SECONDS);
     }
     
     // TODO Fix how updateBalance works and how it interacts between portfolioBalance and bankBalance
@@ -47,7 +47,11 @@ public class Portfolio implements Trading
     
     public void addAsset(Asset asset)
     {
-        portfolio.add(asset);
+        getPortfolio().add(asset);
     }
     
+    public static Set<Asset> getPortfolio()
+    {
+        return portfolio;
+    }
 }

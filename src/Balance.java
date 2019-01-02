@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class Balance
 {
-    public double current;
+    private double current;
     private double amount;
     private ZonedDateTime balanceTimeStamp;
     private static Stack<Double> balanceHistory;

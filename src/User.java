@@ -19,7 +19,6 @@ public class User
     private boolean adminPriv; // True if ADMIN and False if REGULAR // TODO will need more formal Java Security implementation
     private double contribution; // Amount user has invested into the portfolio
     private Balance userBalance; // The amount user has. // TODO Decide if this will represent current value of investment or something else
-    private Set<User> allUsers; // TODO Determine if this should be in User or Account class
     
     /**
      * Main method that prints out the user information

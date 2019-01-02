@@ -2,13 +2,54 @@ import java.util.*;
 
 public class Account
 {
-    private Balance accountBalance;
-    private Set<User> allUsers;
-    private Portfolio portfolio;
+    private static Balance accountBalance;
+    private static Bank bank;
+    private static  Set<User> allUsers;
+    private static Portfolio portfolio;
+    private static Queue<Transaction> transactionRequests;
+    private static Stack<Transaction> transactionHistory;
     
-    public Account(Balance initialAmount)
+    public Account(Balance initialAmount, Bank bank, Set<User> users, Portfolio portfolio)
     {
-        this.accountBalance = initialAmount;
+        Account.accountBalance = initialAmount;
+        Account.bank = bank;
+        Account.allUsers = users;
+        Account.portfolio = portfolio;
+    }
+    
+    public void requestTransaction(Transaction transaction)
+    {
+        transactionRequests.add(transaction);
+    }
+    
+    public void makeTransaction(Transaction.Status updatedStatus)
+    {
+        // 1. Check to see the type of the transaction
+        // 2. Update bank and portfolio balances // TODO make accountBalance update method
+        // 3. 
+        Transaction request = transactionRequests.poll();
+        request.setStatus(updatedStatus);
+    
+        Transaction.Type type = null;
+        switch(type)
+        {
+            case DEPOSIT: bank.deposit(request);
+                break;
+            case WITHDRAW: bank.withdraw(request);
+                break;
+            case BUY: portfolio.buyOrder(request);
+                break;
+            case SELL: portfolio.sellOrder(request);
+                break;
+            case SHORT: portfolio.shortOrder(request);
+                break;
+            case COVER: portfolio.coverOrder(request);
+                break;
+        }
+        
+        transactionHistory.add(request);
+        // Account.updateBalance(request);
+        
     }
     
     public void addUser(User user)
@@ -19,83 +60,52 @@ public class Account
         allUsers.add(user);
     }
     
-    
-    
-    /*
-    private double totalFunds; // includes both portfolio and withdrawable funds
-    private double portfolioValue; // current value of the portfolio (updated with profits and losses)
-    private double portfolioFunds; // funds used to invest in the portfolio
-    private double withdrawableFunds; // funds not being invested
-    private ArrayList<User> allUsers; // list of all users associated with the account
-    private Portfolio portfolio; // contains all assets to be traded
-    
-    public Account(double portfolioFunds, double withdrawableFunds)
+    // TODO make try/catch with exception if no user is found
+    public void removeUser(User user)
     {
-        this.portfolioFunds = portfolioFunds;
-        this.withdrawableFunds = withdrawableFunds;
-        this.totalFunds = portfolioFunds + withdrawableFunds;
+        if(!allUsers.contains(user))
+            System.out.println("No such user exists.");
+        else
+            allUsers.remove(user);
     }
     
-    public void directToPortfolio(double amount)
+    public Balance getAccountBalance()
     {
-    
+        return accountBalance;
     }
     
-    public void transferToPortfolio(double amount)
+    public Bank getBank()
     {
-        updatePortfolioValue(getPortfolioValue() + amount);
-        updateWithdrawableFunds(getWithdrawableFunds() - amount);
+        return bank;
     }
     
-    public void transferToWithDrawable(double amount)
+    public Set<User> getAllUsers()
     {
-        updateWithdrawableFunds(getWithdrawableFunds() + amount);
-        updatePortfolioValue(getPortfolioFunds() - amount);
+        return allUsers;
     }
     
-    public double getPortfolioFunds()
+    public Portfolio getPortfolio()
     {
-        return portfolioFunds;
+        return portfolio;
     }
     
-    public double getTotalFunds()
+    public void setAccountBalance(Balance accountBalance)
     {
-        return totalFunds;
+        this.accountBalance = accountBalance;
     }
     
-    public double getWithdrawableFunds()
+    public void setBank(Bank bank)
     {
-        return withdrawableFunds;
+        this.bank = bank;
     }
     
-    public void updatePortfolioValue(double portFolioValue)
+    public void setAllUsers(Set<User> allUsers)
     {
-        this.portfolioValue = portFolioValue;
+        this.allUsers = allUsers;
     }
     
-    public void updateTotalFunds(double totalFunds)
+    public void setPortfolio(Portfolio portfolio)
     {
-        this.totalFunds = getWithdrawableFunds() + getPortFolioValue();
+        this.portfolio = portfolio;
     }
-    
-    public void updateWithdrawableFunds(double withdrawableFunds)
-    {
-        this.withdrawableFunds = withdrawableFunds;
-    }
-    
-    public void addUser(User newUser)
-    {
-        allUsers.add(newUser);
-    }
-    
-    public int numUsers(ArrayList<User> everyone)
-    {
-        int count = 0;
-        
-        for(User user : everyone)
-            count++;
-        
-        return count;
-    }
-    */
 }
