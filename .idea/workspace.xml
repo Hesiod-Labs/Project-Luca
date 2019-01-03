@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Balance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -208,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546400525015" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546401341217" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -279,7 +274,7 @@
       <workItem from="1546198135556" duration="1234000" />
       <workItem from="1546214119357" duration="7686000" />
       <workItem from="1546268478775" duration="7954000" />
-      <workItem from="1546398217506" duration="3115000" />
+      <workItem from="1546398217506" duration="3270000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -302,11 +297,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546276288000</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Account: Added fields and made them static. Added basic request and make transaction methods.&#10;Bank: Changed constructor.&#10;Portfolio: Made fields static">
+      <created>1546401494969</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1546401494969</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20006000" />
+    <option name="totallyTimeSpent" value="20161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -390,7 +392,8 @@
     <MESSAGE value="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)" />
     <MESSAGE value="Changed the Stack&lt;&gt; to not be Transaction since this class will need to be used for User, Bank, and Portfolio. Still needs to be finalized." />
     <MESSAGE value="Numerous changes in the overall structure have been made. I have created a Bank class that implements Banking to allow for separation of fund balances between Bank and Portfolio. I have noted with //TODO comments what needs to be fixed (though there is probably more that I missed). I did not get a chance to update the Account class in light of these changes, thus the majority of it has been marked off in a multiline comment. More changes will be made tomorrow (1/1/19)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Numerous changes in the overall structure have been made. I have created a Bank class that implements Banking to allow for separation of fund balances between Bank and Portfolio. I have noted with //TODO comments what needs to be fixed (though there is probably more that I missed). I did not get a chance to update the Account class in light of these changes, thus the majority of it has been marked off in a multiline comment. More changes will be made tomorrow (1/1/19)." />
+    <MESSAGE value="Account: Added fields and made them static. Added basic request and make transaction methods.&#10;Bank: Changed constructor.&#10;Portfolio: Made fields static" />
+    <option name="LAST_COMMIT_MESSAGE" value="Account: Added fields and made them static. Added basic request and make transaction methods.&#10;Bank: Changed constructor.&#10;Portfolio: Made fields static" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
