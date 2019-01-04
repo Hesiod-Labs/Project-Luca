@@ -8,19 +8,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Install Java! {Add anything else later}
+Your computer will need to have Java installed. A good explanation of how to do this is available on the [Java Website](https://www.java.com/en/download/help/download_options.xml)
 
 ### Installing
 
-{Put how to best obtain most stable .jar once beta is available}
+You can find the most recent version of Luca at hesiodfinancial.com/Luca {This isn't real yet, just an idea}
 
 ## Documentation
 
-{Place link to most active .pdf(?) of documentation (once we write it lmao)}
+See the Wiki files in the repository for a more in depth look at the roadmap of the project and the most recent documentation.
 
 ## Built With
 
-IntelliJ and other stuff...lmao
+Java backend developed with IntelliJ
+
+Frontend wireframe design developed with Adobe XD
 
 ## Authors
 
@@ -34,8 +36,6 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-{Yo guys we need a liscence too ^^}
 
 ## Acknowledgments
 
