@@ -1,6 +1,6 @@
 # Project Luca
 
-To anyone (at Hesiod or otherwise), welcome! This is the source code for the Luca Accounting tool, commissioned to the HLabs department of Hesiod Financial by the Hesiod Financial group. The goal of this tool is to create a centralized application to give all members of Hesiod Financial the ability to quickly and easily view financies and to also give specialized members of Hesiod the ability to deposit and withdraw funds for investment.
+To anyone (at Hesiod or otherwise), welcome! This is the source code for the Luca Accounting tool, commissioned to the hLabs department of Hesiod Financial by the Hesiod Financial group. The goal of this tool is to create a centralized application to give all members of Hesiod Financial the ability to quickly and easily view finances and to also give specialized members of Hesiod the ability to deposit and withdraw funds for investments and miscellaneous operating expenses.
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ Frontend wireframe design developed with Adobe XD
 
 ## Authors
 
-* **Jay Jayewardene** - *Project Manager / Frontend Development* - [Github](https://github.com/jay-5)
+* **Jay Jayewardene** - *Product Manager / Frontend Development* - [Github](https://github.com/jay-5)
 * **Ryan Tatton** - *Backend Development* - [Github](https://github.com/rtatton)
 * **Thomas Patton** - *Backend Development* - [Github](https://github.com/thomaspttn)
 * I'll add the rest of you guys when you add you commit
