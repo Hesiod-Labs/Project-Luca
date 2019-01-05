@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
+    <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="Considerable redesigning of most classes. Still has several bugs related to the updating of various balances. Does not have full Portfolio functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,20 +18,12 @@
     <option name="myElementSize" value="272" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-685">
+            <state relative-caret-position="51">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding>
-                <element signature="e#818#819#0" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
-                <element signature="e#1185#1186#0" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
-                <element signature="e#1328#1329#0" expanded="true" />
-                <element signature="e#1370#1371#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -39,14 +31,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Asset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="782">
               <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;method#Asset#0;class#Asset#0" />
-                <element signature="docComment;class#Sector#0;class#Asset#0" />
-                <element signature="docComment;class#OrderType#0;class#Asset#0" />
-                <element signature="class#OrderType#0;class#Asset#0" />
+                <element signature="e#1218#1622#0" />
+                <element signature="e#2794#2873#0" />
+                <element signature="e#3037#3155#0" />
+                <element signature="e#3037#3279#0" />
               </folding>
             </state>
           </provider>
@@ -55,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="125" column="7" lean-forward="true" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+            <state relative-caret-position="1428">
+              <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
               <folding>
                 <element signature="docComment;field#username#0;class#User#0" />
                 <element signature="docComment;field#password#0;class#User#0" />
@@ -67,31 +59,48 @@
                 <element signature="docComment;method#User#0;class#User#0" />
                 <element signature="docComment;method#makeUsername#0;class#User#0" />
                 <element signature="docComment;method#hasPermission#0;class#User#0" />
+                <element signature="e#6695#6696#0" expanded="true" />
                 <element signature="e#6737#6738#0" expanded="true" />
                 <element signature="docComment;method#changeAdminAccess#0;class#User#0" />
                 <element signature="method#changeAdminAccess#0;class#User#0" />
-                <element signature="docComment;method#formattedTime#0;class#User#0" />
-                <element signature="method#formattedTime#0;class#User#0" />
                 <element signature="docComment;method#formatName#0;class#User#0" />
-                <element signature="method#formattedName#0;class#User#0" />
+                <element signature="e#8420#8421#0" expanded="true" />
                 <element signature="e#8451#8452#0" expanded="true" />
+                <element signature="e#8494#8495#0" expanded="true" />
                 <element signature="e#8525#8526#0" expanded="true" />
+                <element signature="e#8569#8570#0" expanded="true" />
                 <element signature="e#8601#8602#0" expanded="true" />
+                <element signature="e#8646#8647#0" expanded="true" />
                 <element signature="e#8679#8680#0" expanded="true" />
+                <element signature="e#8722#8723#0" expanded="true" />
                 <element signature="e#8753#8754#0" expanded="true" />
+                <element signature="e#8800#8801#0" expanded="true" />
                 <element signature="e#8839#8840#0" expanded="true" />
+                <element signature="e#8892#8893#0" expanded="true" />
                 <element signature="e#8926#8927#0" expanded="true" />
+                <element signature="e#8971#8972#0" expanded="true" />
                 <element signature="e#9003#9004#0" expanded="true" />
+                <element signature="e#9054#9055#0" expanded="true" />
                 <element signature="e#9093#9094#0" expanded="true" />
+                <element signature="e#9140#9141#0" expanded="true" />
                 <element signature="e#9174#9175#0" expanded="true" />
+                <element signature="e#9326#9327#0" expanded="true" />
                 <element signature="e#9368#9369#0" expanded="true" />
+                <element signature="e#9428#9429#0" expanded="true" />
                 <element signature="e#9472#9473#0" expanded="true" />
+                <element signature="e#9528#9529#0" expanded="true" />
                 <element signature="e#9568#9569#0" expanded="true" />
+                <element signature="e#9624#9625#0" expanded="true" />
                 <element signature="e#9664#9665#0" expanded="true" />
+                <element signature="e#9720#9721#0" expanded="true" />
                 <element signature="e#9760#9761#0" expanded="true" />
+                <element signature="e#9829#9830#0" expanded="true" />
                 <element signature="e#9875#9876#0" expanded="true" />
+                <element signature="e#9934#9935#0" expanded="true" />
                 <element signature="e#9976#9977#0" expanded="true" />
+                <element signature="e#10048#10049#0" expanded="true" />
                 <element signature="e#10104#10105#0" expanded="true" />
+                <element signature="e#10167#10168#0" expanded="true" />
                 <element signature="e#10213#10214#0" expanded="true" />
               </folding>
             </state>
@@ -101,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+            <state relative-caret-position="493">
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="102">
               <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -135,21 +144,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Balance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1518">
+            <state relative-caret-position="153">
               <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2070#2071#0" expanded="true" />
-                <element signature="e#2093#2094#0" expanded="true" />
-                <element signature="e#2181#2182#0" expanded="true" />
-                <element signature="e#2232#2233#0" expanded="true" />
+                <element signature="e#2934#2935#0" expanded="true" />
                 <element signature="e#2970#2971#0" expanded="true" />
+                <element signature="e#3028#3029#0" expanded="true" />
                 <element signature="e#3067#3068#0" expanded="true" />
+                <element signature="e#3128#3129#0" expanded="true" />
                 <element signature="e#3172#3173#0" expanded="true" />
+                <element signature="e#3229#3230#0" expanded="true" />
                 <element signature="e#3266#3267#0" expanded="true" />
+                <element signature="e#3426#3427#0" expanded="true" />
                 <element signature="e#3476#3477#0" expanded="true" />
+                <element signature="e#3555#3556#0" expanded="true" />
                 <element signature="e#3611#3612#0" expanded="true" />
                 <element signature="method#setAssociatedTransaction#0;class#Balance#0" />
+                <element signature="e#3840#3841#0" expanded="true" />
                 <element signature="e#3895#3896#0" expanded="true" />
               </folding>
             </state>
@@ -159,8 +171,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
+            <state relative-caret-position="45">
+              <caret line="28" column="93" selection-start-line="28" selection-start-column="93" selection-end-line="28" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -224,6 +236,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,8 +259,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,6 +366,7 @@
       <workItem from="1546398217506" duration="3270000" />
       <workItem from="1546549291481" duration="20494000" />
       <workItem from="1546622547942" duration="50378000" />
+      <workItem from="1546718879526" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -394,7 +407,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91033000" />
+    <option name="totallyTimeSpent" value="91311000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,9 +420,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11868958" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.120300755" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -428,9 +440,8 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32916668" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.79583335" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.79583335" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32975295" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -440,6 +451,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32975295" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -527,48 +538,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Trading.java">
+    <entry file="file://$PROJECT_DIR$/src/Trading.java" />
+    <entry file="file://$PROJECT_DIR$/src/UserAlreadyExists.java" />
+    <entry file="file://$PROJECT_DIR$/src/Banking.java" />
+    <entry file="file://$PROJECT_DIR$/src/NoSuchUserException.java" />
+    <entry file="file://$PROJECT_DIR$/src/UserAlreadyExistsException.java" />
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserAlreadyExists.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" lean-forward="true" selection-end-line="7" />
-          <folding>
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#128#129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Banking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="51">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Asset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="782">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Asset#0;class#Asset#0" />
-            <element signature="docComment;class#Sector#0;class#Asset#0" />
-            <element signature="docComment;class#OrderType#0;class#Asset#0" />
-            <element signature="class#OrderType#0;class#Asset#0" />
+            <element signature="e#1218#1622#0" />
+            <element signature="e#2794#2873#0" />
+            <element signature="e#3037#3155#0" />
+            <element signature="e#3037#3279#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="125" column="7" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+          <folding>
+            <element signature="docComment;field#username#0;class#User#0" />
+            <element signature="docComment;field#password#0;class#User#0" />
+            <element signature="docComment;field#timeCreated#0;class#User#0" />
+            <element signature="docComment;field#adminPriv#0;class#User#0" />
+            <element signature="docComment;field#userContribution#0;class#User#0" />
+            <element signature="docComment;field#userBalance#0;class#User#0" />
+            <element signature="docComment;method#User#0;class#User#0" />
+            <element signature="docComment;method#makeUsername#0;class#User#0" />
+            <element signature="docComment;method#hasPermission#0;class#User#0" />
+            <element signature="e#6695#6696#0" expanded="true" />
+            <element signature="e#6737#6738#0" expanded="true" />
+            <element signature="docComment;method#changeAdminAccess#0;class#User#0" />
+            <element signature="method#changeAdminAccess#0;class#User#0" />
+            <element signature="docComment;method#formatName#0;class#User#0" />
+            <element signature="e#8420#8421#0" expanded="true" />
+            <element signature="e#8451#8452#0" expanded="true" />
+            <element signature="e#8494#8495#0" expanded="true" />
+            <element signature="e#8525#8526#0" expanded="true" />
+            <element signature="e#8569#8570#0" expanded="true" />
+            <element signature="e#8601#8602#0" expanded="true" />
+            <element signature="e#8646#8647#0" expanded="true" />
+            <element signature="e#8679#8680#0" expanded="true" />
+            <element signature="e#8722#8723#0" expanded="true" />
+            <element signature="e#8753#8754#0" expanded="true" />
+            <element signature="e#8800#8801#0" expanded="true" />
+            <element signature="e#8839#8840#0" expanded="true" />
+            <element signature="e#8892#8893#0" expanded="true" />
+            <element signature="e#8926#8927#0" expanded="true" />
+            <element signature="e#8971#8972#0" expanded="true" />
+            <element signature="e#9003#9004#0" expanded="true" />
+            <element signature="e#9054#9055#0" expanded="true" />
+            <element signature="e#9093#9094#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9174#9175#0" expanded="true" />
+            <element signature="e#9326#9327#0" expanded="true" />
+            <element signature="e#9368#9369#0" expanded="true" />
+            <element signature="e#9428#9429#0" expanded="true" />
+            <element signature="e#9472#9473#0" expanded="true" />
+            <element signature="e#9528#9529#0" expanded="true" />
+            <element signature="e#9568#9569#0" expanded="true" />
+            <element signature="e#9624#9625#0" expanded="true" />
+            <element signature="e#9664#9665#0" expanded="true" />
+            <element signature="e#9720#9721#0" expanded="true" />
+            <element signature="e#9760#9761#0" expanded="true" />
+            <element signature="e#9829#9830#0" expanded="true" />
+            <element signature="e#9875#9876#0" expanded="true" />
+            <element signature="e#9934#9935#0" expanded="true" />
+            <element signature="e#9976#9977#0" expanded="true" />
+            <element signature="e#10048#10049#0" expanded="true" />
+            <element signature="e#10104#10105#0" expanded="true" />
+            <element signature="e#10167#10168#0" expanded="true" />
+            <element signature="e#10213#10214#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="102">
           <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -584,115 +653,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-685">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="e#818#819#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1224#1225#0" expanded="true" />
-            <element signature="e#1328#1329#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Balance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1518">
+        <state relative-caret-position="153">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2070#2071#0" expanded="true" />
-            <element signature="e#2093#2094#0" expanded="true" />
-            <element signature="e#2181#2182#0" expanded="true" />
-            <element signature="e#2232#2233#0" expanded="true" />
+            <element signature="e#2934#2935#0" expanded="true" />
             <element signature="e#2970#2971#0" expanded="true" />
+            <element signature="e#3028#3029#0" expanded="true" />
             <element signature="e#3067#3068#0" expanded="true" />
+            <element signature="e#3128#3129#0" expanded="true" />
             <element signature="e#3172#3173#0" expanded="true" />
+            <element signature="e#3229#3230#0" expanded="true" />
             <element signature="e#3266#3267#0" expanded="true" />
+            <element signature="e#3426#3427#0" expanded="true" />
             <element signature="e#3476#3477#0" expanded="true" />
+            <element signature="e#3555#3556#0" expanded="true" />
             <element signature="e#3611#3612#0" expanded="true" />
             <element signature="method#setAssociatedTransaction#0;class#Balance#0" />
+            <element signature="e#3840#3841#0" expanded="true" />
             <element signature="e#3895#3896#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="125" column="7" lean-forward="true" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;field#username#0;class#User#0" />
-            <element signature="docComment;field#password#0;class#User#0" />
-            <element signature="docComment;field#timeCreated#0;class#User#0" />
-            <element signature="docComment;field#adminPriv#0;class#User#0" />
-            <element signature="docComment;field#userContribution#0;class#User#0" />
-            <element signature="docComment;field#userBalance#0;class#User#0" />
-            <element signature="docComment;method#User#0;class#User#0" />
-            <element signature="docComment;method#makeUsername#0;class#User#0" />
-            <element signature="docComment;method#hasPermission#0;class#User#0" />
-            <element signature="e#6737#6738#0" expanded="true" />
-            <element signature="docComment;method#changeAdminAccess#0;class#User#0" />
-            <element signature="method#changeAdminAccess#0;class#User#0" />
-            <element signature="docComment;method#formattedTime#0;class#User#0" />
-            <element signature="method#formattedTime#0;class#User#0" />
-            <element signature="docComment;method#formatName#0;class#User#0" />
-            <element signature="method#formattedName#0;class#User#0" />
-            <element signature="e#8451#8452#0" expanded="true" />
-            <element signature="e#8525#8526#0" expanded="true" />
-            <element signature="e#8601#8602#0" expanded="true" />
-            <element signature="e#8679#8680#0" expanded="true" />
-            <element signature="e#8753#8754#0" expanded="true" />
-            <element signature="e#8839#8840#0" expanded="true" />
-            <element signature="e#8926#8927#0" expanded="true" />
-            <element signature="e#9003#9004#0" expanded="true" />
-            <element signature="e#9093#9094#0" expanded="true" />
-            <element signature="e#9174#9175#0" expanded="true" />
-            <element signature="e#9368#9369#0" expanded="true" />
-            <element signature="e#9472#9473#0" expanded="true" />
-            <element signature="e#9568#9569#0" expanded="true" />
-            <element signature="e#9664#9665#0" expanded="true" />
-            <element signature="e#9760#9761#0" expanded="true" />
-            <element signature="e#9875#9876#0" expanded="true" />
-            <element signature="e#9976#9977#0" expanded="true" />
-            <element signature="e#10104#10105#0" expanded="true" />
-            <element signature="e#10213#10214#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NoSuchUserException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserAlreadyExistsException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
+        <state relative-caret-position="45">
+          <caret line="28" column="93" selection-start-line="28" selection-start-column="93" selection-end-line="28" selection-end-column="93" />
         </state>
       </provider>
     </entry>
