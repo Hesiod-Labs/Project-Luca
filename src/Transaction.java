@@ -1,133 +1,221 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+import java.util.*;
 
+/** A transaction processed within Luca. */
 public class Transaction
 {
-    private User reqUser;
-    private User adminUser;
-    private double amount;
-    private ZonedDateTime reqDate; // Set when the transaction is requested by a regular user
-    private ZonedDateTime exeDate; // Set when the transaction is acted upon by an admin user
+    /** A list of transactions that have been requested, but have not yet been resolved. */
+    private static LinkedList<Transaction> transactionRequests = new LinkedList<>();
+   
+    /** Transactions that have been requested and resolved. */
+    private static Stack<Transaction> transactionHistory = new Stack<>();
+    
+    /** The user requesting a transaction. Can be either a REGULAR or ADMIN user. */
+    private User requestUser;
+    
+    /** The user acting upon a transaction. Can only be an ADMIN user. */
+    private User resolveUser;
+    
+    /** The amount of funds associated with the transaction. */
+    private double transactionAmount;
+    
+    /** Set when the transaction request is executed by the requestUser. */
+    private ZonedDateTime requestDate;
+    
+    /** Set when the transaction request is acted upon (resolved) by the resolvedUser (ADMIN). */
+    private ZonedDateTime resolveDate;
     /**
-     * Status is first initialized by the regular or admin user, but only changed by the admin user
-     * OPEN: transaction has been placed, but not acted upon (default)
-     * DEPOSITED: amount has been added to the Bank (banking only)
-     * WITHDRAWN: amount has been removed from the Bank (banking only)
-     * EXECUTED: transaction has been placed and order has been completed (trading only)
-     * // TODO Consider splitting EXECUTED into BUY, SELL, etc.
-     * CANCELLED: the order was placed, but cancelled by the user
-     * DENIED: the order has been placed, but was denied execution
+     * Status is first initialized by the requestUser, but only changed by the resolveUser.
+     * GENERAL STATUSES:
+     * --> OPEN: transaction has been placed, but not acted upon (default).
+     * --> CANCELLED: transaction was requested, but cancelled by the user.
+     * --> DENIED: order was placed, but was denied by the resolveUser.
+     * BANKING STATUSES:
+     * --> DEPOSITED: funds have been added to the Bank.
+     * --> WITHDRAWN: funds have been removed from the Bank and transferred to the user(s).
+     * TRADING STATUSES:
+     * --> BOUGHT: buy-order transaction was requested and assets have been bought and added to the Portfolio.
+     * --> SOLD: sell-order transaction was requested and assets have been sold and removed from the Portfolio.
+     * --> SHORTED: short-order transaction was requested and assets have been shorted and added to the Portfolio.
+     * --> COVERED: cover-order transaction was requested and assets have been removed from the Portfolio.
      */
-    private Status status;
+    private Status transactionStatus;
+    
     /**
      * BANKING: deposit or withdraw
      * TRADING: buy/sell or short/cover
      */
-    private Type type;
-    private int orderID;
+    private Type transactionType;
     
+    /** If the transaction Type is TRADING, then there exists an associated asset with the transaction. */
+    private Asset transactionAsset;
+    
+    /**
+     * Number ID associated with each transaction.
+     * Format: <YEAR><MONTH><DAY><HOUR><MINUTE><SECOND>
+     * Example: January 1, 2019 @ 12:34:56 --> 201911123456
+     */
+    private String transactionID;
+    
+    /**
+     * Constructor for BANKING transactions.
+     * @param requestedBy The user requesting the transaction.
+     * @param amount The amount requested. ALWAYS POSITIVE
+     * @param type DEPOSIT, WITHDRAW, BUY, SELL, SHORT, or COVER.
+     */
     public Transaction(User requestedBy, double amount, String type)
     {
-        this.reqUser = requestedBy;
-        this.amount = amount;
-        this.reqDate = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
-        this.status = Status.OPEN;
-        this.type = Type.valueOf(type.toUpperCase());
-        this.orderID = Integer.parseInt(reqDate.getYear() + "" + reqDate.getMonthValue() + "" + reqDate.getDayOfMonth() +
-                "" + reqDate.getHour() + "" + reqDate.getMinute() + "" + reqDate.getSecond());
+        this.requestUser = requestedBy;
+        this.transactionAmount = amount;
+        this.requestDate = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
+        this.transactionStatus = Status.OPEN;
+        this.transactionType = Type.valueOf(type.toUpperCase());
+        this.transactionID = requestDate.getYear() + "" + requestDate.getMonthValue() + "" + requestDate.getDayOfMonth() +
+                "" + requestDate.getHour() + "" + requestDate.getMinute() + "" + requestDate.getSecond();
+        transactionRequests.add(this);
     }
     
+    /**
+     * Constructor for TRADING transactions that have an associated asset.
+     * @param requestedBy The user requesting the transaction.
+     * @param type BUY, SELL, SHORT, or COVER.
+     * @param transactionAsset The asset of interest.
+     */
+    public Transaction(User requestedBy, String type, Asset transactionAsset)
+    {
+        this(requestedBy, transactionAsset.getOriginalPrice()*transactionAsset.getVolume(), type);
+        this.transactionAsset = transactionAsset;
+    }
     
+    /** Default is OPEN and is updated by the resolveUser once the transaction is resolved. */
     public enum Status
     {
-        OPEN, DEPOSITED, WITHDRAWN, EXECUTED, CANCELLED, DENIED;
+        BOUGHT, CANCELLED, COVERED, DENIED, DEPOSITED, OPEN, SHORTED, SOLD, WITHDRAWN
     }
     
+    /**
+     * Set the user requesting the transaction.
+     * Used for the purpose of eliminating the possibility of withdrawing a DEPOSIT transaction, etc.
+     */
     public enum Type
     {
-        DEPOSIT, WITHDRAW, BUY, SELL, SHORT, COVER;
+        BUY, COVER, DEPOSIT, SELL, SHORT, WITHDRAW
     }
     
-    // Getter methods
+    /**
+     * Adds a new transaction request to the list of requested transactions. */
+    public void addTransactionRequest()
+    {
+        transactionRequests.add(this);
+    }
+    
+    /**
+     * // TODO
+     * Deletes a requested transaction from the list of requested transactions.
+     * Should only be used when an transaction has been requested, but is later CANCELLED.
+     */
+    public void removeTransactionRequest()
+    {
+        transactionRequests.remove(this);
+    }
+    
+    /** Adds a resolved transaction to the history of previously resolved transaction. */
+    public void addToTransactionHistory()
+    {
+        transactionHistory.add(this);
+    }
+    
+    //******************************** GETTER METHODS ********************************//
     public User getReqUser()
     {
-        return reqUser;
+        return requestUser;
     }
     
     public User getAdminUser()
     {
-        return adminUser;
+        return resolveUser;
     }
     
-    public double getAmount()
+    public double getTransactionAmount()
     {
-        return amount;
+        return transactionAmount;
     }
     
-    public ZonedDateTime getReqDate()
+    public ZonedDateTime getRequestDate()
     {
-        return reqDate;
+        return requestDate;
     }
     
-    public ZonedDateTime getExeDate()
+    public ZonedDateTime getResolveDate()
     {
-        return exeDate;
+        return resolveDate;
     }
     
     public Status getStatus()
     {
-        return status;
+        return transactionStatus;
     }
     
     public Type getType()
     {
-        return type;
+        return transactionType;
     }
     
-    public int getOrderID()
+    public String getOrderID()
     {
-        return orderID;
+        return transactionID;
     }
     
-    // Setter methods
+    public Asset getTransactionAsset()
+    {
+        return transactionAsset;
+    }
+    
+    public static LinkedList<Transaction> getTransactionRequests()
+    {
+        return transactionRequests;
+    }
+    
+    //******************************** SETTER METHODS ********************************//
     public void setReqUser(User reqUser)
     {
-        this.reqUser = reqUser;
+        this.resolveUser = reqUser;
     }
     
-    public void setAdminUser(User adminUser)
+    public void setResolveUser(User adminUser)
     {
-        this.adminUser = adminUser;
+        this.resolveUser = adminUser;
     }
     
-    public void setAmount(double amount)
+    public void setTransactionAmount(double amount)
     {
-        this.amount = amount;
+        this.transactionAmount = amount;
     }
     
-    public void setReqDate(ZonedDateTime reqDate)
+    public void setRequestDate(ZonedDateTime requestDate)
     {
-        this.reqDate = reqDate;
+        this.requestDate = requestDate;
     }
     
-    public void setExeDate(ZonedDateTime exeDate)
+    public void setResolveDate(ZonedDateTime resolveDate)
     {
-        this.exeDate = exeDate;
+        this.resolveDate = resolveDate;
     }
     
-    public void setStatus(Status status)
+    public void setTransactionStatus(Status status)
     {
-        this.status = status;
+        this.transactionStatus = status;
     }
     
-    public void setType(Type type)
+    public void setTransactionType(Type type)
     {
-        this.type = type;
+        this.transactionType = type;
     }
     
-    public void setOrderID(int orderID)
+    public void setTransactionID(String ID)
     {
-        this.orderID = orderID;
+        this.transactionID = ID;
     }
     
 }

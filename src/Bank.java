@@ -1,32 +1,46 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 
-public class Bank implements Banking
+public class Bank
 {
-    private static Balance bankBalance;
-    private static ArrayList<Transaction> transactionHistory;
+    private static Balance bankBalance = new Balance();
     
-    public Bank(Balance balance)
+    public Bank(Transaction firstTransaction)
     {
-        Bank.bankBalance = balance;
+        Balance initial = new Balance(firstTransaction);
+        bankBalance.updateBalance(initial);
     }
     
-    // TODO Remember that each transaction type will be used in the requestTransaction and makeTransaction methods.
-    //  So write these as the ACTIONS (assuming privileges have already been checked)
+    public Bank(double initialAmount)
+    {
+        Balance initial = new Balance(initialAmount);
+        bankBalance.updateBalance(initial);
+    }
+    
+    public Bank()
+    {
+        Balance createdAt = new Balance();
+        bankBalance.updateBalance(createdAt);
+    }
+    
     // Deposits money into the bank and updates the bankBalance
-    public void deposit(Transaction transaction) // TODO Make into try/catch to consider negative amounts
+    public static void deposit(Transaction transaction)
     {
-        getBankBalance().updateBalance(transaction);
-        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-        transaction.setStatus(Transaction.Status.DEPOSITED);
+        transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setTransactionStatus(Transaction.Status.DEPOSITED);
+        
+        getBankBalance().updateBalance(Balance.transferTo(transaction));
     }
     
-    public void withdraw(Transaction transaction)
+    public static void withdraw(Transaction transaction)
     {
-        bankBalance.updateBalance(transaction);
-        transaction.setExeDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-        transaction.setStatus(Transaction.Status.WITHDRAWN);
+        transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        transaction.setTransactionStatus(Transaction.Status.WITHDRAWN);
+        
+        User requestedBy = transaction.getReqUser();
+        
+        requestedBy.getUserBalance().updateBalance(Balance.transferTo(transaction));
+        getBankBalance().updateBalance(Balance.transferFrom(transaction));
     }
     
     public static Balance getBankBalance()
@@ -34,4 +48,8 @@ public class Bank implements Banking
         return bankBalance;
     }
     
+    public void setBankBalance(Balance bankBalance)
+    {
+        Bank.bankBalance = bankBalance;
+    }
 }

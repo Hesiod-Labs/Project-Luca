@@ -1,111 +1,96 @@
 import java.util.*;
 
+/** An account within Luca. */
 public class Account
 {
-    private static Balance accountBalance;
+    /** The amount of funds in both the Bank and Portfolio. */
+    private static Balance accountBalance; // TODO Write method that adds portfolio and bank balances
+    
+    /** The Bank holds funds not for trading. */
     private static Bank bank;
-    private static  Set<User> allUsers;
+    
+    /** The Portfolio holds assets and funds used for trading. */
     private static Portfolio portfolio;
-    private static Queue<Transaction> transactionRequests;
-    private static Stack<Transaction> transactionHistory;
     
-    public Account(Balance initialAmount, Bank bank, Set<User> users, Portfolio portfolio)
+    /** All users associated with the account. */
+    // TODO Set is an interface
+    private static SortedSet<User> allUsers;
+    
+    public Account(Balance initialAmount, Bank b, SortedSet<User> users, Portfolio port)
     {
-        Account.accountBalance = initialAmount;
-        Account.bank = bank;
-        Account.allUsers = users;
-        Account.portfolio = portfolio;
+        accountBalance = initialAmount;
+        bank = b;
+        allUsers = users;
+        portfolio = port;
     }
     
-    public void requestTransaction(Transaction transaction)
+    /** Constructor that creates an empty account (i.e. no Balance, Bank, User(s), or Portfolio) */
+    public Account()
     {
-        transactionRequests.add(transaction);
+        this(null, null, null, null);
     }
     
-    public void makeTransaction(Transaction.Status updatedStatus)
+    /**
+     * //TODO Requires admin permissions.
+     * Adds a user to the account.
+     * @param user User to be added.
+     */
+    public static void addUser(User user)
     {
-        // 1. Check to see the type of the transaction
-        // 2. Update bank and portfolio balances // TODO make accountBalance update method
-        // 3. 
-        Transaction request = transactionRequests.poll();
-        request.setStatus(updatedStatus);
-    
-        Transaction.Type type = null;
-        switch(type)
-        {
-            case DEPOSIT: bank.deposit(request);
-                break;
-            case WITHDRAW: bank.withdraw(request);
-                break;
-            case BUY: portfolio.buyOrder(request);
-                break;
-            case SELL: portfolio.sellOrder(request);
-                break;
-            case SHORT: portfolio.shortOrder(request);
-                break;
-            case COVER: portfolio.coverOrder(request);
-                break;
-        }
-        
-        transactionHistory.add(request);
-        // Account.updateBalance(request);
-        
+        getAllUsers().add(user);
     }
     
-    public void addUser(User user)
+    /**
+     * //TODO Requires admin permissions.
+     * Removes a user from the account.
+     * @param user User to be removed.
+     */
+    public static void removeUser(User user)
     {
-        if(! allUsers.contains(user))
-            allUsers.add(user);
-        else
-        allUsers.add(user);
+        getAllUsers().remove(user);
     }
     
-    // TODO make try/catch with exception if no user is found
-    public void removeUser(User user)
-    {
-        if(!allUsers.contains(user))
-            System.out.println("No such user exists.");
-        else
-            allUsers.remove(user);
-    }
+    //******************************** GETTER METHODS ********************************//
     
-    public Balance getAccountBalance()
+    public static Balance getAccountBalance()
     {
         return accountBalance;
     }
     
-    public Bank getBank()
+    public static Bank getBank()
     {
         return bank;
     }
     
-    public Set<User> getAllUsers()
-    {
-        return allUsers;
-    }
-    
-    public Portfolio getPortfolio()
+    public static Portfolio getPortfolio()
     {
         return portfolio;
     }
     
-    public void setAccountBalance(Balance accountBalance)
+    public static Set<User> getAllUsers()
     {
-        this.accountBalance = accountBalance;
+        return allUsers;
     }
     
-    public void setBank(Bank bank)
+    //******************************** SETTER METHODS ********************************//
+    
+    public static void setAccountBalance(Balance accountBalance)
     {
-        this.bank = bank;
+        Account.accountBalance = accountBalance;
     }
     
-    public void setAllUsers(Set<User> allUsers)
+    public static void setBank(Bank bank)
     {
-        this.allUsers = allUsers;
+        Account.bank = bank;
     }
     
-    public void setPortfolio(Portfolio portfolio)
+    public static void setPortfolio(Portfolio portfolio)
     {
-        this.portfolio = portfolio;
+        Account.portfolio = portfolio;
+    }
+    
+    public static void setAllUsers(SortedSet<User> allUsers)
+    {
+        Account.allUsers = allUsers;
     }
 }
