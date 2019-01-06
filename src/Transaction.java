@@ -1,5 +1,4 @@
-import java.time.*;
-import java.time.temporal.ChronoUnit;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 /** A transaction processed within Luca. */
@@ -60,31 +59,24 @@ public class Transaction
     
     /**
      * Constructor for BANKING transactions.
-     * @param requestedBy The user requesting the transaction.
      * @param amount The amount requested. ALWAYS POSITIVE
      * @param type DEPOSIT, WITHDRAW, BUY, SELL, SHORT, or COVER.
      */
-    public Transaction(User requestedBy, double amount, String type)
+    public Transaction(double amount, String type)
     {
-        this.requestUser = requestedBy;
         this.transactionAmount = amount;
-        this.requestDate = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.transactionStatus = Status.OPEN;
         this.transactionType = Type.valueOf(type.toUpperCase());
-        this.transactionID = requestDate.getYear() + "" + requestDate.getMonthValue() + "" + requestDate.getDayOfMonth() +
-                "" + requestDate.getHour() + "" + requestDate.getMinute() + "" + requestDate.getSecond();
-        transactionRequests.add(this);
     }
     
     /**
      * Constructor for TRADING transactions that have an associated asset.
-     * @param requestedBy The user requesting the transaction.
      * @param type BUY, SELL, SHORT, or COVER.
      * @param transactionAsset The asset of interest.
      */
-    public Transaction(User requestedBy, String type, Asset transactionAsset)
+    public Transaction(String type, Asset transactionAsset)
     {
-        this(requestedBy, (transactionAsset.getOriginalPrice()*transactionAsset.getVolume()), type);
+        this((transactionAsset.getOriginalPrice()*transactionAsset.getVolume()), type);
         this.transactionAsset = transactionAsset;
     }
     
@@ -197,9 +189,9 @@ public class Transaction
     }
     
     //******************************** SETTER METHODS ********************************//
-    public void setReqUser(User reqUser)
+    public void setRequestUser(User reqUser)
     {
-        this.resolveUser = reqUser;
+        this.requestUser = reqUser;
     }
     
     public void setResolveUser(User adminUser)

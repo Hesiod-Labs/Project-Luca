@@ -121,6 +121,17 @@ public class User
     /** Method to request a transaction. */
     public void requestTransaction(Transaction request)
     {
+        request.setRequestDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+        request.setRequestUser(this);
+        request.setTransactionID(
+                        request.getRequestDate().getYear() + "" +
+                        request.getRequestDate().getMonthValue() + "" +
+                        request.getRequestDate().getDayOfMonth() + "" +
+                        request.getRequestDate().getHour() + "" +
+                        request.getRequestDate().getMinute() + "" +
+                        request.getRequestDate().getSecond());
+        request.addTransactionRequest();
+        
         request.addTransactionRequest();
     }
     

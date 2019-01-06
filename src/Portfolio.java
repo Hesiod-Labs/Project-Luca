@@ -68,6 +68,12 @@ public class Portfolio
     
     //TODO Copied from Transaction class
     
+    /**
+     * Formats ZonedDateTime to be more readable.
+     *
+     * @param time The time to be formatted.
+     * @return Formatted ZonedDateTime.
+     */
     public static String formatTime(ZonedDateTime time)
     {
         String month = time.getMonth().toString();

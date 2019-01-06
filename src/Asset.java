@@ -64,16 +64,15 @@ public class Asset
     {
         this.setFinishDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
         this.setOwn(false);
-        this.calculateReturns();
+        this.setReturns(calculateReturns());
         this.calculateTimeHeld();
         Portfolio.getPortfolio().remove(this);
     }
     
-    private double calculateReturns()
+    public double calculateReturns()
     {
-        double ret = this.getFinalPrice() - this.getOriginalPrice();
-        this.setReturns(ret);
-        return ret;
+        double returnsPerShare = this.getFinalPrice() - this.getOriginalPrice();
+        return (returnsPerShare*this.getVolume());
     }
     
     //TODO Change type: Period only goes down to days (want hours, minutes and seconds)

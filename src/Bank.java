@@ -47,6 +47,25 @@ public class Bank
         getBankBalance().updateBalance(Balance.transferFrom(transaction));
     }
     
+    /**
+     * Formats ZonedDateTime to be more readable.
+     *
+     * @param time The time to be formatted.
+     * @return Formatted ZonedDateTime.
+     */
+    public static String formatTime(ZonedDateTime time)
+    {
+        String month = time.getMonth().toString();
+        String day = Integer.toString(time.getDayOfMonth());
+        String year = Integer.toString(time.getYear());
+        String hour = Integer.toString(time.getHour());
+        String minute = Integer.toString(time.getMinute());
+        String second = Integer.toString(time.getSecond());
+        String timeZone = time.getZone().toString();
+        
+        return month + " " + day + ", " + year + " (" + hour + ":" + minute + ":" + second + " " + timeZone + ")";
+    }
+    
     public static Balance getBankBalance()
     {
         return bankBalance;
