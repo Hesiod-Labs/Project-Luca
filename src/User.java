@@ -118,23 +118,17 @@ public class User
     }
     
     // TODO Change or overload to allow for transaction/trading request
-    /**
-     * Method to request a transaction.
-     * @param requestedBy The user that requests the transaction.
-     * @param amount The amount associated with the transaction.
-     * @param type DEPOSIT, WITHDRAW, BUY, SELL, SHORT, or COVER.
-     */
-    public void requestTransaction(User requestedBy, double amount, String type)
+    /** Method to request a transaction. */
+    public void requestTransaction(Transaction request)
     {
-        Transaction request = new Transaction(requestedBy, amount, type);
         request.addTransactionRequest();
     }
     
     // TODO Available only to admin users
-    public void resolveTransaction(User resolvedBy, Transaction transaction, String updatedStatus)
+    public void resolveTransaction(Transaction transaction, String updatedStatus)
     {
         transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-        transaction.setResolveUser(resolvedBy);
+        transaction.setResolveUser(this);
         
         if(updatedStatus.equals("Denied"))
             transaction.setTransactionStatus(Transaction.Status.DENIED);

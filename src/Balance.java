@@ -6,7 +6,7 @@ import java.util.Stack;
 public class Balance
 {
     /** Contains all previous balances of an entity. */
-    private static Stack<Balance> balanceHistory = new Stack<>();
+    private Stack<Balance> balanceHistory = new Stack<>();
     
     /** The amount associated with a specific balance in time. */
     private double balanceAmount; // = 0
@@ -25,50 +25,36 @@ public class Balance
     {
         this.balanceTimeStamp = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.associatedTransaction = transaction;
-        
-        double amountChanged = transaction.getTransactionAmount();
-        double current;
-        
-        if(balanceHistory.isEmpty())
-            current = 0;
-        else
-            current = balanceHistory.peek().getBalanceAmount();
-        
-        this.balanceAmount = amountChanged + current;
-        
-        // balanceHistory.add(this);
+        this.balanceAmount = transaction.getTransactionAmount();
     }
     
     /**
      * Constructor that creates a time-specific balance of an entity with only an amount.
-     * @param amountChanged Amount input into the balance. Can be positive or negative.
+     * @param amountToChange Amount input into the balance. Can be positive or negative.
      */
-    public Balance(double amountChanged)
+    public Balance(double amountToChange)
     {
         this.balanceTimeStamp = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
-        
-        double current;
-        
-        if(balanceHistory.isEmpty())
-            current = 0;
-        else
-            current = balanceHistory.peek().getBalanceAmount();
-    
-        this.balanceAmount = amountChanged + current;
-        
-        // balanceHistory.add(this);
+        this.balanceAmount = amountToChange;
     }
     
     public Balance()
     {
         this(0);
     }
-    
+    // TODO Currently uses first constructor only
     public void updateBalance(Balance newBalance)
     {
+        double amountToChange = newBalance.getBalanceAmount();
+        double current;
+        if(getBalanceHistory().isEmpty())
+            current = 0;
+        else
+            current = getBalanceHistory().peek().getBalanceAmount();
+        newBalance.setBalanceAmount(amountToChange + current);
         getBalanceHistory().add(newBalance);
     }
-    
+    // TODO Should be used before updateBalance
     public static Balance transferTo(Transaction transaction)
     {
         double changeToBalBy = transaction.getTransactionAmount();
@@ -76,13 +62,21 @@ public class Balance
         newToBal.setAssociatedTransaction(transaction);
         return newToBal;
     }
-    
+    // TODO Should be used before updateBalance
     public static Balance transferFrom(Transaction transaction)
     {
         double changeFromBalBy = - transaction.getTransactionAmount();
         Balance newFromBal = new Balance(changeFromBalBy);
         newFromBal.setAssociatedTransaction(transaction);
         return newFromBal;
+    }
+    
+    public double getCurrentBalance()
+    {
+        if(getBalanceHistory().isEmpty())
+            return 0;
+        else
+            return getBalanceHistory().peek().getBalanceAmount();
     }
     
     //******************************** GETTER METHODS ********************************//
@@ -126,6 +120,6 @@ public class Balance
     
     public void setBalanceHistory(Stack<Balance> balanceHistory)
     {
-        Balance.balanceHistory = balanceHistory;
+        this.balanceHistory = balanceHistory;
     }
 }

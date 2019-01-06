@@ -47,9 +47,9 @@ public class Asset
      * @param sect Sector to which the stock belongs
      * @param vol Number of shares being bought/shorted
      * @param orgPrice Price at which the asset is first bought/sold
-     * @param type Type of order
+     * @param orderType Type of order
      */
-    public Asset(String nameOfAsset, String sym, String sect, int vol, double orgPrice, String type)
+    public Asset(String nameOfAsset, String sym, String sect, int vol, double orgPrice, String orderType)
     {
         this.assetName = nameOfAsset;
         this.symbol = sym;
@@ -57,7 +57,7 @@ public class Asset
         this.volume = vol;
         this.originalPrice = orgPrice;
         this.own = true;
-        this.orderType = OrderType.valueOf(type.toUpperCase());
+        this.orderType = OrderType.valueOf(orderType.toUpperCase());
     }
     
     public void sellAsset()
@@ -76,6 +76,7 @@ public class Asset
         return ret;
     }
     
+    //TODO Change type: Period only goes down to days (want hours, minutes and seconds)
     private Period calculateTimeHeld()
     {
         ZonedDateTime start = this.getStartDate();

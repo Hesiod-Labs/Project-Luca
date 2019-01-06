@@ -12,12 +12,15 @@ public class Account
     /** The Portfolio holds assets and funds used for trading. */
     private static Portfolio portfolio;
     
+    private static String accountName;
+    
     /** All users associated with the account. */
     // TODO Set is an interface
-    private static SortedSet<User> allUsers;
+    private static ArrayList<User> allUsers;
     
-    public Account(Balance initialAmount, Bank b, SortedSet<User> users, Portfolio port)
+    public Account(String name, Balance initialAmount, Bank b, ArrayList<User> users, Portfolio port)
     {
+        accountName = name;
         accountBalance = initialAmount;
         bank = b;
         allUsers = users;
@@ -25,9 +28,9 @@ public class Account
     }
     
     /** Constructor that creates an empty account (i.e. no Balance, Bank, User(s), or Portfolio) */
-    public Account()
+    public Account(String name)
     {
-        this(null, null, null, null);
+        this(name, new Balance(), null, null, null);
     }
     
     /**
@@ -37,7 +40,10 @@ public class Account
      */
     public static void addUser(User user)
     {
-        getAllUsers().add(user);
+        if(!allUsers.contains(user))
+            getAllUsers().add(user);
+        else
+            System.out.println("User already exists in the Account.");
     }
     
     /**
@@ -47,7 +53,10 @@ public class Account
      */
     public static void removeUser(User user)
     {
-        getAllUsers().remove(user);
+        if(!allUsers.contains(user))
+            getAllUsers().remove(user);
+        else
+            System.out.println("User does not exist in the Account.");
     }
     
     //******************************** GETTER METHODS ********************************//
@@ -67,9 +76,14 @@ public class Account
         return portfolio;
     }
     
-    public static Set<User> getAllUsers()
+    public static ArrayList<User> getAllUsers()
     {
         return allUsers;
+    }
+    
+    public static String getAccountName()
+    {
+        return accountName;
     }
     
     //******************************** SETTER METHODS ********************************//
@@ -89,8 +103,13 @@ public class Account
         Account.portfolio = portfolio;
     }
     
-    public static void setAllUsers(SortedSet<User> allUsers)
+    public static void setAllUsers(ArrayList<User> allUsers)
     {
         Account.allUsers = allUsers;
+    }
+    
+    public static void setAccountName(String accountName)
+    {
+        Account.accountName = accountName;
     }
 }

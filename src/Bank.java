@@ -4,21 +4,25 @@ import java.time.temporal.ChronoUnit;
 public class Bank
 {
     private static Balance bankBalance = new Balance();
+    private static String bankName;
     
-    public Bank(Transaction firstTransaction)
+    public Bank(String name,Transaction firstTransaction)
     {
+        bankName = name;
         Balance initial = new Balance(firstTransaction);
         bankBalance.updateBalance(initial);
     }
     
-    public Bank(double initialAmount)
+    public Bank(String name, double initialAmount)
     {
+        bankName = name;
         Balance initial = new Balance(initialAmount);
         bankBalance.updateBalance(initial);
     }
     
-    public Bank()
+    public Bank(String name)
     {
+        bankName = name;
         Balance createdAt = new Balance();
         bankBalance.updateBalance(createdAt);
     }
@@ -37,7 +41,7 @@ public class Bank
         transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
         transaction.setTransactionStatus(Transaction.Status.WITHDRAWN);
         
-        User requestedBy = transaction.getReqUser();
+        User requestedBy = transaction.getRequestUser();
         
         requestedBy.getUserBalance().updateBalance(Balance.transferTo(transaction));
         getBankBalance().updateBalance(Balance.transferFrom(transaction));
@@ -48,8 +52,18 @@ public class Bank
         return bankBalance;
     }
     
-    public void setBankBalance(Balance bankBalance)
+    public static String getBankName()
+    {
+        return bankName;
+    }
+    
+    public static void setBankBalance(Balance bankBalance)
     {
         Bank.bankBalance = bankBalance;
+    }
+    
+    public static void setBankName(String bankName)
+    {
+        Bank.bankName = bankName;
     }
 }

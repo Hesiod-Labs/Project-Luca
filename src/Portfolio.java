@@ -1,10 +1,10 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class Portfolio
 {
-    private static Set<Asset> portfolio;
+    private static ArrayList<Asset> portfolio; // TODO rename to assets or something
     private static String nameOfPortFolio;
     private static Balance portfolioBalance;
     private static ZonedDateTime timeCreated;
@@ -14,12 +14,15 @@ public class Portfolio
         Portfolio.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         Portfolio.nameOfPortFolio = name;
         Portfolio.portfolioBalance = portfolioBalance;
+        Portfolio.portfolio = new ArrayList<>();
     }
     
     public Portfolio(String name)
     {
         Portfolio.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         Portfolio.nameOfPortFolio = name;
+        Portfolio.portfolio = new ArrayList<>();
+        Portfolio.portfolioBalance = new Balance();
     }
     
     public static void buyOrder(Transaction transaction)
@@ -63,9 +66,24 @@ public class Portfolio
         getPortfolio().add(asset);
     }
     
+    //TODO Copied from Transaction class
+    
+    public static String formatTime(ZonedDateTime time)
+    {
+        String month = time.getMonth().toString();
+        String day = Integer.toString(time.getDayOfMonth());
+        String year = Integer.toString(time.getYear());
+        String hour = Integer.toString(time.getHour());
+        String minute = Integer.toString(time.getMinute());
+        String second = Integer.toString(time.getSecond());
+        String timeZone = time.getZone().toString();
+    
+        return month + " " + day + ", " + year + " (" + hour + ":" + minute + ":" + second + " " + timeZone + ")";
+    }
+    
     //******************************** GETTER METHODS ********************************//
     
-    public static Set<Asset> getPortfolio()
+    public static ArrayList<Asset> getPortfolio()
     {
         return portfolio;
     }
@@ -87,7 +105,7 @@ public class Portfolio
     
     //******************************** SETTER METHODS ********************************//
     
-    public static void setPortfolio(Set<Asset> portfolio)
+    public static void setPortfolio(ArrayList<Asset> portfolio)
     {
         Portfolio.portfolio = portfolio;
     }

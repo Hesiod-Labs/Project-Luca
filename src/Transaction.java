@@ -84,8 +84,22 @@ public class Transaction
      */
     public Transaction(User requestedBy, String type, Asset transactionAsset)
     {
-        this(requestedBy, transactionAsset.getOriginalPrice()*transactionAsset.getVolume(), type);
+        this(requestedBy, (transactionAsset.getOriginalPrice()*transactionAsset.getVolume()), type);
         this.transactionAsset = transactionAsset;
+    }
+    
+    //TODO Copied from User class
+    public String formatTime(ZonedDateTime time)
+    {
+        String month = time.getMonth().toString();
+        String day = Integer.toString(time.getDayOfMonth());
+        String year = Integer.toString(time.getYear());
+        String hour = Integer.toString(time.getHour());
+        String minute = Integer.toString(time.getMinute());
+        String second = Integer.toString(time.getSecond());
+        String timeZone = time.getZone().toString();
+    
+        return month + " " + day + ", " + year + " (" + hour + ":" + minute + ":" + second + " " + timeZone + ")";
     }
     
     /** Default is OPEN and is updated by the resolveUser once the transaction is resolved. */
@@ -127,12 +141,12 @@ public class Transaction
     }
     
     //******************************** GETTER METHODS ********************************//
-    public User getReqUser()
+    public User getRequestUser()
     {
         return requestUser;
     }
     
-    public User getAdminUser()
+    public User getResolveUser()
     {
         return resolveUser;
     }
@@ -152,17 +166,17 @@ public class Transaction
         return resolveDate;
     }
     
-    public Status getStatus()
+    public Status getTransactionStatus()
     {
         return transactionStatus;
     }
     
-    public Type getType()
+    public Type getTransactionType()
     {
         return transactionType;
     }
     
-    public String getOrderID()
+    public String getTransactionID()
     {
         return transactionID;
     }
@@ -175,6 +189,11 @@ public class Transaction
     public static LinkedList<Transaction> getTransactionRequests()
     {
         return transactionRequests;
+    }
+    
+    public static Stack<Transaction> getTransactionHistory()
+    {
+        return transactionHistory;
     }
     
     //******************************** SETTER METHODS ********************************//
