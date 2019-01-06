@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="Balance mechanism and transactions work, minus SELL for assets (doesn't update Bank balance and returns correctly). Will change timeHeld to some other type to get finer resolution of time. Includes Testing class that prints out example account information and the four supported transaction types (DEPOSIT, WITHDRAW, BUY, SELL).">
-      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/LICECSE.md" afterDir="false" />
+    <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Asset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Bank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1488">
-              <caret line="67" column="4" lean-forward="true" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+            <state relative-caret-position="97">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -195,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -233,7 +217,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546810280643" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546810431072" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Luca Duplicates" />
@@ -352,7 +336,7 @@
       <workItem from="1546718879526" duration="700000" />
       <workItem from="1546724519254" duration="12905000" />
       <workItem from="1546786151652" duration="3537000" />
-      <workItem from="1546789844524" duration="11230000" />
+      <workItem from="1546789844524" duration="11535000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -396,11 +380,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546789710682</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated returns calculation to account for number of shares of the asset being sold.&#10;&#10;Removed the parameter of a request user from the Transaction constructor. It is unnecessary to require a requested when first creating a transaction. Requested user set in the requestTransaction() method.&#10;&#10;Fixed: setter method for requestUser was setting the resolveUser, not the requestUser&#10;&#10;Changed: setReqUser to setRequestUser&#10;&#10;Added: in Testing.java, added .requestTransaction() after each transaction instantiation to ensure the requestUser is set before getting it.&#10;&#10;Changed: relocated the setting of the requestDate, setting of the transactionID, and the adding of a transaction to the transactionRequest list from the Transaction constructor and to requestTransaction().&#10;&#10;Fixed: selling of assets correctly updates Bank balance; had to move the setting of finalPrice in Testing.java to before it the transaction is resolved. &#10;&#10;Added: to Testing.java, verification that timestamps of Portfolio and Bank balances match with the corresponding associated transaction, if one exists (buying/selling only).">
+      <created>1546810264426</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1546810264426</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119405000" />
+    <option name="totallyTimeSpent" value="119710000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,9 +403,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88173455" visible="true" weight="0.2588889" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88173455" visible="true" weight="0.12513426" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -423,7 +414,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Duplicate detector" weight="0.32916668" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32916668" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.47083333" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.465625" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.33854166" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.803125" />
@@ -434,7 +425,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32916668" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.6351209" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.634375" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -499,7 +490,8 @@
     <MESSAGE value="Account: Added fields and made them static. Added basic request and make transaction methods.&#10;Bank: Changed constructor.&#10;Portfolio: Made fields static" />
     <MESSAGE value="Considerable redesigning of most classes. Still has several bugs related to the updating of various balances. Does not have full Portfolio functionality." />
     <MESSAGE value="Balance mechanism and transactions work, minus SELL for assets (doesn't update Bank balance and returns correctly). Will change timeHeld to some other type to get finer resolution of time. Includes Testing class that prints out example account information and the four supported transaction types (DEPOSIT, WITHDRAW, BUY, SELL)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Balance mechanism and transactions work, minus SELL for assets (doesn't update Bank balance and returns correctly). Will change timeHeld to some other type to get finer resolution of time. Includes Testing class that prints out example account information and the four supported transaction types (DEPOSIT, WITHDRAW, BUY, SELL)." />
+    <MESSAGE value="Updated returns calculation to account for number of shares of the asset being sold.&#10;&#10;Removed the parameter of a request user from the Transaction constructor. It is unnecessary to require a requested when first creating a transaction. Requested user set in the requestTransaction() method.&#10;&#10;Fixed: setter method for requestUser was setting the resolveUser, not the requestUser&#10;&#10;Changed: setReqUser to setRequestUser&#10;&#10;Added: in Testing.java, added .requestTransaction() after each transaction instantiation to ensure the requestUser is set before getting it.&#10;&#10;Changed: relocated the setting of the requestDate, setting of the transactionID, and the adding of a transaction to the transactionRequest list from the Transaction constructor and to requestTransaction().&#10;&#10;Fixed: selling of assets correctly updates Bank balance; had to move the setting of finalPrice in Testing.java to before it the transaction is resolved. &#10;&#10;Added: to Testing.java, verification that timestamps of Portfolio and Bank balances match with the corresponding associated transaction, if one exists (buying/selling only)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated returns calculation to account for number of shares of the asset being sold.&#10;&#10;Removed the parameter of a request user from the Transaction constructor. It is unnecessary to require a requested when first creating a transaction. Requested user set in the requestTransaction() method.&#10;&#10;Fixed: setter method for requestUser was setting the resolveUser, not the requestUser&#10;&#10;Changed: setReqUser to setRequestUser&#10;&#10;Added: in Testing.java, added .requestTransaction() after each transaction instantiation to ensure the requestUser is set before getting it.&#10;&#10;Changed: relocated the setting of the requestDate, setting of the transactionID, and the adding of a transaction to the transactionRequest list from the Transaction constructor and to requestTransaction().&#10;&#10;Fixed: selling of assets correctly updates Bank balance; had to move the setting of finalPrice in Testing.java to before it the transaction is resolved. &#10;&#10;Added: to Testing.java, verification that timestamps of Portfolio and Bank balances match with the corresponding associated transaction, if one exists (buying/selling only)." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -638,8 +630,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="67" column="4" lean-forward="true" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
+        <state relative-caret-position="97">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
         </state>
       </provider>
     </entry>
