@@ -20,16 +20,18 @@ public class Asset
     
     /**
      * Sector of the economy to which the asset belongs:
-     * <ul>Consumers</ul>
-     * <ul>Energy</ul>
-     * <ul>Financials</ul>
-     * <ul>Healthcare</ul>
-     * <ul>Industrials</ul>
-     * <ul>Materials</ul>
-     * <ul>Real Estate</ul>
-     * <ul>Technology</ul>
-     * <ul>Telecom</ul>
-     * <ul>Utilities</ul>
+     * <ul>
+     *     <li>Consumers</li>
+     *     <li>Energy</li>
+     *     <li>Financials</li>
+     *     <li>Healthcare</li>
+     *     <li>Industrials</li>
+     *     <li>Materials</li>
+     *     <li>Real Estate</li>
+     *     <li>Technology</li>
+     *     <li>Telecom</li>
+     *     <li>Utilities</li>
+     * </ul>
      */
     private Sector sector;
     
@@ -74,17 +76,19 @@ public class Asset
     private boolean own;
     
     /** Different types of asset orders that determine when and at what price to acquire or liquidate an asset:
-     * <ul>Limit</ul>
-     * <ul>Market</ul>
-     * <ul>Stop Limit</ul>
-     * <ul>Stop loss</ul>
-     * <ul>Trailing Stop Limit</ul>
-     * <ul>Trailing Stop Loss</ul>
+     * <ul>
+     *     <li>Limit</li>
+     *     <li>Market</li>
+     *     <li>Stop Limit</li>
+     *     <li>Stop Loss</li>
+     *     <li>Trailing Stop Limit</li>
+     *     <li>Trailing Stop Loss</li>
+     * </ul>
      */
     private OrderType orderType;
     
     //TODO Created for the purpose of filtering assets while liquidating assets comment getter and setter methods
-    private Transaction acquisionTransaction;
+    private Transaction acquisitionTransaction;
     
     //TODO Same as above
     private Transaction liquidationTransaction;
@@ -182,26 +186,28 @@ public class Asset
     /**
      * //TODO https://scs.fidelity.com/webxpress/help/topics/help_definition_t.shtml#trailingstoplimit
      * Different ways in which an asset can be acquired or liquidated. Descriptions originally from Fidelity.com.
-     * <ul>Limit: The stock is eligible to be purchased at or below the limit price, but never above it. When a
-     * limit order is placed to sell, the stock is eligible to be sold at or above the limit price, but never below it.
-     * Although a limit order allows for a specified price limit, it does not guarantee that your order will be
-     * executed. </ul>
-     * <ul>Market: The stock is eligible to be purchased at the next available price. A market order remains in
-     * effect only for the day, and usually results in the prompt purchase or sale of all the shares in question, as
-     * long as the security is actively traded and market conditions permit.</ul>
-     * <ul>Stop Limit (stock): Automatically becomes a limit order when the stop price is reached. May be filled
-     * in whole, in part, or not at all, depending on the number of shares available for sale or purchase at the
-     * time.</ul>
-     * <ul>Stop Limit (option): a stop limit order to buy automatically becomes a limit order when the bid price is at
-     * or above the stop price, or the option trades at or above the stop price. A stop limit order to sell
-     * automatically becomes a limit order when the ask price is at or below the stop price, or when the option trades
-     * at or below the stop price. The option stop election is based on the exchange's best bid or off (BBO) where the
-     * stop order resides.</ul>
-     * <ul>Trailing Stop Limit: Order becomes a limit order when the order is triggered.</ul>
-     * <ul>Trailing Stop Loss: Order adjusts in price with favorable market movement on the security. To sell, the
-     * stop price moves up as the price of the security moves up. To buy, the stop price moves down as the price of
-     * security goes down. If the price of the security is moving against the customer's order, the stop price does not
-     * adjust.</ul>
+     * <ul>
+     *     <li>Limit: The stock is eligible to be purchased at or below the limit price, but never above it. When a
+     *     limit order is placed to sell, the stock is eligible to be sold at or above the limit price, but never below
+     *     it. Although a limit order allows for a specified price limit, it does not guarantee that your order will be
+     *     executed.</li>
+     *     <li>Market: The stock is eligible to be purchased at the next available price. A market order remains in
+     *     effect only for the day, and usually results in the prompt purchase or sale of all the shares in question,
+     *     as long as the security is actively traded and market conditions permit.</li>
+     *     <li>Stop Limit (stock): Automatically becomes a limit order when the stop price is reached. May be filled
+     *     in whole, in part, or not at all, depending on the number of shares available for sale or purchase at the
+     *     time. </li>
+     *     <li>Stop Limit (option): a stop limit order to buy automatically becomes a limit order when the bid price is
+     *     at or above the stop price, or the option trades at or above the stop price. A stop limit order to sell
+     *     automatically becomes a limit order when the ask price is at or below the stop price, or when the option
+     *     trades at or below the stop price. The option stop election is based on the exchange's best bid or off (BBO)
+     *     where the stop order resides.</li>
+     *     <li>Trailing Stop Limit: Order becomes a limit order when the order is triggered.</li>
+     *     <li>Trailing Stop Loss: Order adjusts in price with favorable market movement on the security. To sell, the
+     *     stop price moves up as the price of the security moves up. To buy, the stop price moves down as the price of
+     *     security goes down. If the price of the security is moving against the customer's order, the stop price does
+     *     not adjust.</li>
+     * </ul>
      */
     public enum OrderType
     {
@@ -307,7 +313,7 @@ public class Asset
     
     public Transaction getAcquisitionTransaction()
     {
-        return acquisionTransaction;
+        return acquisitionTransaction;
     }
     
     public Transaction getLiquidationTransaction()
@@ -422,9 +428,9 @@ public class Asset
         this.orderType = orderType;
     }
     
-    public void setAcquisionTransaction(Transaction acquisionTransaction)
+    public void setAcquisitionTransaction(Transaction acquisitionTransaction)
     {
-        this.acquisionTransaction = acquisionTransaction;
+        this.acquisitionTransaction = acquisitionTransaction;
     }
     
     public void setLiquidationTransaction(Transaction liquidationTransaction)

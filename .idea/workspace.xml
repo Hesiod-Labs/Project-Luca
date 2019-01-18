@@ -3,6 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Asset$OrderType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Asset$OrderType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Asset$Sector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Asset$Sector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Asset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Balance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Balance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Balance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,20 +59,56 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="314" column="5" selection-start-line="314" selection-start-column="5" selection-end-line="314" selection-end-column="5" />
+            <state relative-caret-position="-2297">
+              <caret line="254" column="7" lean-forward="true" selection-start-line="254" selection-start-column="7" selection-end-line="254" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#15787#15788#0" expanded="true" />
+                <element signature="e#15818#15819#0" expanded="true" />
+                <element signature="e#15933#15934#0" expanded="true" />
+                <element signature="e#15964#15965#0" expanded="true" />
+                <element signature="e#16071#16072#0" expanded="true" />
+                <element signature="e#16103#16104#0" expanded="true" />
+                <element signature="e#16212#16213#0" expanded="true" />
+                <element signature="e#16245#16246#0" expanded="true" />
+                <element signature="e#16350#16351#0" expanded="true" />
+                <element signature="e#16381#16382#0" expanded="true" />
+                <element signature="e#16578#16579#0" expanded="true" />
+                <element signature="e#16612#16613#0" expanded="true" />
+                <element signature="e#16769#16770#0" expanded="true" />
+                <element signature="e#16808#16809#0" expanded="true" />
+                <element signature="e#16978#16979#0" expanded="true" />
+                <element signature="e#17017#17018#0" expanded="true" />
+                <element signature="e#17186#17187#0" expanded="true" />
+                <element signature="e#17220#17221#0" expanded="true" />
+                <element signature="e#17376#17377#0" expanded="true" />
+                <element signature="e#17413#17414#0" expanded="true" />
+                <element signature="e#17572#17573#0" expanded="true" />
+                <element signature="e#17610#17611#0" expanded="true" />
+                <element signature="e#17763#17764#0" expanded="true" />
+                <element signature="e#17799#17800#0" expanded="true" />
+                <element signature="e#18160#18161#0" expanded="true" />
+                <element signature="e#18200#18201#0" expanded="true" />
+                <element signature="e#18357#18358#0" expanded="true" />
+                <element signature="e#18397#18398#0" expanded="true" />
+                <element signature="e#18725#18726#0" expanded="true" />
+                <element signature="e#18771#18772#0" expanded="true" />
+                <element signature="e#19119#19120#0" expanded="true" />
+                <element signature="e#19169#19170#0" expanded="true" />
+                <element signature="e#19561#19562#0" expanded="true" />
+                <element signature="e#19630#19631#0" expanded="true" />
+                <element signature="e#19968#19969#0" expanded="true" />
+                <element signature="e#20014#20015#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Testing.java">
+        <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3384">
-              <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
+            <state relative-caret-position="-3190">
+              <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Asset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3360">
-              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+            <state relative-caret-position="2136">
+              <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,37 +129,67 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
+        <entry file="file://$PROJECT_DIR$/src/Balance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1097">
-              <caret line="202" column="92" selection-start-line="202" selection-start-column="92" selection-end-line="202" selection-end-column="92" />
+            <state relative-caret-position="853">
+              <caret line="82" column="58" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="58" />
               <folding>
-                <element signature="e#13340#13341#0" expanded="true" />
-                <element signature="e#13381#13382#0" expanded="true" />
-                <element signature="e#13523#13524#0" expanded="true" />
-                <element signature="e#13555#13556#0" expanded="true" />
-                <element signature="e#13743#13744#0" expanded="true" />
-                <element signature="e#13781#13782#0" expanded="true" />
-                <element signature="e#14070#14071#0" expanded="true" />
-                <element signature="e#14109#14110#0" expanded="true" />
-                <element signature="e#14284#14285#0" expanded="true" />
-                <element signature="e#14318#14319#0" expanded="true" />
-                <element signature="e#14597#14598#0" expanded="true" />
-                <element signature="e#14644#14645#0" expanded="true" />
-                <element signature="e#14922#14923#0" expanded="true" />
-                <element signature="e#14981#14982#0" expanded="true" />
-                <element signature="e#15326#15327#0" expanded="true" />
-                <element signature="e#15387#15388#0" expanded="true" />
-                <element signature="e#15675#15676#0" expanded="true" />
-                <element signature="e#15726#15727#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#setAssociatedTransaction#0;class#Balance#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bank.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2616">
+              <caret line="116" column="111" selection-start-line="116" selection-start-column="111" selection-end-line="116" selection-end-column="111" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="668">
+              <caret line="245" column="9" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Testing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1392">
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/checkstyle-idea.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -130,6 +219,8 @@
       <find>true</find>
       <find>id</find>
       <find>.formatName(</find>
+      <find>roun</find>
+      <find>round</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -164,14 +255,14 @@
         <option value="$USER_HOME$/Desktop/Project Luca Thomas Version/Transaction.java" />
         <option value="$USER_HOME$/Desktop/Project Luca Thomas Version/User.java" />
         <option value="$PROJECT_DIR$/src/Format.java" />
-        <option value="$PROJECT_DIR$/src/Bank.java" />
-        <option value="$PROJECT_DIR$/src/Balance.java" />
-        <option value="$PROJECT_DIR$/src/Account.java" />
-        <option value="$PROJECT_DIR$/src/Asset.java" />
         <option value="$PROJECT_DIR$/src/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/User.java" />
-        <option value="$PROJECT_DIR$/src/Testing.java" />
+        <option value="$PROJECT_DIR$/src/Asset.java" />
+        <option value="$PROJECT_DIR$/src/Bank.java" />
         <option value="$PROJECT_DIR$/src/Portfolio.java" />
+        <option value="$PROJECT_DIR$/src/Account.java" />
+        <option value="$PROJECT_DIR$/src/Balance.java" />
+        <option value="$PROJECT_DIR$/src/Testing.java" />
+        <option value="$PROJECT_DIR$/src/User.java" />
       </list>
     </option>
   </component>
@@ -208,7 +299,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547070322405" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547835489648" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Luca Duplicates" />
@@ -336,7 +427,16 @@
       <workItem from="1546955275030" duration="6051000" />
       <workItem from="1546963616868" duration="8906000" />
       <workItem from="1546973839352" duration="13729000" />
-      <workItem from="1547013080642" duration="13300000" />
+      <workItem from="1547013080642" duration="16313000" />
+      <workItem from="1547136659338" duration="595000" />
+      <workItem from="1547168353588" duration="4824000" />
+      <workItem from="1547213782142" duration="6358000" />
+      <workItem from="1547267899408" duration="3228000" />
+      <workItem from="1547301383805" duration="2118000" />
+      <workItem from="1547314741961" duration="2551000" />
+      <workItem from="1547405799305" duration="601000" />
+      <workItem from="1547410844839" duration="303000" />
+      <workItem from="1547834964939" duration="517000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -394,11 +494,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547070247827</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fully commented with JavaDoc (probably needs revisions). Added admin functionality to resolving transactions, and adding/removing users. Added runtime user confirmation before requesting/resolving transactions. Changed resolving action, so a cancelled resolution keeps the request in the requestedTransactions list. Added basic functionality to short/cover stocks.">
+      <created>1547070332664</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1547070332664</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205665000" />
+    <option name="totallyTimeSpent" value="229773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -411,25 +518,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.636646" visible="true" weight="0.0698174" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.107948445" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.36335403" side_tool="true" visible="true" weight="0.0698174" />
+      <window_info id="Favorites" order="6" sideWeight="0.36354166" side_tool="true" weight="0.11331901" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32916668" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.4375" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.7260417" />
       <window_info anchor="bottom" id="Message" order="2" />
-      <window_info active="true" anchor="bottom" id="Find" order="3" visible="true" weight="0.039583333" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.9604167" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.039583333" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.11145833" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32916668" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.32916668" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32916668" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.909375" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
@@ -447,42 +555,6 @@
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32975295" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.88173455" visible="true" weight="0.1519871" />
-      <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32916668" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.725" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.33854166" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.039583333" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" weight="0.32916668" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32916668" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.039583333" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
-      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
-      <window_info anchor="bottom" id="CheckStyle" order="16" weight="0.32916668" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24973147" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32975295" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -623,10 +695,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
+    <entry file="file://$PROJECT_DIR$/src/Asset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        <state relative-caret-position="2136">
+          <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -635,67 +707,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1859">
-          <caret line="29" column="85" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
+        <state relative-caret-position="2616">
+          <caret line="116" column="111" selection-start-line="116" selection-start-column="111" selection-end-line="116" selection-end-column="111" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Transaction.java">
+    <entry file="file://$PROJECT_DIR$/.idea/checkstyle-idea.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9408">
-          <caret line="392" column="48" selection-start-line="392" selection-start-column="48" selection-end-line="392" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#10270#10271#0" expanded="true" />
-            <element signature="e#10571#10572#0" expanded="true" />
-            <element signature="e#10772#10773#0" expanded="true" />
-            <element signature="e#10855#10856#0" expanded="true" />
-            <element signature="e#10889#10890#0" expanded="true" />
-            <element signature="e#11001#11002#0" expanded="true" />
-            <element signature="e#11035#11036#0" expanded="true" />
-            <element signature="e#11205#11206#0" expanded="true" />
-            <element signature="e#11245#11246#0" expanded="true" />
-            <element signature="e#11493#11494#0" expanded="true" />
-            <element signature="e#11527#11528#0" expanded="true" />
-            <element signature="e#11580#11581#0" expanded="true" />
-            <element signature="e#11614#11615#0" expanded="true" />
-            <element signature="e#11666#11667#0" expanded="true" />
-            <element signature="e#11706#11707#0" expanded="true" />
-            <element signature="e#11754#11755#0" expanded="true" />
-            <element signature="e#11792#11793#0" expanded="true" />
-            <element signature="e#11838#11839#0" expanded="true" />
-            <element signature="e#11874#11875#0" expanded="true" />
-            <element signature="e#11924#11925#0" expanded="true" />
-            <element signature="e#11963#11964#0" expanded="true" />
-            <element signature="e#12041#12042#0" expanded="true" />
-            <element signature="e#12083#12084#0" expanded="true" />
-            <element signature="e#12155#12156#0" expanded="true" />
-            <element signature="e#12196#12197#0" expanded="true" />
-            <element signature="e#13375#13376#0" expanded="true" />
-            <element signature="e#13654#13655#0" expanded="true" />
-            <element signature="e#13760#13761#0" expanded="true" />
-            <element signature="e#13807#13808#0" expanded="true" />
-            <element signature="e#13876#13877#0" expanded="true" />
-            <element signature="e#13922#13923#0" expanded="true" />
-            <element signature="e#13991#13992#0" expanded="true" />
-            <element signature="e#14037#14038#0" expanded="true" />
-            <element signature="e#14100#14101#0" expanded="true" />
-            <element signature="e#14147#14148#0" expanded="true" />
-            <element signature="e#14204#14205#0" expanded="true" />
-            <element signature="e#14247#14248#0" expanded="true" />
-            <element signature="e#15335#15336#0" expanded="true" />
-            <element signature="e#15374#15375#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Balance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="853">
+          <caret line="82" column="58" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setAssociatedTransaction#0;class#Balance#0" />
@@ -705,28 +735,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3384">
-          <caret line="141" column="9" lean-forward="true" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1392">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="314" column="5" selection-start-line="314" selection-start-column="5" selection-end-line="314" selection-end-column="5" />
+        <state relative-caret-position="-2297">
+          <caret line="254" column="7" lean-forward="true" selection-start-line="254" selection-start-column="7" selection-end-line="254" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#15787#15788#0" expanded="true" />
+            <element signature="e#15818#15819#0" expanded="true" />
+            <element signature="e#15933#15934#0" expanded="true" />
+            <element signature="e#15964#15965#0" expanded="true" />
+            <element signature="e#16071#16072#0" expanded="true" />
+            <element signature="e#16103#16104#0" expanded="true" />
+            <element signature="e#16212#16213#0" expanded="true" />
+            <element signature="e#16245#16246#0" expanded="true" />
+            <element signature="e#16350#16351#0" expanded="true" />
+            <element signature="e#16381#16382#0" expanded="true" />
+            <element signature="e#16578#16579#0" expanded="true" />
+            <element signature="e#16612#16613#0" expanded="true" />
+            <element signature="e#16769#16770#0" expanded="true" />
+            <element signature="e#16808#16809#0" expanded="true" />
+            <element signature="e#16978#16979#0" expanded="true" />
+            <element signature="e#17017#17018#0" expanded="true" />
+            <element signature="e#17186#17187#0" expanded="true" />
+            <element signature="e#17220#17221#0" expanded="true" />
+            <element signature="e#17376#17377#0" expanded="true" />
+            <element signature="e#17413#17414#0" expanded="true" />
+            <element signature="e#17572#17573#0" expanded="true" />
+            <element signature="e#17610#17611#0" expanded="true" />
+            <element signature="e#17763#17764#0" expanded="true" />
+            <element signature="e#17799#17800#0" expanded="true" />
+            <element signature="e#18160#18161#0" expanded="true" />
+            <element signature="e#18200#18201#0" expanded="true" />
+            <element signature="e#18357#18358#0" expanded="true" />
+            <element signature="e#18397#18398#0" expanded="true" />
+            <element signature="e#18725#18726#0" expanded="true" />
+            <element signature="e#18771#18772#0" expanded="true" />
+            <element signature="e#19119#19120#0" expanded="true" />
+            <element signature="e#19169#19170#0" expanded="true" />
+            <element signature="e#19561#19562#0" expanded="true" />
+            <element signature="e#19630#19631#0" expanded="true" />
+            <element signature="e#19968#19969#0" expanded="true" />
+            <element signature="e#20014#20015#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3190">
+          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Asset.java">
+    <entry file="file://$PROJECT_DIR$/src/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3360">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        <state relative-caret-position="415">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -735,33 +808,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Portfolio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1097">
-          <caret line="202" column="92" selection-start-line="202" selection-start-column="92" selection-end-line="202" selection-end-column="92" />
-          <folding>
-            <element signature="e#13340#13341#0" expanded="true" />
-            <element signature="e#13381#13382#0" expanded="true" />
-            <element signature="e#13523#13524#0" expanded="true" />
-            <element signature="e#13555#13556#0" expanded="true" />
-            <element signature="e#13743#13744#0" expanded="true" />
-            <element signature="e#13781#13782#0" expanded="true" />
-            <element signature="e#14070#14071#0" expanded="true" />
-            <element signature="e#14109#14110#0" expanded="true" />
-            <element signature="e#14284#14285#0" expanded="true" />
-            <element signature="e#14318#14319#0" expanded="true" />
-            <element signature="e#14597#14598#0" expanded="true" />
-            <element signature="e#14644#14645#0" expanded="true" />
-            <element signature="e#14922#14923#0" expanded="true" />
-            <element signature="e#14981#14982#0" expanded="true" />
-            <element signature="e#15326#15327#0" expanded="true" />
-            <element signature="e#15387#15388#0" expanded="true" />
-            <element signature="e#15675#15676#0" expanded="true" />
-            <element signature="e#15726#15727#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="668">
+          <caret line="245" column="9" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/checkstyle-idea.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

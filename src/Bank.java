@@ -51,7 +51,7 @@ public class Bank
     /**
      * Creates a bank with a non-default name and some initial value, but no associated transaction.
      * While it is important to have all historical balances be tied to the actual transaction, this constructor is
-     * useful when used in tandem with the {@Balance} constructor that only takes a <code>double</code> initial amount,
+     * useful when used in tandem with the {@link Balance} constructor that only takes a <code>double</code> initial amount,
      * since multiple balance objects can be created to update both the bank and portfolio while maintaining the
      * transaction with which the balance is associated.
      * @param name Name designated to the bank.
@@ -95,6 +95,7 @@ public class Bank
         transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
         transaction.setTransactionStatus(Transaction.Status.DEPOSITED);
         getBankBalance().updateBalance(Balance.transferTo(transaction));
+        Account.getAccountBalance().updateBalance(Balance.transferTo(transaction)); //TODO Add to description
     }
     
     /**
@@ -113,6 +114,7 @@ public class Bank
         User requestedBy = transaction.getRequestUser();
         requestedBy.getUserBalance().updateBalance(Balance.transferTo(transaction));
         getBankBalance().updateBalance(Balance.transferFrom(transaction));
+        Account.getAccountBalance().updateBalance(Balance.transferFrom(transaction)); //TODO Add to description
     }
     
     /**

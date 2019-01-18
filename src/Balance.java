@@ -80,6 +80,7 @@ public class Balance
     }
     
     /**
+     * //TODO Might be more concise to use Math.copySign()
      * Used if a balance value is to be increased, the amount of which is determined by the transaction parameter.
      * The new balance statement amount is then set to the transaction amount and returned to be added to the
      * {@link #balanceHistory}.
@@ -185,7 +186,7 @@ public class Balance
      * Sets the current and previous balance statements.
      * WARNING: DO NOT USE UNLESS THE BALANCE HISTORY HAS NOT BEEN INSTANTIATED. OTHERWISE BALANCE HISTORY DATA WILL
      * BE OVERWRITTEN.
-     * @param balanceHistory
+     * @param balanceHistory Contains the current and all previous balance statements.
      */
     public void setBalanceHistory(Stack<Balance> balanceHistory)
     {

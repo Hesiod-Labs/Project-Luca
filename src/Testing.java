@@ -1,5 +1,4 @@
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 public class Testing
 {
@@ -8,23 +7,82 @@ public class Testing
         long starTime = System.nanoTime();
         
         /* Create an  account with a bank, portfolio, and storage for users*/
-        new Account("Hesiod Account");
-        Bank bank = new Bank("Hesiod Bank");
-        Portfolio portfolio = new Portfolio("Hesiod Portfolio");
-        ArrayList<User> allUsers = new ArrayList<>();
-        
-        /* Assign the bank, portfolio, and users storage to the Account */
-        Account.setAccountBank(bank);
-        Account.setAccountPortfolio(portfolio);
-        Account.setAccountUsers(allUsers);
+        new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
         
         /* Create a user and add it to the Account */
-        User reqUser = new User("R", "E", "Q", "dog", false, 500);
-        User resUser = new User("R", "E", "S", "cat", true, 500);
-        resUser.addUser(reqUser);
-        resUser.addUser(resUser);
+        User reqUser = new User("R", "E", "Q", "dog", false, 1000);
+        User resUser = new User("R", "E", "S", "cat", true, 1000);
+        User adam = new User("A", "D", "P", "hi", false, 0.01);
         
-        /* Display Account information */
+        /* Display general Account information */
+        printAccountInfo();
+        
+        printUsersInfo();
+    
+        Transaction t1 = new Transaction(1000, "Deposit");
+        printTransactionReceipt(t1);
+        reqUser.requestTransaction(t1);
+        printTransactionReceipt(t1);
+        resUser.resolveTransaction(t1, "Deposited");
+        printTransactionReceipt(t1);
+    
+        Transaction t2 = new Transaction(200, "Withdraw");
+        printTransactionReceipt(t2);
+        reqUser.requestTransaction(t2);
+        printTransactionReceipt(t2);
+        resUser.resolveTransaction(t2, "Withdrawn");
+        printTransactionReceipt(t2);
+    
+        Asset cmg_buy = new Asset("Chipotle", "CMG", "Consumers", 3, 100, "Market");
+        Transaction t3 = new Transaction("Buy", cmg_buy);
+        printTransactionReceipt(t3);
+        printAssetInfo(t3);
+        reqUser.requestTransaction(t3);
+        printTransactionReceipt(t3);
+        resUser.resolveTransaction(t3, "Bought");
+        printTransactionReceipt(t3);
+        printAssetInfo(t3);
+    
+        cmg_buy.setEndPrice(cmg_buy.getStartPrice() + 10);
+        Transaction t4 = new Transaction("Sell", cmg_buy);
+        printTransactionReceipt(t4);
+        printAssetInfo(t4);
+        reqUser.requestTransaction(t4);
+        printTransactionReceipt(t4);
+        resUser.resolveTransaction(t4, "Sold");
+        printTransactionReceipt(t4);
+        printAssetInfo(t4);
+        
+        Asset fb_short = new Asset("Facebook", "FB", "Technology", 3, 100, "Market");
+        Transaction t5 = new Transaction("Short", fb_short);
+        printTransactionReceipt(t5);
+        printAssetInfo(t5);
+        reqUser.requestTransaction(t5);
+        printTransactionReceipt(t5);
+        resUser.resolveTransaction(t5, "Shorted");
+        printTransactionReceipt(t5);
+        printAssetInfo(t5);
+    
+        Transaction t6 = new Transaction("Cover", fb_short);
+        printTransactionReceipt(t6);
+        printAssetInfo(t6);
+        reqUser.requestTransaction(t6);
+        printTransactionReceipt(t6);
+        resUser.resolveTransaction(t6, "Covered");
+        printTransactionReceipt(t6);
+        printAssetInfo(t6);
+        
+        printTransactionHistory();
+        printBankBalanceHistory();
+        printPortfolioHistory();
+    
+        long endTime = System.nanoTime();
+        long totalTime = endTime - starTime;
+        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
+    }
+    
+    public static void printAccountInfo()
+    {
         System.out.println("--- ACCOUNT INFORMATION ---");
         System.out.println("Account: " + Account.getAccountName());
         System.out.println("\t" + "Current Balance: $" + Account.getAccountBalance().getCurrentValue() + "0");
@@ -32,237 +90,89 @@ public class Testing
         System.out.println("\t" + "Current Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
         System.out.println("Portfolio Name: " + Portfolio.getNameOfPortFolio());
         System.out.println("\t" + "Current Balance: $" + Portfolio.getPortfolioBalance().getCurrentValue() + "0");
-        System.out.println("\t" + "Time Created: " + Portfolio.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+        System.out.println("Number of Users: " + Account.getAccountUsers().size());
         System.out.println(" ");
+    }
+    
+    public static void printUsersInfo()
+    {
         for(User user : Account.getAccountUsers())
         {
-            System.out.println("------ USER INFORMATION ---");
-            System.out.println("\t" + "Username: " + user.getUsername());
-            System.out.println("\t" + "Password: " + user.getPassword());
-            System.out.println("\t" + "Admin: " + user.getPermissionStatus());
-            System.out.println("\t" + "Total contributions: $" + user.getUserContribution() + "0");
-            System.out.println("\t" + "Time Created: " + user.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+            System.out.println("--- USER INFORMATION ---");
+            System.out.println("Username: " + user.getUsername());
+            System.out.println("Password: " + user.getPassword());
+            System.out.println("Admin: " + user.getPermissionStatus());
+            System.out.println("Total contributions: $" + user.getUserContribution().getCurrentValue() + "0");
+            System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
+            System.out.println("Holdings Value: $" + user.calculateHoldingsValue() + "0");
+            System.out.println("Time Created: " + user.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME));
             System.out.println(" ");
         }
+    }
     
-        Thread.sleep(1000);
-        
-        /* Testing transaction functionality. Request and resolve six different types of transactions */
-        System.out.println("--- REQUEST DEPOSIT TRANSACTION ---");
-        Transaction t1 = new Transaction(1000, "Deposit");
-        reqUser.requestTransaction(t1);
-        if(!t1.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
+    public static void printTransactionReceipt(Transaction transaction)
+    {
+        if(!transaction.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
         {
-            System.out.println("Transaction ID: " + t1.getTransactionID());
-            System.out.println("Request Date: " + t1.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t1.getTransactionStatus());
-            System.out.println("Transaction Type: " + t1.getTransactionType());
-            System.out.println("Transaction Amount: $" + t1.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t1.getRequestUser().getUsername());
-    
-            System.out.println(" ");
-    
-            Thread.sleep(1000);
-    
-            System.out.println("--- RESOLVING DEPOSIT TRANSACTION ---");
-            resUser.resolveTransaction(t1, "Deposited");
-            System.out.println("Transaction Status: " + t1.getTransactionStatus());
-            System.out.println("Resolve Date: " + t1.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t1.getResolveUser().getUsername());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println(" ");
+            System.out.println("--- " + transaction.getTransactionType() + " ---");
+            System.out.println("Transaction ID: " + transaction.getTransactionID());
+            if(transaction.getRequestUser() != null)
+            {
+                System.out.println("Requested By: " + transaction.getRequestUser().getUsername());
+                System.out.println("Request Date: " + transaction.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+            }
+            else
+            {
+                System.out.println("Requested By: Not yet requested");
+                System.out.println("Request Date: Not yet requested");
+            }
+            if(transaction.getResolveUser() != null)
+            {
+                System.out.println("Resolved By: " + transaction.getResolveUser().getUsername());
+                System.out.println("Resolve Date: " + transaction.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+            }
+            else
+            {
+                System.out.println("Resolved By: Not yet resolved");
+                System.out.println("Resolve Date: Not yet resolved");
+            }
+            System.out.println("Transaction Status: " + transaction.getTransactionStatus());
+            System.out.println("Transaction Type: " + transaction.getTransactionType());
+            System.out.println("Transaction Amount: $" + transaction.getTransactionAmount() + "0");
         }
         else
-            System.out.println("Transaction was cancelled from being requested.");
-        Thread.sleep(1000);
-        
-        System.out.println(" --- EXAMPLE REQUEST WITHDRAW TRANSACTION ---");
-        Transaction t2 = new Transaction(200, "Withdraw");
-        reqUser.requestTransaction(t2);
-        if(!t2.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
+            System.out.println("Transaction was cancelled.");
+        System.out.println(" ");
+    }
+    
+    public static void printAssetInfo(Transaction transaction)
+    {
+        System.out.println("------ ASSET INFORMATION ---");
+        Asset asset = transaction.getTransactionAsset();
+        System.out.println("Asset Name: " + asset.getAssetName() + " (" + asset.getSymbol() + ")");
+        System.out.println("Number of Shares: " + asset.getVolume());
+        System.out.println("Start Price: $" + asset.getStartPrice() + "0");
+        if(asset.getEndPrice() != 0)
         {
-            System.out.println("Transaction ID: " + t2.getTransactionID());
-            System.out.println("Request Date: " + t2.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t2.getTransactionStatus());
-            System.out.println("Transaction Type: " + t2.getTransactionType());
-            System.out.println("Transaction Amount: $" + t2.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t2.getRequestUser().getUsername());
-            System.out.println(" ");
-    
-            Thread.sleep(1000);
-    
-            System.out.println("--- EXAMPLE RESOLVING WITHDRAW TRANSACTION ---");
-            resUser.resolveTransaction(t2, "Withdrawn");
-            System.out.println("Transaction Status: " + t2.getTransactionStatus());
-            System.out.println("Resolve Date: " + t2.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t2.getResolveUser().getUsername());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println("Updated User Balance: $" + reqUser.getUserBalance().getCurrentValue() + "0");
-            System.out.println(" ");
+            System.out.println("Asset Final Price: $" + asset.getEndPrice());
+            System.out.println("Returns on Asset: $" + asset.getReturns() + "0");
+            System.out.println("Asset Held for: " + asset.getTimeHeld() + " seconds");
         }
         else
-            System.out.println("Transaction was cancelled from being requested.");
-        
-        Thread.sleep(1000);
-        
-        System.out.println("--- EXAMPLE REQUEST BUY TRANSACTION (by reqUser) ---");
-        Asset cmg_buy = new Asset("Chipotle", "CMG", "Consumers", 3, 100, "Market");
-        Transaction t3 = new Transaction("Buy", cmg_buy);
-        reqUser.requestTransaction(t3);
-        if(!t3.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
         {
-            System.out.println("Transaction ID: " + t3.getTransactionID());
-            System.out.println("Request Date: " + t3.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t3.getTransactionStatus());
-            System.out.println("Transaction Type: " + t3.getTransactionType());
-            System.out.println("Transaction Amount: $" + t3.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t3.getRequestUser().getUsername());
-            System.out.println(" ");
-    
-            System.out.println("------ ASSET INFORMATION ---");
-            Asset asset = t3.getTransactionAsset();
-            System.out.println("Asset Name: " + asset.getAssetName() + " (" + asset.getSymbol() + ")");
-            System.out.println("Start Price: $" + asset.getStartPrice() + "0");
-            System.out.println("Number of Shares: " + asset.getVolume());
-            System.out.println(" ");
-    
-            Thread.sleep(1000);
-    
-            System.out.println("--- EXAMPLE RESOLVING BUY TRANSACTION ---");
-            resUser.resolveTransaction(t3, "Bought");
-            //Asset dupA = new Asset("Chipotle", "CMG", "Consumers", 1, 105, "Market");
-            //Transaction dupT = new Transaction("Buy", dupA);
-            //resUser.requestTransaction(dupT);
-            System.out.println("Transaction Status: " + t3.getTransactionStatus());
-            System.out.println("Resolve Date: " + t3.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t3.getResolveUser().getUsername());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println("Updated Portfolio Balance: $" + Portfolio.getPortfolioBalance().getCurrentValue() + "0");
-            System.out.println(" ");
+            System.out.println("Asset Final Price: Asset has not been liquidated");
+            System.out.println("Returns on Asset: Asset has not been liquidated");
+            System.out.println("Asset Held for: Asset has not been liquidated");
         }
-        else
-            System.out.println("Transaction was cancelled from being requested.");
-        Thread.sleep(1000);
+        System.out.println(" ");
+    }
     
-        System.out.println("--- EXAMPLE REQUEST SELL TRANSACTION ---");
-        Transaction t4 = new Transaction("Sell", cmg_buy);
-        reqUser.requestTransaction(t4);
-        if(!t4.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
-        {
-            System.out.println("Transaction ID: " + t4.getTransactionID());
-            System.out.println("Request Date: " + t4.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t4.getTransactionStatus());
-            System.out.println("Transaction Type: " + t4.getTransactionType());
-            System.out.println("Transaction Amount: $" + t4.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t4.getRequestUser().getUsername());
-            System.out.println(" ");
-    
-            System.out.println("------ ASSET INFORMATION ---");
-            Asset asset_sell = t4.getTransactionAsset();
-            System.out.println("Asset Name: " + asset_sell.getAssetName() + " (" + asset_sell.getSymbol() + ")");
-            System.out.println("Start Price: $" + asset_sell.getStartPrice() + "0");
-            System.out.println("Number of Shares: " + asset_sell.getVolume());
-            System.out.println(" ");
-    
-            Thread.sleep(1000);
-    
-            System.out.println("--- EXAMPLE RESOLVING SELL TRANSACTION ---");
-            asset_sell.setEndPrice(asset_sell.getStartPrice() + 10);
-            resUser.resolveTransaction(t4, "Sold");
-            System.out.println("Transaction Status: " + t4.getTransactionStatus());
-            System.out.println("Resolve Date: " + t4.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t4.getResolveUser().getUsername());
-            System.out.println("Asset Initial Price: $" + asset_sell.getStartPrice());
-            System.out.println("Asset Final Price: $" + asset_sell.getEndPrice());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println("Updated Portfolio Balance: $" + Portfolio.getPortfolioBalance().getCurrentValue() + "0");
-            System.out.println("Returns on Asset: $" + asset_sell.getReturns() + "0");
-            System.out.println("Asset Held for: " + asset_sell.getTimeHeld() + " seconds");
-            System.out.println(" ");
-        }
-        else
-            System.out.println("Transaction was cancelled from being requested.");
-    
-        System.out.println("--- EXAMPLE REQUEST SHORT TRANSACTION ---");
-        Asset fb_short = new Asset("Facebook", "FB", "Technology", 3, 100, "Market");
-        Transaction t5 = new Transaction("Short", fb_short);
-        reqUser.requestTransaction(t5);
-        if(!t5.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
-        {
-            System.out.println("Transaction ID: " + t5.getTransactionID());
-            System.out.println("Request Date: " + t5.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t5.getTransactionStatus());
-            System.out.println("Transaction Type: " + t5.getTransactionType());
-            System.out.println("Transaction Amount: $" + t5.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t5.getRequestUser().getUsername());
-            System.out.println(" ");
-        
-            System.out.println("------ ASSET INFORMATION ---");
-            Asset asset_short = t5.getTransactionAsset();
-            System.out.println("Asset Name: " + asset_short.getAssetName() + " (" + asset_short.getSymbol() + ")");
-            System.out.println("Start Price: $" + asset_short.getStartPrice() + "0");
-            System.out.println("Number of Shares: " + asset_short.getVolume());
-            System.out.println(" ");
-        
-            Thread.sleep(1000);
-        
-            System.out.println("--- EXAMPLE RESOLVING SHORT TRANSACTION ---");
-            resUser.resolveTransaction(t5, "Shorted");
-            System.out.println("Transaction Status: " + t5.getTransactionStatus());
-            System.out.println("Resolve Date: " + t5.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t5.getResolveUser().getUsername());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println("Updated Portfolio Balance: $" + Portfolio.getPortfolioBalance().getCurrentValue() +
-                    "0");
-            System.out.println(" ");
-        }
-        else
-            System.out.println("Transaction was cancelled from being requested.");
-    
-        System.out.println("--- EXAMPLE REQUEST COVER TRANSACTION ---");
-        Transaction t6 = new Transaction("Cover", fb_short);
-        reqUser.requestTransaction(t6);
-        if(!t5.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
-        {
-            System.out.println("Transaction ID: " + t6.getTransactionID());
-            System.out.println("Request Date: " + t6.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Transaction Status: " + t6.getTransactionStatus());
-            System.out.println("Transaction Type: " + t6.getTransactionType());
-            System.out.println("Transaction Amount: $" + t6.getTransactionAmount() + "0");
-            System.out.println("Requested By: " + t6.getRequestUser().getUsername());
-            System.out.println(" ");
-        
-            System.out.println("------ ASSET INFORMATION ---");
-            Asset asset_short = t6.getTransactionAsset();
-            System.out.println("Asset Name: " + asset_short.getAssetName() + " (" + asset_short.getSymbol() + ")");
-            System.out.println("Start Price: $" + asset_short.getStartPrice() + "0");
-            System.out.println("Number of Shares: " + asset_short.getVolume());
-            System.out.println(" ");
-        
-            Thread.sleep(1000);
-        
-            System.out.println("--- EXAMPLE RESOLVING COVER TRANSACTION ---");
-            asset_short.setEndPrice(asset_short.getStartPrice() + 10);
-            resUser.resolveTransaction(t6, "Covered");
-            System.out.println("Transaction Status: " + t6.getTransactionStatus());
-            System.out.println("Resolve Date: " + t6.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Resolved By: " + t6.getResolveUser().getUsername());
-            System.out.println("Asset Initial Price: $" + asset_short.getStartPrice());
-            System.out.println("Asset Final Price: $" + asset_short.getEndPrice());
-            System.out.println("Updated Bank Balance: $" + Bank.getBankBalance().getCurrentValue() + "0");
-            System.out.println("Updated Portfolio Balance: $" + Portfolio.getPortfolioBalance().getCurrentValue() +
-                    "0");
-            System.out.println("Returns on Asset: $" + asset_short.getReturns() + "0");
-            System.out.println("Asset Held for: " + asset_short.getTimeHeld() + " seconds");
-            System.out.println(" ");
-        }
-        else
-            System.out.println("Transaction was cancelled from being requested.");
-        
+    public static void printTransactionHistory()
+    {
         System.out.println("--- TRANSACTION HISTORY ---");
-        while(!Transaction.getTransactionHistory().isEmpty())
+        while(!Account.getTransactionHistory().isEmpty())
         {
-            Transaction hist_trans = Transaction.getTransactionHistory().pop();
+            Transaction hist_trans = Account.getTransactionHistory().pop();
             System.out.println("Transaction ID: " + hist_trans.getTransactionID());
             System.out.println("Transaction Type: " + hist_trans.getTransactionType());
             System.out.println("Transaction Amount: " + hist_trans.getTransactionAmount());
@@ -272,9 +182,12 @@ public class Testing
                 System.out.println("Associated Asset Symbol: No associated asset with transaction.");
             System.out.println(" ");
         }
-        
+    }
+    
+    public static void printBankBalanceHistory()
+    {
         System.out.println("--- BANK BALANCE HISTORY ---");
-        while(! Bank.getBankBalance().getBalanceHistory().isEmpty())
+        while(!Bank.getBankBalance().getBalanceHistory().isEmpty())
         {
             Balance hist_bal = Bank.getBankBalance().getBalanceHistory().pop();
             System.out.println("Balance: $" + hist_bal.getBalanceAmount() + "0");
@@ -282,7 +195,7 @@ public class Testing
             if(!(hist_bal.getAssociatedTransaction() == null))
             {
                 System.out.println("Associated Transaction ID: " + hist_bal.getAssociatedTransaction().getTransactionID());
-    
+                
                 if(hist_bal.getBalanceTimeStamp().isEqual(hist_bal.getAssociatedTransaction().getResolveDate()))
                     System.out.println("Balance Timestamp: " + hist_bal.getBalanceTimeStamp().format(DateTimeFormatter.RFC_1123_DATE_TIME) +
                             " [MATCHES RESOLVED TRANSACTION TIMESTAMP]");
@@ -291,13 +204,16 @@ public class Testing
                             " [DOES NOT MATCH RESOLVED TRANSACTION TIMESTAMP]");
             }
             else
-                System.out.println("Associated Transaction ID: No associated transaction" );
+                System.out.println("Associated Transaction ID: No associated transaction");
             
             System.out.println(" ");
         }
+    }
     
+    public static void printPortfolioHistory()
+    {
         System.out.println("--- PORTFOLIO HISTORY ---");
-        while(! Portfolio.getPortfolioBalance().getBalanceHistory().isEmpty())
+        while(!Portfolio.getPortfolioBalance().getBalanceHistory().isEmpty())
         {
             Balance port_hist = Portfolio.getPortfolioBalance().getBalanceHistory().pop();
             System.out.println("Associated Transaction: " + port_hist.getAssociatedTransaction().getTransactionID());
@@ -311,9 +227,5 @@ public class Testing
                         " [DOES NOT MATCH RESOLVED TRANSACTION TIMESTAMP]");
             System.out.println(" ");
         }
-        
-        long endTime = System.nanoTime();
-        long totalTime = endTime - starTime;
-        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec"); // in seconds
     }
 }

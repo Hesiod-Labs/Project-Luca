@@ -11,32 +11,20 @@ import java.util.*;
  * <p>When a transaction is first requested, the request {@link User}, the amount, the date and time requested,
  * the type of transaction, the status of the transaction, and the transaction ID are set. By default, the status
  * of a requested transaction is set to <code>OPEN</code>. If the {@link User} requesting the transaction is a
- * non-admin, the request is added to the list of requests ({@link #transactionRequests}) to be resolved.</p>
+ * non-admin, the request is added to the list of requests ({@link Account}) to be resolved.</p>
  * <p>When a transaction is resolved by an admin {@link User} the {@link #resolveUser}, {@link #resolveDate}, and the
  * {@link #transactionStatus} are updated. If the status is set to <code>DENIED</code>, the request is removed from the
- * list of transaction requests (if requested by a non-admin {@link User}) and added to the {@link #transactionHistory}
- * without any funds being reallocated. If transaction is neither <code>DENIED</code> nor <code>CANCELLED</code> (set
- * when either the request or resolution is being made, the funds or {@link Asset} associated with transaction are
- * processed, and the appropriate {@link Balance}(s) are updated.</p>
+ * list of transaction requests (if requested by a non-admin {@link User}) and added to the transaction history
+ * ({@link Account}) without any funds being reallocated. If transaction is neither <code>DENIED</code> nor
+ * <code>CANCELLED</code> (set when either the request or resolution is being made, the funds or {@link Asset}
+ * associated with transaction are processed, and the appropriate {@link Balance}(s) are updated.</p>
  * @author hLabs
  * @since 0.1a
  */
 public class Transaction
 {
     /**
-     * A list of transactions that have been requested, but have not yet been resolved. A transaction requested by a
-     * non-admin {@link User} is automatically added to the list, but only optionally added if requested by an admin user.
-     * //TODO Add the option for an admin user to add to this list if the transaction should be resolved at a later time
-     */
-    private static LinkedList<Transaction> transactionRequests = new LinkedList<>();
-   
-    /**
-     * Contains transactions that have been requested and resolved.
-     * */
-    private static Stack<Transaction> transactionHistory = new Stack<>();
-    
-    /**
-     * {@User} requesting a transaction that can be be either an admin or non-admin
+     * {@link User} requesting a transaction that can be be either an admin or non-admin
      */
     private User requestUser;
     
@@ -66,20 +54,22 @@ public class Transaction
      * ({@link #getMatchingStatus()}. When either requesting or resolving the transaction, the {@link User} can decide
      * to abandon the transaction, in which case the status is set to <code>CANCELLED</code>. If the admin {@link User}
      * decides to decline the transaction, the status is set to <code>DECLINED</code>.
-     * <ul><code>OPEN</code>: transaction was requested, but not acted upon (default).</ul>
-     * <ul><code>CANCELLED</code>: {@link User} decides to not process the transaction.</ul>
-     * <ul><code>DENIED</code>: transaction was requested, but was not approved by the admin {@link User}.</ul>
-     * <ul><code>DEPOSITED</code>: funds have been added to the {@link Bank}.</ul>
-     * <ul><code>WITHDRAWN</code>: funds have been removed from the {@link Bank} and transferred to the
-     * {@link User}(s).</ul>
-     * <ul><code>BOUGHT</code>: buy-order transaction was requested, the {@link Asset} has been acquired, and added to
-     * the {@link Portfolio}.</ul>
-     * <ul><code>SOLD</code>: sell-order transaction was requested, the {@link Asset} has been liquidated, and removed
-     * from the {@link Portfolio}.</ul>
-     * <ul><code>SHORTED</code>: short-order transaction was requested, the {@link Asset} has been shorted, and added
-     * to the {@link Portfolio}.</ul>
-     * <ul><code>COVERED</code>: cover-order transaction was requested, the {@link Asset} has been removed from the
-     * {@link Portfolio}. </ul>
+     * <ul>
+     *     <li><code>OPEN</code>: transaction was requested, but not acted upon (default).</li>
+     *     <li><code>CANCELLED</code>: {@link User} decides to not process the transaction. </li>
+     *     <li><code>DENIED</code>: transaction was requested, but was not approved by the admin {@link User}.</li>
+     *     <li><code>DEPOSITED</code>: funds have been added to the {@link Bank}.</li>
+     *     <li><code>WITHDRAWN</code>: funds have been removed from the {@link Bank} and transferred to the
+     *     {@link User}(s).</li>
+     *     <li><code>BOUGHT</code>: buy-order transaction was requested, the {@link Asset} has been acquired, and added
+     *     to the {@link Portfolio}.</li>
+     *     <li><code>SOLD</code>: sell-order transaction was requested, the {@link Asset} has been liquidated, and
+     *     removed from the {@link Portfolio}.</li>
+     *     <li><code>SHORTED</code>: short-order transaction was requested, the {@link Asset} has been shorted, and
+     *     added to the {@link Portfolio}.</li>
+     *     <li><code>COVERED</code>: cover-order transaction was requested, the {@link Asset} has been removed from the
+     *     {@link Portfolio}.</li>
+     * </ul>
      */
     private Status transactionStatus;
     
@@ -99,7 +89,7 @@ public class Transaction
     
     /**
      * Date-based identity associated with each transaction.
-     * Format: <YEAR><MONTH><DAY><HOUR><MINUTE><SECOND>
+     * Format: YEAR MONTH DAY HOUR MINUTE SECOND
      * Example: January 1, 2019 @ 12:34:56 is formatted as 201911123456
      */
     private long transactionID;
@@ -188,7 +178,8 @@ public class Transaction
      * transactions immediately, to is more efficient and less prone to {@link User} error if the status of the
      * transaction is updated to match the type of transaction as opposed to entering the updated status when resolving
      * it.
-     * @return
+     * @return Status corresponding to the type of the transaction. Useful for automatically updating the status of
+     * a transaction without having it as a method parameter.
      */
     public Status getMatchingStatus()
     {
@@ -210,7 +201,7 @@ public class Transaction
      */
     public void addTransactionRequest()
     {
-        transactionRequests.add(this);
+       Account.getTransactionRequests().add(this);
     }
     
     /**
@@ -219,7 +210,7 @@ public class Transaction
      */
     public void removeTransactionRequest()
     {
-        transactionRequests.remove(this);
+       Account.getTransactionRequests().remove(this);
     }
     
     /**
@@ -227,7 +218,7 @@ public class Transaction
      */
     public void addToTransactionHistory()
     {
-        transactionHistory.add(this);
+        Account.getTransactionHistory().add(this);
     }
     
     /**
@@ -303,24 +294,6 @@ public class Transaction
     public Asset getTransactionAsset()
     {
         return transactionAsset;
-    }
-    
-    /**
-     * @return List of requested transactions to be resolved.
-     */
-    public static LinkedList<Transaction> getTransactionRequests()
-    {
-        return transactionRequests;
-    }
-    
-    /**
-     * //TODO Make sure cancelled transactions do not go in the history.
-     * @return History of all transactions requested and resolved. Transactions that are cancelled before resolution
-     * are not included in the history.
-     */
-    public static Stack<Transaction> getTransactionHistory()
-    {
-        return transactionHistory;
     }
     
     /**

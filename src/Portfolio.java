@@ -97,7 +97,7 @@ public class Portfolio
                     ChronoUnit.SECONDS));
             transaction.setTransactionStatus(Transaction.Status.BOUGHT);
             transaction.getTransactionAsset().setOwn(true);
-            transaction.getTransactionAsset().setAcquisionTransaction(transaction);
+            transaction.getTransactionAsset().setAcquisitionTransaction(transaction);
             Portfolio.addToPortfolio(transaction.getTransactionAsset());
             /* Transaction amount is transferred to the portfolio balance. */
             getPortfolioBalance().updateBalance(Balance.transferTo(transaction));
@@ -113,11 +113,11 @@ public class Portfolio
     
     /**
      * Liquidates a bought asset ({@link Transaction.Status}) if the asset currently exists in the portfolio.
-     * //TODO Scenario 1: sell all of the asset. --> accounted for in what's written right now
+     * //TODO Scenario 1: sell all of the asset. This is accounted for in what's written right now
      * //TODO Scenario 2: sell a portion of the asset.
-     * --> Sell one transaction's worth of asset (as written now)
-     * --> Sell more than one transaction's worth of asset, but not everything (maximize returns or manually)
-     * --> getAsset --> calculate returns based on how much is being sold --> update asset remaining in the portfolio
+     * //TODO Sell one transaction's worth of asset (as written now)
+     * //TODO Sell more than one transaction's worth of asset, but not everything (maximize returns or manually)
+     * Steps: getAsset...calculate returns based on how much is being sold...update asset remaining in the portfolio
      * @param transaction Contains the asset to be sold.
      */
     public static void sellOrder(Transaction transaction)
@@ -178,6 +178,7 @@ public class Portfolio
             transaction.setTransactionAmount(transaction.getTransactionAsset().getReturns());
             /* Accounts for the net gain/loss by the selling of the asset. */
             Bank.getBankBalance().updateBalance(Balance.transferTo(transaction));
+            Account.getAccountBalance().updateBalance(Balance.transferTo(transaction));
         }
         else
             System.out.println("Asset cannot be sold since it does not exist in the portfolio.");
@@ -209,7 +210,7 @@ public class Portfolio
                     ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
             transaction.setTransactionStatus(Transaction.Status.SHORTED);
             transaction.getTransactionAsset().setOwn(true);
-            transaction.getTransactionAsset().setAcquisionTransaction(transaction);
+            transaction.getTransactionAsset().setAcquisitionTransaction(transaction);
             Portfolio.addToPortfolio(transaction.getTransactionAsset());
             getPortfolioBalance().updateBalance(Balance.transferTo(transaction));
             System.out.println("CAUTION: " + "You can afford a $" + safetyPerShare + " (" + safetyPercent + "%/share)" +
@@ -241,6 +242,7 @@ public class Portfolio
             getPortfolioBalance().updateBalance(Balance.transferFrom(transaction));
             transaction.setTransactionAmount(-transaction.getTransactionAsset().getReturns());
             Bank.getBankBalance().updateBalance(Balance.transferTo(transaction));
+            Account.getAccountBalance().updateBalance(Balance.transferTo(transaction));
         }
         else
         {
@@ -317,7 +319,10 @@ public class Portfolio
      * Sets the balance, current, and past, of the portfolio.
      * WARNING: DO NOT USE UNLESS THE PORTFOLIO BALANCE HAS NOT ALREADY BEEN SET. OTHERWISE, THE CURRENT AND PAST
      * BALANCE STATEMENTS WILL BE LOSSED.
-     * @param portfolioBalance
+     * @param portfolioBalance Current and past balance statements of the portfolio with associated amounts, timestamps,
+     *                         and transactions. In this case, it specifically represents the amount transferred from
+     *                         the {@link Bank} to trade. Once an asset is liquidated, the original amount transferred
+     *                         is removed from the portfolio balance.
      */
     public static void setPortfolioBalance(Balance portfolioBalance)
     {
