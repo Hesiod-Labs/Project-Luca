@@ -29,7 +29,9 @@ Frontend wireframe design developed with Adobe XD
 * **Jay Jayewardene** - *Product Manager / Frontend Development* - [Github](https://github.com/jay-5)
 * **Ryan Tatton** - *Backend Development* - [Github](https://github.com/rtatton)
 * **Thomas Patton** - *Backend Development* - [Github](https://github.com/thomaspttn)
-* I'll add the rest of you guys when you add you commit
+* **Daniel Soares** - *Frontend Development* - [Github](https://github.com/HubMaster9000)
+* **Shann Patel** - *Logistics and Quality Assurance* 
+
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
