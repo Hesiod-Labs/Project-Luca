@@ -30,7 +30,7 @@ Frontend wireframe design developed with Adobe XD
 * **Ryan Tatton** - *Backend Development Engineer* - [GitHub](https://github.com/rtatton)
 * **Thomas Patton** - *Backend Development Engineer* - [GitHub](https://github.com/thomaspttn)
 * **Daniel Soares** - *Frontend Development Engineer* - [GitHub](https://github.com/HubMaster9000)
-* **Shann Patel** - *Logistics and Quality Assurance Engineer* 
+* **Shann Patel** - *Quality Assurance Engineer* 
 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
