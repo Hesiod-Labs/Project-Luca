@@ -102,7 +102,8 @@ public class Testing
             System.out.println("Password: " + user.getPassword());
             System.out.println("Admin: " + user.getPermissionStatus());
             System.out.println("Total contributions: $" + user.getUserContribution().getCurrentValue() + "0");
-            System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
+            //System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
+            System.out.println("% Holdings: " + user.calculatePctHoldings() + "%");
             System.out.println("Holdings Value: $" + user.calculateHoldingsValue() + "0");
             System.out.println("Time Created: " + user.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME));
             System.out.println(" ");
