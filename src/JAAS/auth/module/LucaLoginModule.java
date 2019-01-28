@@ -1,6 +1,6 @@
-package JAAS.Luca_Auth.module;
+package JAAS.auth.module;
 
-import JAAS.Luca_Auth.principal.Luca_Principal;
+import JAAS.auth.principal.LucaPrincipal;
 
 import javax.security.auth.Subject;
 import javax.security.auth.callback.*;
@@ -9,7 +9,7 @@ import javax.security.auth.spi.LoginModule;
 import java.util.Map;
 
 /**
- * <p> This sample LoginModule authenticates users with a password.
+ * <p> This auth LoginModule authenticates users with a password.
  *
  * <p> This LoginModule only recognizes one user:       testUser
  * <p> testUser's password is:  testPassword
@@ -22,7 +22,7 @@ import java.util.Map;
  * If set to true in the login Configuration,
  * debug messages will be output to the output stream, System.out.
  */
-public class Luca_LoginModule implements LoginModule
+public class LucaLoginModule implements LoginModule
 {
     
     // initial state
@@ -43,7 +43,7 @@ public class Luca_LoginModule implements LoginModule
     private char[] password;
     
     // testUser's SamplePrincipal
-    private Luca_Principal userPrincipal;
+    private LucaPrincipal userPrincipal;
     
     /**
      * Initialize this <code>LoginModule</code>.
@@ -122,13 +122,15 @@ public class Luca_LoginModule implements LoginModule
         // print debugging information
         if(debug)
         {
-            System.out.println("\t\t[SampleLoginModule] " +
+            System.out.println("\t\t[LucaLoginModule] " +
                     "user entered user name: " +
                     username);
-            System.out.print("\t\t[SampleLoginModule] " +
+            System.out.print("\t\t[LucaLoginModule] " +
                     "user entered password: ");
-            for(int i = 0; i < password.length; i++)
-                System.out.print(password[i]);
+            for(char c : password)
+            {
+                System.out.print(c);
+            }
             System.out.println();
         }
         
@@ -156,7 +158,7 @@ public class Luca_LoginModule implements LoginModule
             // authentication succeeded!!!
             passwordCorrect = true;
             if(debug)
-                System.out.println("\t\t[SampleLoginModule] " +
+                System.out.println("\t\t[LucaLoginModule] " +
                         "authentication succeeded");
             succeeded = true;
             return true;
@@ -166,7 +168,7 @@ public class Luca_LoginModule implements LoginModule
             
             // authentication failed -- clean out state
             if(debug)
-                System.out.println("\t\t[SampleLoginModule] " +
+                System.out.println("\t\t[LucaLoginModule] " +
                         "authentication failed");
             succeeded = false;
             username = null;
@@ -201,11 +203,10 @@ public class Luca_LoginModule implements LoginModule
      *
      * @return true if this LoginModule's own login and commit
      * attempts succeeded, or false otherwise.
-     * @throws LoginException if the commit fails.
      */
-    public boolean commit() throws LoginException
+    public boolean commit()
     {
-        if(succeeded == false)
+        if(!succeeded)
         {
             return false;
         }
@@ -214,14 +215,13 @@ public class Luca_LoginModule implements LoginModule
             // add a Principal (authenticated identity)
             // to the Subject
             
-            // assume the user we authenticated is the SamplePrincipal
-            userPrincipal = new Luca_Principal(username);
-            if(!subject.getPrincipals().contains(userPrincipal))
-                subject.getPrincipals().add(userPrincipal);
+            // assume the user we authenticated is the LucaPrincipal
+            userPrincipal = new LucaPrincipal(username);
+            subject.getPrincipals().add(userPrincipal);
             
             if(debug)
             {
-                System.out.println("\t\t[SampleLoginModule] " +
+                System.out.println("\t\t[LucaLoginModule] " +
                         "added SamplePrincipal to Subject");
             }
             
@@ -237,44 +237,31 @@ public class Luca_LoginModule implements LoginModule
     }
     
     /**
-     * This method is called if the LoginContext's
-     * overall authentication failed.
-     * (the relevant REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL LoginModules
-     * did not succeed).
+     * This method is called if the LoginContext's overall authentication failed.
+     * (the relevant REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL LoginModules did not succeed).
      * <p>
-     * If this LoginModule's own authentication attempt
-     * succeeded (checked by retrieving the private state saved by the
-     * <code>login</code> and <code>commit</code> methods),
-     * then this method cleans up any state that was originally saved.
-     *
+     * If this LoginModule's own authentication attempt succeeded (checked by retrieving the private state saved by the
+     * <code>login</code> and <code>commit</code> methods), then this method cleans up any state that was originally
+     * saved.
      * @return false if this LoginModule's own login and/or commit attempts
      * failed, and true otherwise.
-     * @throws LoginException if the abort fails.
      */
-    public boolean abort() throws LoginException
+    public boolean abort()
     {
-        if(succeeded == false)
+        if(!succeeded)
         {
             return false;
         }
-        else if(succeeded == true && commitSucceeded == false)
+        else
+        if(!commitSucceeded)
         {
             // login succeeded but overall authentication failed
             succeeded = false;
-            username = null;
-            if(password != null)
-            {
-                for(int i = 0; i < password.length; i++)
-                    password[i] = ' ';
-                password = null;
-            }
-            userPrincipal = null;
+            reset();
         }
         else
         {
-            // overall authentication succeeded and commit succeeded,
-            // but someone else's commit failed
-            logout();
+            logout(); // overall authentication succeeded and commit succeeded, but someone else's commit failed
         }
         return true;
     }
@@ -287,14 +274,19 @@ public class Luca_LoginModule implements LoginModule
      *
      * @return true in all cases since this <code>LoginModule</code>
      * should not be ignored.
-     * @throws LoginException if the logout fails.
      */
-    public boolean logout() throws LoginException
+    public boolean logout()
     {
         
         subject.getPrincipals().remove(userPrincipal);
         succeeded = false;
         succeeded = commitSucceeded;
+        reset();
+        return true;
+    }
+    
+    private void reset()
+    {
         username = null;
         if(password != null)
         {
@@ -303,6 +295,5 @@ public class Luca_LoginModule implements LoginModule
             password = null;
         }
         userPrincipal = null;
-        return true;
     }
 }

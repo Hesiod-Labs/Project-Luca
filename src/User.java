@@ -154,9 +154,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public double roundToThree(double num)
     {
         String numString = Double.toString(num);
-        System.out.println(numString);
-        //StringBuilder roundedNumBuilder = new StringBuilder();
-
+       
         int decimalPlace = numString.indexOf('.');
         System.out.println(decimalPlace);
 

@@ -12,7 +12,6 @@ public class Testing
         /* Create a user and add it to the Account */
         User reqUser = new User("R", "E", "Q", "dog", false, 1000);
         User resUser = new User("R", "E", "S", "cat", true, 1000);
-        User adam = new User("A", "D", "P", "hi", false, 0.01);
         
         /* Display general Account information */
         printAccountInfo();

@@ -1,57 +1,47 @@
-package JAAS.Luca_Auth;
+package JAAS.auth;
 
 import javax.security.auth.callback.*;
 import javax.security.auth.login.*;
 import java.io.*;
 
 /**
- * This Sample application attempts to authenticate a user
- * and reports whether or not the authentication was successful.
+ * Authenticates user via username and password.
+ * @author hLabs (adapted from "Java Platform, Standard Edition: Security Developer's Guide")
+ * @since 0.1a
  */
-public class Luca_Login
+public class LucaLogin
 {
-    
     /**
      * Attempt to authenticate the user.
-     *
-     * @param args input arguments for this application.  These are ignored.
+     * @param args Input arguments for this application.  These are ignored.
      */
     public static void main(String[] args)
     {
         
-        // Obtain a LoginContext, needed for authentication. Tell it
-        // to use the LoginModule implementation specified by the
-        // entry named "Sample" in the JAAS login configuration
-        // file and to also use the specified CallbackHandler.
+        /* Obtain a LoginContext, needed for authentication. Tell it to use the LoginModule implementation specified by
+        the entry named "Sample" in the JAAS login configuration file and to also use the specified CallbackHandler. */
         LoginContext lc = null;
         try
         {
-            lc = new LoginContext("Sample", new MyCallbackHandler());
+            // "Luca" is in reference to luca_jaas.config
+            lc = new LoginContext("Luca", new MyCallbackHandler());
         }
-        catch(LoginException le)
+        catch(LoginException | SecurityException le)
         {
-            System.err.println("Cannot create LoginContext. "
-                    + le.getMessage());
+            System.err.println("Cannot create LoginContext. " + le.getMessage());
             System.exit(-1);
         }
-        catch(SecurityException se)
-        {
-            System.err.println("Cannot create LoginContext. "
-                    + se.getMessage());
-            System.exit(-1);
-        }
-        
-        // the user has 3 attempts to authenticate successfully
+    
+        // The user has 5 attempts to authenticate.
         int i;
-        for(i = 0; i < 3; i++)
+        for(i = 0; i < 5; i++)
         {
             try
             {
-                
-                // attempt authentication
+                // Attempt authentication
                 lc.login();
                 
-                // if we return with no exception, authentication succeeded
+                // If no exception is returned, authentication succeeded.
                 break;
             }
             catch(LoginException le)
@@ -61,60 +51,56 @@ public class Luca_Login
                 System.err.println("  " + le.getMessage());
                 try
                 {
-                    Thread.currentThread().sleep(3000);
+                    Thread.sleep(3000);
                 }
                 catch(Exception e)
                 {
-                    // ignore
+                    System.out.println(e.getMessage());
                 }
             }
         }
         
-        // did they fail three times?
-        if(i == 3)
+        // True if the user fails authentication 5 times.
+        if(i == 5)
         {
-            System.out.println("Sorry");
+            System.out.println("Failed login 5 times.");
             System.exit(-1);
         }
         
-        System.out.println("Authentication succeeded!");
+        System.out.println("Authentication succeeded.");
     }
 }
 
 /**
  * The application implements the CallbackHandler.
  *
- * <p> This application is text-based.  Therefore it displays information
- * to the user using the OutputStreams System.out and System.err,
- * and gathers input from the user using the InputStream System.in.
+ * <p> This application is text-based.  Therefore it displays information to the user using the OutputStreams
+ * System.out and System.err, and gathers input from the user using the InputStream System.in.
  */
 class MyCallbackHandler implements CallbackHandler
 {
     
     /**
      * Invoke an array of Callbacks.
-     *
      * <p>
-     *
-     * @param callbacks an array of <code>Callback</code> objects which contain
-     *                  the information requested by an underlying security
-     *                  service to be retrieved or displayed.
-     * @throws java.io.IOException          if an input or output error occurs. <p>
-     * @throws UnsupportedCallbackException if the implementation of this
+     * @param callbacks An array of <code>Callback</code> objects which contain the information requested by an
+     *                  underlying security service to be retrieved or displayed.
+     * @throws java.io.IOException If an input or output error occurs. <p>
+     * @throws UnsupportedCallbackException If the implementation of this
      *                                      method does not support one or more of the Callbacks
      *                                      specified in the <code>callbacks</code> parameter.
      */
     public void handle(Callback[] callbacks)
     throws IOException, UnsupportedCallbackException
     {
-        
-        for(int i = 0; i < callbacks.length; i++)
+    
+        for(Callback callback : callbacks)
         {
-            if(callbacks[i] instanceof TextOutputCallback)
+            if(callback instanceof TextOutputCallback)
             {
-                
+            
                 // display the message according to the specified type
-                TextOutputCallback toc = (TextOutputCallback) callbacks[i];
+                TextOutputCallback toc = (TextOutputCallback) callback;
                 switch(toc.getMessageType())
                 {
                     case TextOutputCallback.INFORMATION:
@@ -131,22 +117,22 @@ class MyCallbackHandler implements CallbackHandler
                                 toc.getMessageType());
                 }
             }
-            else if(callbacks[i] instanceof NameCallback)
+            else if(callback instanceof NameCallback)
             {
-                
+            
                 // prompt the user for a username
-                NameCallback nc = (NameCallback) callbacks[i];
-                
+                NameCallback nc = (NameCallback) callback;
+            
                 System.err.print(nc.getPrompt());
                 System.err.flush();
                 nc.setName((new BufferedReader
                         (new InputStreamReader(System.in))).readLine());
             }
-            else if(callbacks[i] instanceof PasswordCallback)
+            else if(callback instanceof PasswordCallback)
             {
-                
+            
                 // prompt the user for sensitive information
-                PasswordCallback pc = (PasswordCallback) callbacks[i];
+                PasswordCallback pc = (PasswordCallback) callback;
                 System.err.print(pc.getPrompt());
                 System.err.flush();
                 pc.setPassword(System.console().readPassword());
@@ -154,7 +140,7 @@ class MyCallbackHandler implements CallbackHandler
             else
             {
                 throw new UnsupportedCallbackException
-                        (callbacks[i], "Unrecognized Callback");
+                        (callback, "Unrecognized Callback");
             }
         }
     }

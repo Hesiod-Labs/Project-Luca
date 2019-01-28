@@ -1,4 +1,4 @@
-package JAAS.Luca_Auth.principal;
+package JAAS.auth.principal;
 
 import java.security.Principal;
 
@@ -16,7 +16,7 @@ import java.security.Principal;
  * @see java.security.Principal
  * @see javax.security.auth.Subject
  */
-public class Luca_Principal implements Principal, java.io.Serializable
+public class LucaPrincipal implements Principal, java.io.Serializable
 {
     
     /**
@@ -31,7 +31,7 @@ public class Luca_Principal implements Principal, java.io.Serializable
      * @throws NullPointerException if the <code>name</code>
      *                              is <code>null</code>.
      */
-    public Luca_Principal(String name)
+    public LucaPrincipal(String name)
     {
         if(name == null)
             throw new NullPointerException("illegal null input");
@@ -78,13 +78,11 @@ public class Luca_Principal implements Principal, java.io.Serializable
         if(this == o)
             return true;
         
-        if(!(o instanceof Luca_Principal))
+        if(!(o instanceof LucaPrincipal))
             return false;
-        Luca_Principal that = (Luca_Principal) o;
-        
-        if(this.getName().equals(that.getName()))
-            return true;
-        return false;
+        LucaPrincipal that = (LucaPrincipal) o;
+    
+        return this.getName().equals(that.getName());
     }
     
     /**
