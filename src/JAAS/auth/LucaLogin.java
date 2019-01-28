@@ -1,4 +1,4 @@
-package JAAS.auth;
+package auth;
 
 import javax.security.auth.callback.*;
 import javax.security.auth.login.*;

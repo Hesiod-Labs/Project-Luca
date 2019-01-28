@@ -2,6 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/auth/LucaLogin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/auth/MyCallbackHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/auth/module/LucaLoginModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/auth/principal/LucaPrincipal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/luca_jaas.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project-Luca/src/JAAS/luca_jaas.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Asset$OrderType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Asset$Sector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Asset.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Balance.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bank.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Portfolio.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Testing.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Transaction$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Transaction$Status.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Transaction$Type.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/misc.xml" afterDir="false" />
@@ -13,15 +34,16 @@
       <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/LucaLogin.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/Luca_Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/MyCallbackHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/SampleAcn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/LucaLoginModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/Luca_LoginModule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/principal/LucaPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/Luca_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/MyCallbackHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/SampleAcn.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/Luca_LoginModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/Luca_LoginModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/principal/Luca_Principal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/principal/Luca_Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -70,11 +92,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="24">
-              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -82,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="72">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -91,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="24">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,20 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3744">
-              <caret line="156" column="12" lean-forward="true" selection-start-line="156" selection-start-column="12" selection-end-line="156" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Testing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+            <state relative-caret-position="96">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -192,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/Portfolio.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
         <option value="$PROJECT_DIR$/src/Balance.java" />
-        <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
         <option value="$PROJECT_DIR$/src/Luca_Auth/Luca_Login/Login" />
         <option value="$PROJECT_DIR$/src/Luca_Auth/Luca_Login/module/Luca_LoginModule.java" />
@@ -207,10 +216,11 @@
         <option value="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" />
         <option value="$PROJECT_DIR$/src/JAAS/lucaAuth/LucaLogin.java" />
         <option value="$PROJECT_DIR$/src/JAAS/lucaAuth/module/LucaLoginModule.java" />
-        <option value="$PROJECT_DIR$/src/JAAS/luca_jaas.config" />
-        <option value="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" />
+        <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" />
         <option value="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" />
+        <option value="$PROJECT_DIR$/src/JAAS/luca_jaas.config" />
       </list>
     </option>
   </component>
@@ -220,7 +230,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -241,12 +251,22 @@
             <path>
               <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
               <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
+              <item name="principal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -258,7 +278,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548647670137" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548649913547" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -408,7 +428,7 @@
       <workItem from="1548550332341" duration="1848000" />
       <workItem from="1548553143651" duration="490000" />
       <workItem from="1548607931215" duration="1403000" />
-      <workItem from="1548645916702" duration="1729000" />
+      <workItem from="1548645916702" duration="3424000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -484,7 +504,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252347000" />
+    <option name="totallyTimeSpent" value="254042000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,10 +516,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.10580021" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.3188889" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -510,7 +529,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.7260417" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.039583333" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.039583333" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.9604167" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -518,7 +537,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.25104168" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.8180862" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
@@ -818,17 +837,24 @@
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
+    <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        <state relative-caret-position="336">
+          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="24">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -837,25 +863,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+        <state relative-caret-position="72">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
+    <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3744">
-          <caret line="156" column="12" lean-forward="true" selection-start-line="156" selection-start-column="12" selection-end-line="156" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+        <state relative-caret-position="24">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
         </state>
       </provider>
     </entry>

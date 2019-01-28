@@ -1,6 +1,6 @@
-package JAAS.auth.module;
+package auth.module;
 
-import JAAS.auth.principal.LucaPrincipal;
+import auth.principal.LucaPrincipal;
 
 import javax.security.auth.Subject;
 import javax.security.auth.callback.*;

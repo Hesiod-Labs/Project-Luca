@@ -1,4 +1,4 @@
-package JAAS.auth.principal;
+package auth.principal;
 
 import java.security.Principal;
 
