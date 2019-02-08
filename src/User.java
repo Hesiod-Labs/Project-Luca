@@ -1,6 +1,7 @@
+import java.security.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
@@ -49,11 +50,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * //TODO might make it system default time zone in the case of users outside of the aforementioned time zone.
      */
     private ZonedDateTime timeCreated;
-
-    /**
-     * <code>true</code> if the user is an admin and <code>false</code> if not.
-     */
-    private boolean permissionStatus; //TODO Consider making two subclasses
+    
+    private UserType clearance;
     
     /**
      * Total dollar amount a user has added to the {@link Account} funds, with associated timestamps.
@@ -69,23 +67,26 @@ public class User //TODO Consider separating non-admin and admin users as two su
      */
     private Balance userBalance;
     
+    private PublicKey userPublicKey;
+    
+    private PrivateKey userPrivateKey;
+    
     /**
      * Creates a user associated with the {@link Account}.
      * @param first Initial of the first name of the user (not case-sensitive).
      * @param middleInit Initial of the middle name of the user (not case-sensitive).
      * @param last Last name of the user (not case-sensitive).
      * @param password Randomly generated; used for logging in to the {@link Account}.
-     * @param permission <code>true</code> if the user is an admin and <code>false</code> if not.
      * @param contribution Dollar amount given by the user for investing.
      */
-    public User(String first, String middleInit, String last, String password, boolean permission, double contribution)
+    public User(String first, String middleInit, String last, String password, UserType role, double contribution)
     {
         this.firstInit = first.toUpperCase();
         this.middleInit = middleInit.toUpperCase();
         this.lastInit = last.toUpperCase();
         this.username = makeUsername(first, middleInit, last);
         this.password = password;
-        this.permissionStatus = permission;
+        this.clearance = role;
         this.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.userContribution = new Balance(contribution); // TODO lines 92 and 93
         userContribution.updateBalance(userContribution);
@@ -183,10 +184,24 @@ public class User //TODO Consider separating non-admin and admin users as two su
         if(request.confirmAction())
         {
             request.setRequestDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+            
+            request.setTimestamp(request.getRequestDate().toEpochSecond());
+            request.setUserPublicKey(this.getUserPublicKey());
+            request.setUserPrivateKey(this.getUserPrivateKey());
+            request.setTransactionID(Encryption.applySHA256(
+                    Encryption.getStringFromKey(this.getUserPrivateKey()) +
+                            Encryption.getStringFromKey(this.getUserPublicKey()) +
+                            Long.toString(request.getTimestamp()) + String.valueOf(request.getTransactionType())));
+            request.setTransactionData(
+                    Encryption.getStringFromKey(this.getUserPrivateKey()) +
+                            Encryption.getStringFromKey(this.getUserPublicKey()) +
+                            request.getTransactionID());
+            //creates the signature using an elliptic curve digital signature algorithm
+            request.setSignature(Encryption.applyECDSASig(this.getUserPrivateKey(), request.getTransactionData()));
+            
             request.setRequestUser(this);
-            request.setTransactionID(request.generateID());
             // If the user is an admin, resolve the transaction immediately.
-            if(request.getRequestUser().getPermissionStatus())
+            if(request.getRequestUser().getClearance().rank >= 2)
                 resolveTransaction(request, request.getMatchingStatus().toString());
             else
                 // Otherwise, add the request to the list of requests.
@@ -205,7 +220,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public void resolveTransaction(Transaction transaction, String updatedStatus)
     {
         // If the user is an admin.
-        if(this.getPermissionStatus())
+        if(this.getClearance().rank >= 2)
         {
             // Confirmation that the admin wants to resolve the transaction.
             if(transaction.confirmAction())
@@ -265,7 +280,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public void addUser(User newUser)
     {
         // If the user is an admin.
-        if(this.getPermissionStatus())
+        if(this.getClearance().rank >= 3)
         {
             // If the account does not already contain the user.
             if(!Account.getAccountUsers().contains(newUser))
@@ -302,8 +317,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
      */
     public void removeUser(User userToRemove)
     {
-        // If the user is an admin.
-        if(this.getPermissionStatus())
+        // If the user is either an SYSTEM_ADMIN or OFFICER
+        if(this.getClearance().rank >= 3)
         {
             // If the user to remove exists within the account.
             if(Account.getAccountUsers().contains(userToRemove))
@@ -331,24 +346,28 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * // TODO Add functionality if user is not in the account
      * // TODO Should only be available to admin users.
      * Allows a user's status to be changed to either regular or admin.
-     * @param access True if the user has admin permissions and false if not.
+     * @param otherUser The user whose clearance is to be changed.
+     * @param newType The new clearance level to be assigned to the user.
      */
-    public void changeAdminAccess(boolean access)
+    public void changeClearance(User otherUser, UserType newType)
     {
-        // If the user is an admin.
-        if(this.getPermissionStatus())
-        {
-            if(access)
-                // Sets the user as an admin.
-                this.setPermissionStatus(true);
-            else
-                // Sets the user as a non-admin.
-                this.setPermissionStatus(false);
-        }
-        // Otherwise, the user does not have admin privileges to change user access.
+        if(this.getClearance().rank >= otherUser.getClearance().rank)
+            otherUser.setClearance(newType);
         else
         {
-            System.out.println("You do not have permission to change a user admin status.");
+            System.out.println("Your status, " + this.getClearance() +
+                    ", is insufficient to change clearance to " + newType);
+        }
+    }
+    
+    public enum UserType
+    {
+        SYSTEM_ADMIN (4), OFFICER (3), SECTOR_HEAD (2), GENERAL_USER (1);
+        
+        private int rank;
+        UserType(int rank)
+        {
+            this.rank = rank;
         }
     }
     
@@ -401,12 +420,19 @@ public class User //TODO Consider separating non-admin and admin users as two su
         return timeCreated;
     }
     
-    /**
-     * @return <code>true</code> if the user is an admin, and <code>false</code> if not.
-     */
-    public boolean getPermissionStatus()
+    public PrivateKey getUserPrivateKey()
     {
-        return permissionStatus;
+        return userPrivateKey;
+    }
+    
+    public PublicKey getUserPublicKey()
+    {
+        return userPublicKey;
+    }
+    
+    public UserType getClearance()
+    {
+        return clearance;
     }
     
     /**
@@ -484,16 +510,6 @@ public class User //TODO Consider separating non-admin and admin users as two su
     }
     
     /**
-     * Sets the user as either an admin or non-admin. Allows for admin-related actions, such as request resolution, and
-     * adding and removing users from the {@link Account}.
-     * @param permission <code>true</code> if an admin and <code>false</code> if not.
-     */
-    public void setPermissionStatus(boolean permission)
-    {
-        this.permissionStatus = permission;
-    }
-    
-    /**
      * Sets the dollar amount a user has contributed to the funds.
      * WARNING: DO NOT USE UNLESS THE CONTRIBUTION BALANCE HAS NOT ALREADY BEEN SET. OTHERWISE, PAST CONTRIBUTIONS
      * INFORMATION WILL BE LOSSED.
@@ -513,5 +529,20 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public void setUserBalance(Balance userBalance)
     {
         this.userBalance = userBalance;
+    }
+    
+    public void setClearance(UserType newType)
+    {
+        this.clearance = newType;
+    }
+    
+    public void setUserPrivateKey(PrivateKey userPrivateKey)
+    {
+        this.userPrivateKey = userPrivateKey;
+    }
+    
+    public void setUserPublicKey(PublicKey userPublicKey)
+    {
+        this.userPublicKey = userPublicKey;
     }
 }

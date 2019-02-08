@@ -1,8 +1,11 @@
 package auth;
 
+import javax.security.auth.Subject;
 import javax.security.auth.callback.*;
 import javax.security.auth.login.*;
 import java.io.*;
+import java.security.Principal;
+import java.util.Iterator;
 
 /**
  * Authenticates user via username and password.
@@ -68,6 +71,22 @@ public class LucaLogin
         }
         
         System.out.println("Authentication succeeded.");
+        
+        // Create a subject that will be one of the identifiers of the logged-in user
+        Subject loggedInSubject = lc.getSubject();
+        
+        // Determine the existing Principals
+        Iterator principalIterator = loggedInSubject.getPrincipals().iterator();
+        System.out.println("Authenticated user has the following Principals: ");
+        while(principalIterator.hasNext())
+        {
+            Principal p = (Principal) principalIterator.next();
+            System.out.println("\t" + p.toString());
+        }
+    
+        System.out.println("User has " + loggedInSubject.getPublicCredentials().size() + " Public Credential(s)");
+        
+        System.exit(0);
     }
 }
 

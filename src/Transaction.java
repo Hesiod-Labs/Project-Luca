@@ -1,5 +1,6 @@
+import java.security.*;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Essentially, a movement of funds of funds between any two account entities, whether that is between the user and the
@@ -71,6 +72,7 @@ public class Transaction
      *     {@link Portfolio}.</li>
      * </ul>
      */
+    
     private Status transactionStatus;
     
     /**
@@ -93,6 +95,16 @@ public class Transaction
      * Example: January 1, 2019 @ 12:34:56 is formatted as 201911123456
      */
     private long transactionID;
+    
+    private byte[] signature;
+    
+    private long timestamp;
+    
+    private String transactionData;
+    
+    private PublicKey userPublicKey;
+    
+    private PrivateKey userPrivateKey;
     
     /**
      * Creates a transaction with no associated {@link Asset}.
@@ -119,6 +131,8 @@ public class Transaction
         this.transactionAsset = transactionAsset;
     }
     
+    //TODO Will use LASER's Encryption class method
+    @Deprecated
     /**
      * Creates a numerical identifier for a transaction based on the date and time in which the transaction is
      * requested.
@@ -296,6 +310,31 @@ public class Transaction
         return transactionAsset;
     }
     
+    public PublicKey getUserPublicKey()
+    {
+        return userPublicKey;
+    }
+    
+    public PrivateKey getUserPrivateKey()
+    {
+        return userPrivateKey;
+    }
+    
+    public byte[] getSignature()
+    {
+        return signature;
+    }
+    
+    public long getTimestamp()
+    {
+        return timestamp;
+    }
+    
+    public String getTransactionData()
+    {
+        return transactionData;
+    }
+    
     /**
      * Sets the {@link User} who requests the transaction.
      * @param reqUser {@link User} who requests the transaction.
@@ -370,5 +409,34 @@ public class Transaction
         this.transactionID = ID;
     }
     
+    public void setUserPublicKey(PublicKey userPublicKey)
+    {
+        this.userPublicKey = userPublicKey;
+    }
+    
+    public void setUserPrivateKey(PrivateKey userPrivateKey)
+    {
+        this.userPrivateKey = userPrivateKey;
+    }
+    
+    public void setSignature(byte[] signature)
+    {
+        this.signature = signature;
+    }
+    
+    public void setTimestamp(long timestamp)
+    {
+        this.timestamp = timestamp;
+    }
+    
+    public void setTransactionAsset(Asset transactionAsset)
+    {
+        this.transactionAsset = transactionAsset;
+    }
+    
+    public void setTransactionData(String transactionData)
+    {
+        this.transactionData = transactionData;
+    }
 }
 

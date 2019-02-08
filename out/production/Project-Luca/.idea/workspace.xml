@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/META-INF/Project-Luca.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Portfolio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/LucaLogin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/Luca_Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/MyCallbackHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/SampleAcn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/LucaLoginModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/module/Luca_LoginModule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/principal/LucaPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_Auth/principal/Luca_Principal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -71,28 +57,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
+        <entry file="file://$PROJECT_DIR$/src/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="456">
+              <caret line="106" column="36" lean-forward="true" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,24 +69,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
+        <entry file="file://$PROJECT_DIR$/src/JAAS/auth/RequestTransaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3744">
-              <caret line="156" column="12" lean-forward="true" selection-start-line="156" selection-start-column="12" selection-end-line="156" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="264">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Testing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/JAAS/authorization.policy">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -149,9 +110,9 @@
       <find>id</find>
       <find>.formatName(</find>
       <find>roun</find>
-      <find>round</find>
       <find>Luca_L</find>
       <find>login</find>
+      <find>round</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -186,14 +147,11 @@
         <option value="$USER_HOME$/Desktop/Project Luca Thomas Version/Transaction.java" />
         <option value="$USER_HOME$/Desktop/Project Luca Thomas Version/User.java" />
         <option value="$PROJECT_DIR$/src/Format.java" />
-        <option value="$PROJECT_DIR$/src/Transaction.java" />
         <option value="$PROJECT_DIR$/src/Asset.java" />
         <option value="$PROJECT_DIR$/src/Bank.java" />
         <option value="$PROJECT_DIR$/src/Portfolio.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
         <option value="$PROJECT_DIR$/src/Balance.java" />
-        <option value="$PROJECT_DIR$/src/Testing.java" />
-        <option value="$PROJECT_DIR$/src/User.java" />
         <option value="$PROJECT_DIR$/src/Luca_Auth/Luca_Login/Login" />
         <option value="$PROJECT_DIR$/src/Luca_Auth/Luca_Login/module/Luca_LoginModule.java" />
         <option value="$PROJECT_DIR$/src/Luca_Auth/principal/Luca_Principal.java" />
@@ -207,10 +165,14 @@
         <option value="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" />
         <option value="$PROJECT_DIR$/src/JAAS/lucaAuth/LucaLogin.java" />
         <option value="$PROJECT_DIR$/src/JAAS/lucaAuth/module/LucaLoginModule.java" />
-        <option value="$PROJECT_DIR$/src/JAAS/luca_jaas.config" />
-        <option value="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" />
         <option value="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/JAAS/luca_jaas.config" />
+        <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" />
+        <option value="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" />
+        <option value="$PROJECT_DIR$/src/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/User.java" />
+        <option value="$PROJECT_DIR$/src/JAAS/auth/RequestTransaction.java" />
       </list>
     </option>
   </component>
@@ -220,7 +182,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -241,12 +203,18 @@
             <path>
               <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
               <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project-Luca" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project-Luca" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="LucaLogin.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
@@ -258,14 +226,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548608833719" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549647452199" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Transaction.java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -408,7 +376,11 @@
       <workItem from="1548550332341" duration="1848000" />
       <workItem from="1548553143651" duration="490000" />
       <workItem from="1548607931215" duration="1403000" />
-      <workItem from="1548645916702" duration="1729000" />
+      <workItem from="1548645916702" duration="4414000" />
+      <workItem from="1548696421719" duration="808000" />
+      <workItem from="1549203543981" duration="797000" />
+      <workItem from="1549499230348" duration="3429000" />
+      <workItem from="1549645746929" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -484,7 +456,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252347000" />
+    <option name="totallyTimeSpent" value="261578000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,9 +469,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.10580021" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.15682063" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -509,8 +480,8 @@
       <window_info anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.32912722" />
       <window_info anchor="bottom" id="Messages" order="1" weight="0.7260417" />
       <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.039583333" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.039583333" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.41354167" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.9604167" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -518,7 +489,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.25104168" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.75625" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
@@ -535,7 +506,7 @@
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32975295" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.15252417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.15628357" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -545,16 +516,16 @@
       <window_info anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.32912722" />
       <window_info anchor="bottom" id="Messages" order="1" weight="0.7260417" />
       <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.039583333" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.6256572" />
+      <window_info active="true" anchor="bottom" id="Find" order="3" visible="true" weight="0.41354167" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.9604167" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32916668" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32916668" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.16458334" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.077083334" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
@@ -631,79 +602,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Format.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Enum.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/time/Period.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Scanner.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/time/temporal/ChronoUnit.java" />
     <entry file="file://$USER_HOME$/Desktop/LASER/Enterprise.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
-          <caret line="156" column="7" selection-start-line="156" selection-start-column="7" selection-end-line="156" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#User#0" />
-            <element signature="docComment;field#username#0;class#User#0" />
-            <element signature="docComment;field#password#0;class#User#0" />
-            <element signature="docComment;field#firstInit#0;class#User#0" />
-            <element signature="docComment;field#middleInit#0;class#User#0" />
-            <element signature="docComment;field#lastInit#0;class#User#0" />
-            <element signature="docComment;field#timeCreated#0;class#User#0" />
-            <element signature="docComment;field#permissionStatus#0;class#User#0" />
-            <element signature="docComment;field#userContribution#0;class#User#0" />
-            <element signature="docComment;field#userBalance#0;class#User#0" />
-            <element signature="docComment;method#User#0;class#User#0" />
-            <element signature="docComment;method#makeUsername#0;class#User#0" />
-            <element signature="method#makeUsername#0;class#User#0" />
-            <element signature="docComment;method#roundToThree#0;class#User#0" />
-            <element signature="method#calculateHoldingsValue#0;class#User#0" />
-            <element signature="docComment;method#requestTransaction#0;class#User#0" />
-            <element signature="method#requestTransaction#0;class#User#0" />
-            <element signature="docComment;method#resolveTransaction#0;class#User#0" />
-            <element signature="method#resolveTransaction#0;class#User#0" />
-            <element signature="docComment;method#contribute#0;class#User#0" />
-            <element signature="method#contribute#0;class#User#0" />
-            <element signature="docComment;method#addUser#0;class#User#0" />
-            <element signature="method#addUser#0;class#User#0" />
-            <element signature="docComment;method#removeUser#0;class#User#0" />
-            <element signature="method#removeUser#0;class#User#0" />
-            <element signature="docComment;method#changeAdminAccess#0;class#User#0" />
-            <element signature="method#changeAdminAccess#0;class#User#0" />
-            <element signature="docComment;method#getPassword#0;class#User#0" />
-            <element signature="docComment;method#getFirstInit#0;class#User#0" />
-            <element signature="docComment;method#getMiddleInit#0;class#User#0" />
-            <element signature="docComment;method#getLastInit#0;class#User#0" />
-            <element signature="docComment;method#getTimeCreated#0;class#User#0" />
-            <element signature="docComment;method#getPermissionStatus#0;class#User#0" />
-            <element signature="docComment;method#getUserContribution#0;class#User#0" />
-            <element signature="docComment;method#getUserBalance#0;class#User#0" />
-            <element signature="docComment;method#setFirstInit#0;class#User#0" />
-            <element signature="docComment;method#setMiddleInit#0;class#User#0" />
-            <element signature="docComment;method#setLastInit#0;class#User#0" />
-            <element signature="docComment;method#setUsername#0;class#User#0" />
-            <element signature="docComment;method#setPassword#0;class#User#0" />
-            <element signature="docComment;method#setTimeCreated#0;class#User#0" />
-            <element signature="docComment;method#setPermissionStatus#0;class#User#0" />
-            <element signature="docComment;method#setUserContribution#0;class#User#0" />
-            <element signature="docComment;method#setUserBalance#0;class#User#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -723,16 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2616">
           <caret line="116" column="111" selection-start-line="116" selection-start-column="111" selection-end-line="116" selection-end-column="111" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -818,46 +712,133 @@
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
+    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        <state>
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#commit#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#abort#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#logout#0;class#LucaLoginModule#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java">
+    <entry file="file://$PROJECT_DIR$/src/Transaction$1.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2808">
+          <caret line="117" column="54" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+        <state relative-caret-position="480">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java">
+    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3744">
-          <caret line="156" column="12" lean-forward="true" selection-start-line="156" selection-start-column="12" selection-end-line="156" selection-end-column="12" />
+        <state relative-caret-position="360">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.java">
+    <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+        <state relative-caret-position="3192">
+          <caret line="224" column="4" lean-forward="true" selection-start-line="224" selection-start-column="4" selection-end-line="224" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#User#0" />
+            <element signature="docComment;field#username#0;class#User#0" />
+            <element signature="docComment;field#password#0;class#User#0" />
+            <element signature="docComment;field#firstInit#0;class#User#0" />
+            <element signature="docComment;field#middleInit#0;class#User#0" />
+            <element signature="docComment;field#lastInit#0;class#User#0" />
+            <element signature="docComment;field#timeCreated#0;class#User#0" />
+            <element signature="docComment;field#permissionStatus#0;class#User#0" />
+            <element signature="docComment;field#userContribution#0;class#User#0" />
+            <element signature="docComment;field#userBalance#0;class#User#0" />
+            <element signature="docComment;method#User#0;class#User#0" />
+            <element signature="docComment;method#makeUsername#0;class#User#0" />
+            <element signature="method#makeUsername#0;class#User#0" />
+            <element signature="method#calculateHoldingsValue#0;class#User#0" />
+            <element signature="docComment;method#requestTransaction#0;class#User#0" />
+            <element signature="docComment;method#resolveTransaction#0;class#User#0" />
+            <element signature="docComment;method#contribute#0;class#User#0" />
+            <element signature="method#contribute#0;class#User#0" />
+            <element signature="docComment;method#addUser#0;class#User#0" />
+            <element signature="method#addUser#0;class#User#0" />
+            <element signature="docComment;method#removeUser#0;class#User#0" />
+            <element signature="method#removeUser#0;class#User#0" />
+            <element signature="docComment;method#changeAdminAccess#0;class#User#0" />
+            <element signature="method#changeAdminAccess#0;class#User#0" />
+            <element signature="docComment;method#getPassword#0;class#User#0" />
+            <element signature="docComment;method#getFirstInit#0;class#User#0" />
+            <element signature="docComment;method#getMiddleInit#0;class#User#0" />
+            <element signature="docComment;method#getLastInit#0;class#User#0" />
+            <element signature="docComment;method#getTimeCreated#0;class#User#0" />
+            <element signature="docComment;method#getPermissionStatus#0;class#User#0" />
+            <element signature="docComment;method#getUserContribution#0;class#User#0" />
+            <element signature="docComment;method#getUserBalance#0;class#User#0" />
+            <element signature="docComment;method#setFirstInit#0;class#User#0" />
+            <element signature="docComment;method#setMiddleInit#0;class#User#0" />
+            <element signature="docComment;method#setLastInit#0;class#User#0" />
+            <element signature="docComment;method#setUsername#0;class#User#0" />
+            <element signature="docComment;method#setPassword#0;class#User#0" />
+            <element signature="docComment;method#setTimeCreated#0;class#User#0" />
+            <element signature="docComment;method#setPermissionStatus#0;class#User#0" />
+            <element signature="docComment;method#setUserContribution#0;class#User#0" />
+            <element signature="docComment;method#setUserBalance#0;class#User#0" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JAAS/luca_jaas.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2448">
+          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="106" column="36" lean-forward="true" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JAAS/auth/RequestTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JAAS/authorization.policy">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
