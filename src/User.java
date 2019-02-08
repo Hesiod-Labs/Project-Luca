@@ -71,6 +71,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
     
     private PrivateKey userPrivateKey;
     
+    private String runTimeHash;
+    
     /**
      * Creates a user associated with the {@link Account}.
      * @param first Initial of the first name of the user (not case-sensitive).
@@ -79,13 +81,18 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * @param password Randomly generated; used for logging in to the {@link Account}.
      * @param contribution Dollar amount given by the user for investing.
      */
-    public User(String first, String middleInit, String last, String password, UserType role, double contribution)
+    public User(String first, String middleInit, String last, String password, String w1, String w2, String w3,
+                UserType role, double contribution)
     {
         this.firstInit = first.toUpperCase();
         this.middleInit = middleInit.toUpperCase();
         this.lastInit = last.toUpperCase();
         this.username = makeUsername(first, middleInit, last);
         this.password = password;
+        this.runTimeHash = Encryption.applySHA256(w1 + w2 + w3);
+        KeyPair kp = Encryption.generateKeyPair();
+        this.userPrivateKey = kp.getPrivate();
+        this.userPublicKey = kp.getPublic();
         this.clearance = role;
         this.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.userContribution = new Balance(contribution); // TODO lines 92 and 93
@@ -188,16 +195,13 @@ public class User //TODO Consider separating non-admin and admin users as two su
             request.setTimestamp(request.getRequestDate().toEpochSecond());
             request.setUserPublicKey(this.getUserPublicKey());
             request.setUserPrivateKey(this.getUserPrivateKey());
-            request.setTransactionID(Encryption.applySHA256(
-                    Encryption.getStringFromKey(this.getUserPrivateKey()) +
-                            Encryption.getStringFromKey(this.getUserPublicKey()) +
-                            Long.toString(request.getTimestamp()) + String.valueOf(request.getTransactionType())));
-            request.setTransactionData(
-                    Encryption.getStringFromKey(this.getUserPrivateKey()) +
-                            Encryption.getStringFromKey(this.getUserPublicKey()) +
-                            request.getTransactionID());
+            
+            request.setTransactionID(Encryption.encrypt(request.getTimestamp() + String.valueOf(request.getTransactionType()), this.getUserPrivateKey().toString()));
+            
+            request.setTransactionData(Encryption.encrypt(request.getTransactionID() + request.getTransactionType(), this.getUserPublicKey().toString()));
+
             //creates the signature using an elliptic curve digital signature algorithm
-            request.setSignature(Encryption.applyECDSASig(this.getUserPrivateKey(), request.getTransactionData()));
+            request.setSignature(Encryption.applySignature(this.getUserPrivateKey(), request.getTransactionData()));
             
             request.setRequestUser(this);
             // If the user is an admin, resolve the transaction immediately.

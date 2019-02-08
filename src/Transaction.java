@@ -94,7 +94,7 @@ public class Transaction
      * Format: YEAR MONTH DAY HOUR MINUTE SECOND
      * Example: January 1, 2019 @ 12:34:56 is formatted as 201911123456
      */
-    private long transactionID;
+    private String transactionID;
     
     private byte[] signature;
     
@@ -297,7 +297,7 @@ public class Transaction
     /**
      * @return Date and time, as one number, in which the transaction was requested.
      */
-    public long getTransactionID()
+    public String getTransactionID()
     {
         return transactionID;
     }
@@ -404,7 +404,7 @@ public class Transaction
      * Sets the date-time numerical identifier of the transaction based on the instant the transaction is requested.
      * @param ID Date-time numerical identifier.
      */
-    public void setTransactionID(long ID)
+    public void setTransactionID(String ID)
     {
         this.transactionID = ID;
     }
