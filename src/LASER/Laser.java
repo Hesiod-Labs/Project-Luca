@@ -1,7 +1,6 @@
 package LASER;
 import BTA.Transaction;
 import LucaMember.User;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;

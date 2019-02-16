@@ -1,5 +1,4 @@
 package LASER;
-import ABP.Account;
 import BTA.Transaction;
 import LucaMember.User;
 import javax.crypto.Cipher;
@@ -8,7 +7,6 @@ import java.io.*;
 import java.security.*;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.LinkedList;
 
 //One and Two way encryption and signature functions for the LASER protocol
 public class Encryption {
