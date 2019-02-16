@@ -1,6 +1,9 @@
 package LASER;
 import BTA.Transaction;
 import LucaMember.User;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.io.File;
 
@@ -10,12 +13,14 @@ public class Laser {
 
   public static File transactionHistory = new File("Transaction History");
 
-  private static ArrayList<Block> blockchain = new ArrayList<>();
-  
-  //TODO Could possibly remove because of getClearance() method in User class
-  // in response to the system admin confirming the ability to make a certain transactions
-  public static boolean checkPermission(User user, int clearance) {
-    return user.getClearance() > clearance;
+  public static ArrayList<Block> blockchain = new ArrayList<>();
+
+  public static String laserKey = "L.A.S.E.R.: Luca Auditing Security Enterprise Repository";
+
+  public static File initializeFile(File transactionHistory) throws IOException {
+    FileWriter fw = new FileWriter(transactionHistory);
+    fw.write("Request User\tResolve User\tTransaction\n");
+    return transactionHistory;
   }
 
   public static boolean verifyRuntimeHash(User user) {

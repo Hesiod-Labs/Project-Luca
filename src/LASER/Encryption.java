@@ -1,16 +1,13 @@
 package LASER;
 import ABP.Account;
 import BTA.Transaction;
-
+import LucaMember.User;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.*;
 import java.util.Arrays;
 import java.util.Base64;
-import java.io.File;
 import java.util.LinkedList;
 
 //One and Two way encryption and signature functions for the LASER protocol
@@ -134,19 +131,35 @@ public class Encryption {
         FileWriter fw = new FileWriter(Laser.transactionHistory);
         StringBuilder sb = new StringBuilder();
         String resolveUser;
-        if (!(trx.getResolveUser() == null)) {
-            resolveUser = Encryption.encryptAES(trx.getResolveUser().toString(), trx.getResolveUser().getRunTimeHash() + System.currentTimeMillis());
+        if (trx.getResolveUser() != null) {
+            resolveUser = Encryption.encryptAES(trx.getResolveUser().toString(), Laser.laserKey);
         }
-        else resolveUser = null;
-        sb.append(Encryption.encryptAES(trx.getRequestUser().toString(), trx.getRequestUser().getRunTimeHash())
-        + "\t" + resolveUser + "\t" + Encryption.encryptAES(trx.getTransactionData(), trx.getResolveUser().getRunTimeHash()));
+        else resolveUser = "null";
+        sb.append(Encryption.encryptAES(trx.getRequestUser().toString(), Laser.laserKey)
+        + "\t" + resolveUser + "\t" + Encryption.encryptAES(trx.getTransactionData(), Laser.laserKey);
         fw.write(sb.toString());
         return true;
     }
 
-    public static boolean decryptTransactionLog(File trxLog, int rank) {
-        LinkedList<String> requestUsers = new LinkedList<>();
-        LinkedList<String> resolveUsers = new LinkedList<>();
-        LinkedList<String> transactionData = new LinkedList<>();
+    public static File decryptTransactionLog(File trxLog, User user) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(trxLog));
+        File outputfile = new File("Your Transactions");
+        FileWriter fw = new FileWriter(outputfile);
+        String line;
+        String [] split;
+        while ((line = br.readLine()) != null) {
+            split = line.split("\t");
+            if (user.getClearance() >= 2) {
+                String requestUser = Encryption.decryptAES(split[0], Laser.laserKey);
+                String resolveUser = Encryption.decryptAES(split[1], Laser.laserKey);
+                String data = Encryption.decryptAES(split[2], Laser.laserKey);
+                fw.write(requestUser + "\t" + resolveUser + "\t" + data);
+            }
+            else {
+                String requestUser = Encryption.decryptAES(split[0], Laser.laserKey);
+                fw.write(requestUser + "\t" + split[1] + "\t" + split[2]);
+            }
+        }
+        return outputfile;
     }
 }

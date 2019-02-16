@@ -26,7 +26,7 @@ public class Block {
     return this.timestamp;
   }
 
-  public String getTransaction() {
-    return this.trx.toString();
+  public Transaction getTransaction() {
+    return this.trx;
   }
 }
