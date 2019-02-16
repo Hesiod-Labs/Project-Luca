@@ -16,7 +16,7 @@ import java.util.LinkedList;
 //One and Two way encryption and signature functions for the LASER protocol
 public class Encryption {
     // utilizing secure hashing algorithm 256 bit for ONE WAY encryption
-    protected static String applySHA256(String trx) {
+    public static String applySHA256(String trx) {
         try { // try catch should not be used as version control
             MessageDigest encrypted = MessageDigest.getInstance("SHA-256");
             byte[] hash = encrypted.digest(trx.getBytes("UTF-8"));
@@ -36,7 +36,7 @@ public class Encryption {
     }
 
     // an Address signs a transaction with its private key
-    private static byte[] applySignature(PrivateKey privateKey, String input) {
+    public static byte[] applySignature(PrivateKey privateKey, String input) {
         Signature dsa;
         byte[] sig;
         try { // try catch should not be used as version control
@@ -118,7 +118,7 @@ public class Encryption {
     }
 
     // generates a key pair for a given address
-    private static KeyPair generateKeyPair() {
+    public static KeyPair generateKeyPair() {
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
@@ -130,7 +130,7 @@ public class Encryption {
         }
     }
 
-    private static boolean logEncryptedTransaction(Transaction trx) throws IOException {
+    public static boolean logEncryptedTransaction(Transaction trx) throws IOException {
         FileWriter fw = new FileWriter(Laser.transactionHistory);
         StringBuilder sb = new StringBuilder();
         String resolveUser;
@@ -144,7 +144,7 @@ public class Encryption {
         return true;
     }
 
-    private static boolean decryptTransactionLog(File trxLog, int rank) {
+    public static boolean decryptTransactionLog(File trxLog, int rank) {
         LinkedList<String> requestUsers = new LinkedList<>();
         LinkedList<String> resolveUsers = new LinkedList<>();
         LinkedList<String> transactionData = new LinkedList<>();
