@@ -17,8 +17,6 @@ public class Testing
         User reqUser = new User("R", "E", "Q", "dog", "alpha", "beta", "chi", User.UserType.GENERAL_USER, 500);
         User resUser = new User("R", "E", "S", "cat", "delta", "epsilon", "gamma", User.UserType.OFFICER, 500);
         
-        User.class.getMethod("requestTransaction", Transaction.class).
-        
         /* Display general ABP information */
         printAccountInfo();
         

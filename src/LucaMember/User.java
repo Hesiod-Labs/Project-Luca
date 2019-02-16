@@ -206,7 +206,6 @@ public class User //TODO Consider separating non-admin and admin users as two su
         if(request.confirmAction())
         {
             request.setRequestDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-            
             request.setTimestamp(request.getRequestDate().toEpochSecond());
             request.setUserPublicKey(this.getUserPublicKey());
             request.setUserPrivateKey(this.getUserPrivateKey());
@@ -223,8 +222,12 @@ public class User //TODO Consider separating non-admin and admin users as two su
             if(request.getRequestUser().getClearance() >= 2)
                 resolveTransaction(request, request.getMatchingStatus().toString());
             else
+            {
                 // Otherwise, add the request to the list of requests.
                 request.addTransactionRequest();
+                //LASER.Laser.validateTransaction();
+            }
+            
         }
         else
             // If the user declines confirmation, the transaction request is cancelled.
