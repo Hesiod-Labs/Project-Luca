@@ -1,5 +1,4 @@
 package LASER;
-
 import BTA.Transaction;
 
 public class Block {
@@ -10,24 +9,14 @@ public class Block {
   private long timestamp;
   
   //Block Constructor, will take a specific kind of Transaction
-  public Block(Transaction trx, String previousHash, long timestamp) {
+  public Block(Transaction trx, String previousHash, long timestamp, String status) {
     this.previousHash = previousHash;
     this.trx = trx;
     this.timestamp = timestamp;
-    this.currentHash = Encryption.applySHA256(previousHash + " " + String.valueOf(timestamp) + " " + trx.toString());
-  }
-  
-  //approve or deny the transaction based on a permissioned status
-  public boolean validateTransaction(Transaction trx) {
-    //if certain characterisitcs are possessed or criteria is retained
-    //then begin the creation of the block for the blockchain
-    //else return an error statement
-    return true;
+    this.currentHash = Encryption.applySHA256(status + trx.toString() + previousHash + timestamp);
   }
 
-  public String getCurrentHash() {
-    return this.currentHash;
-  }
+  public String getCurrentHash() { return this.currentHash; }
 
   public String getPreviousHash() {
     return this.previousHash;

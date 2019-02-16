@@ -1,15 +1,17 @@
 package LASER;
+import ABP.Account;
+import BTA.Transaction;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.Arrays;
 import java.util.Base64;
-
-
-// TRY CATCH SHOULD NOT BE VERSION CONTROL IT IS NOT GOOD PRACTICE
-
+import java.io.File;
+import java.util.LinkedList;
 
 //One and Two way encryption and signature functions for the LASER protocol
 public class Encryption {
@@ -88,9 +90,9 @@ public class Encryption {
     }
 
     //encrypt the information using the private key
-    public static String encrypt(String strToEncrypt, String privateKey) {
+    public static String encryptAES(String strToEncrypt, String runTimeHash) {
         try {
-            setKey(privateKey);
+            setKey(runTimeHash);
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, sks);
             return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
@@ -102,9 +104,9 @@ public class Encryption {
     }
 
     //decrypts a string or hash using a given key
-    public static String decrypt(String strToDecrypt, String privateKey) {
+    public static String decryptAES(String strToDecrypt, String runTimeHash) {
         try {
-            setKey(privateKey);
+            setKey(runTimeHash);
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE, sks);
             return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
@@ -128,4 +130,23 @@ public class Encryption {
         }
     }
 
+    private static boolean logEncryptedTransaction(Transaction trx) throws IOException {
+        FileWriter fw = new FileWriter(Laser.transactionHistory);
+        StringBuilder sb = new StringBuilder();
+        String resolveUser;
+        if (!(trx.getResolveUser() == null)) {
+            resolveUser = Encryption.encryptAES(trx.getResolveUser().toString(), trx.getResolveUser().getRunTimeHash() + System.currentTimeMillis());
+        }
+        else resolveUser = null;
+        sb.append(Encryption.encryptAES(trx.getRequestUser().toString(), trx.getRequestUser().getRunTimeHash())
+        + "\t" + resolveUser + "\t" + Encryption.encryptAES(trx.getTransactionData(), trx.getResolveUser().getRunTimeHash()));
+        fw.write(sb.toString());
+        return true;
+    }
+
+    private static boolean decryptTransactionLog(File trxLog, int rank) {
+        LinkedList<String> requestUsers = new LinkedList<>();
+        LinkedList<String> resolveUsers = new LinkedList<>();
+        LinkedList<String> transactionData = new LinkedList<>();
+    }
 }
