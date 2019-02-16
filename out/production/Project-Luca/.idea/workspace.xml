@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LucaMember/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
     </list>
@@ -60,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="2840">
+              <caret line="293" column="80" selection-start-line="293" selection-start-column="80" selection-end-line="293" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LucaMember/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2208">
-              <caret line="102" column="55" selection-start-line="102" selection-start-column="55" selection-end-line="102" selection-end-column="55" />
+            <state relative-caret-position="475">
+              <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#User#0" />
@@ -129,11 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LASER/Laser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1032">
-              <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1056">
+              <caret line="44" column="7" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -158,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LASER/Block.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="408">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -199,7 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>returns</find>
       <find>original</find>
       <find>getCurrent</find>
       <find>getcurrent</find>
@@ -229,12 +219,14 @@
       <find>requestTrans</find>
       <find>confirm</find>
       <find>admin</find>
+      <find>newUserInfo</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
       <replace>startPrice</replace>
       <replace>endDate</replace>
       <replace>.getUsername(</replace>
+      <replace>userInfo</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -349,7 +341,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550349805169" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550351702808" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Transaction.java" />
@@ -512,7 +504,7 @@
       <workItem from="1549814593115" duration="637000" />
       <workItem from="1550084240018" duration="1746000" />
       <workItem from="1550278638019" duration="8471000" />
-      <workItem from="1550328449091" duration="20582000" />
+      <workItem from="1550328449091" duration="22977000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -588,7 +580,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303791000" />
+    <option name="totallyTimeSpent" value="306186000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -601,6 +593,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" weight="0.25349087" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
@@ -610,7 +603,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.36354166" side_tool="true" weight="0.11331901" />
       <window_info anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.32912722" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.23125" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.23120837" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.41354167" />
       <window_info anchor="bottom" x="1920" y="0" width="1920" height="1040" id="Run" order="4" type="FLOATING" visible="true" weight="0.9604167" />
@@ -621,7 +614,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
-      <window_info anchor="bottom" x="1920" y="0" width="1920" height="1040" id="Terminal" order="12" type="FLOATING" weight="0.62083334" />
+      <window_info active="true" anchor="bottom" x="1920" y="0" width="1920" height="1040" id="Terminal" order="12" type="FLOATING" visible="true" weight="0.62083334" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
@@ -903,8 +896,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LASER/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state relative-caret-position="408">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -923,18 +916,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LASER/Laser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1032">
-          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1056">
+          <caret line="44" column="7" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LucaMember/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2208">
-          <caret line="102" column="55" selection-start-line="102" selection-start-column="55" selection-end-line="102" selection-end-column="55" />
+        <state relative-caret-position="475">
+          <caret line="106" column="8" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#User#0" />
@@ -988,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="2840">
+          <caret line="293" column="80" selection-start-line="293" selection-start-column="80" selection-end-line="293" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

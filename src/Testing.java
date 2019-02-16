@@ -8,7 +8,9 @@ import java.util.*;
 public class Testing
 {
     
-    Scanner commandLine = new Scanner(System.in);
+    public static Scanner commandLine = new Scanner(System.in);
+    private static ArrayList<String> userInfo = new ArrayList<>();
+    private static User loggedIn;
     
     private static boolean isValidCommand(String input)
     {
@@ -62,9 +64,7 @@ public class Testing
     
     private static void login()
     {
-        ArrayList<String> userInfo = new ArrayList<>();
         boolean run = true;
-        Scanner commandLine = new Scanner(System.in);
         while(run)
         {
             System.out.println("'Existing' or 'New' user: ");
@@ -83,6 +83,11 @@ public class Testing
             {
                 System.out.println("What are your first, middle, and last name initials?");
                 String initials = commandLine.next();
+                while(initials.toCharArray().length != 3)
+                {
+                    System.out.println("You must enter exactly 3 letters");
+                    initials = commandLine.next();
+                }
                 userInfo.add(initials.trim());
         
                 System.out.println("Enter your password: ");
@@ -90,25 +95,22 @@ public class Testing
                 userInfo.add(pw.trim());
         
                 System.out.println("Provide 3 word to be used for your encryption hash (case sensitive):");
+                
                 System.out.println("1st word: ");
-                String first = commandLine.next();
-                userInfo.add(first.trim());
-        
+                addWordToUserHash();
+    
                 System.out.println("2nd word: ");
-                String second = commandLine.next();
-                userInfo.add(second.trim());
-        
+                addWordToUserHash();
+                
                 System.out.println("3rd word: ");
-                String third = commandLine.next();
-                userInfo.add(third.trim());
+                addWordToUserHash();
         
                 System.out.println("You will be set to a General User. An existing admin will update your status " +
                         "if necessary.");
-                System.out.println("Enter contribution to the Account: ");
-                String contribution = commandLine.next();
-                userInfo.add(contribution.trim());
+                System.out.println("Enter contribution to the Account (U.S. dollar): ");
+                userInfo.add(isValidNumber());
         
-                new User(
+                loggedIn = new User(
                         userInfo.get(0).substring(0, 1),
                         userInfo.get(0).substring(1, 2),
                         userInfo.get(0).substring(2, 3),
@@ -152,8 +154,19 @@ public class Testing
         printUsersInfo();
     }
     
-    public static void runLuca()
+    private static void addWordToUserHash()
     {
+        String word = commandLine.next();
+        while(word.toCharArray().length == 0)
+        {
+            System.out.println("You must enter at least 1 character.");
+        }
+        userInfo.add(word.trim());
+    }
+    
+    private static void runLuca()
+    {
+        long startTime = System.nanoTime();
         boolean run = true;
         Scanner commandLine = new Scanner(System.in);
         while(run)
@@ -166,12 +179,54 @@ public class Testing
             {
                 if(userResponse.equalsIgnoreCase(Command.SHUTDOWN.toString()))
                 {
+                    run = false;
                     System.exit(0);
                     commandLine.reset();
                 }
                 
                 if(userResponse.equalsIgnoreCase(Command.LOGOUT.toString()))
                     login();
+                
+                if(userResponse.equalsIgnoreCase(Command.REQUEST.toString()))
+                {
+                    ArrayList<String> transInfo = new ArrayList<>();
+                    if(loggedIn.getClearance() >= 1)
+                    {
+                        System.out.println("Valid forms of transaction: " +
+                                "\n\t" + "DEPOSIT" +
+                                "\n\t" + "WITHDRAW" +
+                                "\n\t" + "BUY" +
+                                "\n\t" + "SELL" +
+                                "\n\t" + "SHORT" +
+                                "\n\t" + "COVER");
+                        System.out.println("Specify the type of transaction: ");
+                        String transType = commandLine.next();
+                        if(!(transType.equalsIgnoreCase("Deposit")) &&
+                                !(transType.equalsIgnoreCase("Withdraw")) &&
+                                !(transType.equalsIgnoreCase("Buy")) &&
+                                !(transType.equalsIgnoreCase("Sell")) &&
+                                !(transType.equalsIgnoreCase("Short")) &&
+                                !(transType.equalsIgnoreCase("Cover")))
+                        {
+                            System.out.println("Please enter one of the following valid forms of transaction: " +
+                                    "\n\t" + "DEPOSIT" +
+                                    "\n\t" + "WITHDRAW" +
+                                    "\n\t" + "BUY" +
+                                    "\n\t" + "SELL" +
+                                    "\n\t" + "SHORT" +
+                                    "\n\t" + "COVER");
+                        }
+                        else
+                            transInfo.add(transType);
+                        
+                        if(transType.equalsIgnoreCase("Deposit") ||
+                                transType.equalsIgnoreCase("Withdraw"))
+                        {
+                            System.out.println("Enter the amount associated with the transaction (U.S. dollar): ");
+                            transInfo.add(isValidNumber());
+                        }
+                    }
+                }
             }
             else
             {
@@ -183,22 +238,48 @@ public class Testing
             }
         }
         commandLine.close();
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
         System.exit(0);
         }
     
+    private static String isValidNumber()
+    {
+        boolean numError = true;
+        boolean negNum = true;
+        double amount = 0;
+        while(numError || negNum)
+        {
+            try
+            {
+                amount = Double.parseDouble(commandLine.next());
+                numError = false;
+                if(amount < 0)
+                    System.out.println("Entered amount must be non-negative.");
+                else
+                {
+                    negNum = false;
+                }
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("Only enter numeric values.");
+            }
+        }
+        return Double.toString(amount);
+    }
+    
     public static void main(String[] args) throws InterruptedException
     {
-        long starTime = System.nanoTime();
     
         /* Create an  account with a bank, portfolio, and storage for users*/
         new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
+        new User("A", "D", "M", "password", "alpha", "beta", "chi",
+                User.UserType.SYSTEM_ADMIN, 0);
         
         login();
         runLuca();
-    
-        long endTime = System.nanoTime();
-        long totalTime = endTime - starTime;
-        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
         
         /* Create a user and add it to the ABP */
         //User reqUser = new User("R", "E", "Q", "dog", "alpha", "beta", "chi", User.UserType.GENERAL_USER, 500);
@@ -268,7 +349,6 @@ public class Testing
         printBankBalanceHistory();
         printPortfolioHistory();
     }
-   
     
     public static void printAccountInfo()
     {
@@ -290,7 +370,8 @@ public class Testing
             System.out.println("--- USER INFORMATION ---");
             System.out.println("Username: " + user.getUsername());
             System.out.println("Password: " + user.getPassword());
-            System.out.println("");
+            System.out.println("User Public Key: " + user.getUserPublicKey());
+            System.out.println("User Private Key: " + user.getUserPrivateKey());
             System.out.println("Admin Status: " + user.getUserType());
             System.out.println("Total contributions: $" + user.getUserContribution().getCurrentValue() + "0");
             //System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
