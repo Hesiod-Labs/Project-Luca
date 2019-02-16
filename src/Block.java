@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.ArrayList;
+import BTA.Transaction;
 
 public class Block {
   
@@ -13,16 +14,9 @@ public class Block {
     this.previousHash = previousHash;
     this.trx = trx;
     this.timestamp = timestamp;
-    this.currentHash = Encryption.applySHA256(previousHash + " " + String.valueOf(timestamp) + " " + trx.toString());
+    this.currentHash = Encryption.applySHA256(previousHash + " " + timestamp + " " + trx.toString());
   }
-  
-  //approve or deny the transaction based on a permissioned status
-  public boolean validateTransaction(Transaction trx) {
-    //if certain characterisitcs are possessed or criteria is retained
-    //then begin the creation of the block for the blockchain
-    //else return an error statement
-    return true;
-  }
+
 
   public String getCurrentHash() {
     return this.currentHash;
