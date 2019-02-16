@@ -2,6 +2,7 @@ package LucaMember;
 
 import ABP.*;
 import BTA.*;
+import LASER.Encryption;
 
 import javax.security.auth.Subject;
 import java.security.*;
@@ -64,6 +65,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
     
     private UserType clearance;
     
+    private UserSector userSector;
+    
     /**
      * Total dollar amount a user has added to the {@link Account} funds, with associated timestamps.
      */
@@ -101,9 +104,9 @@ public class User //TODO Consider separating non-admin and admin users as two su
         this.username = makeUsername(first.toUpperCase(), middleInit.toUpperCase(), last.toUpperCase());
         this.password = password;
         //this.runTimeHash = Encryption.applySHA256(w1 + w2 + w3);
-        //KeyPair kp = Encryption.generateKeyPair();
-        //this.userPrivateKey = kp.getPrivate();
-        //this.userPublicKey = kp.getPublic();
+        KeyPair kp = Encryption.generateKeyPair();
+        this.userPrivateKey = kp.getPrivate();
+        this.userPublicKey = kp.getPublic();
         this.clearance = role;
         this.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
         this.userContribution = new Balance(contribution); // TODO lines 92 and 93
@@ -111,7 +114,6 @@ public class User //TODO Consider separating non-admin and admin users as two su
         Account.getAccountUsers().add(this);
         this.userBalance = new Balance(); //TODO Should contributions be a part of the userBalance?
         Account.getAccountBalance().updateBalance( new Balance(contribution));
-
     }
     
     /**
@@ -383,6 +385,10 @@ public class User //TODO Consider separating non-admin and admin users as two su
         }
     }
     
+    public enum UserSector
+    {
+        MEI, CS_IT, CONS, HEALTH, OPTIONS, CRYPTO, FOREX;
+    }
     public enum UserType
     {
         SYSTEM_ADMIN (4), OFFICER (3), SECTOR_HEAD (2), GENERAL_USER (1);

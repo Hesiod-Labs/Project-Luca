@@ -1,17 +1,11 @@
 package LASER;
-import ABP.Account;
 import BTA.Transaction;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.*;
-import java.util.Arrays;
-import java.util.Base64;
-import java.io.File;
-import java.util.LinkedList;
+import java.util.*;
 
 //One and Two way encryption and signature functions for the LASER protocol
 public class Encryption {
@@ -143,10 +137,12 @@ public class Encryption {
         fw.write(sb.toString());
         return true;
     }
-
+    
+    /*
     public static boolean decryptTransactionLog(File trxLog, int rank) {
         LinkedList<String> requestUsers = new LinkedList<>();
         LinkedList<String> resolveUsers = new LinkedList<>();
         LinkedList<String> transactionData = new LinkedList<>();
     }
+    */
 }
