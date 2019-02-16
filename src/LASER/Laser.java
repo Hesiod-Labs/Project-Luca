@@ -1,12 +1,14 @@
 package LASER;
-
 import BTA.Transaction;
 import LucaMember.User;
 import java.util.*;
+import java.io.File;
 
 
 //L.A.S.E.R.: Luca Auditing Security Enterprise Repository
 public class Laser {
+
+  public static File transactionHistory = new File("Transaction History");
 
   private static ArrayList<Block> blockchain = new ArrayList<>();
   
@@ -14,11 +16,6 @@ public class Laser {
   // in response to the system admin confirming the ability to make a certain transactions
   public static boolean checkPermission(User user, int clearance) {
     return user.getClearance() > clearance;
-  }
-
-  //Verifies who the original requesting user using the signature, data, and public key without translating the data itself
-  public static boolean verifiySignature(Transaction trx) {
-    return Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature());
   }
 
   public static boolean verifyRuntimeHash(User user) {
@@ -50,14 +47,36 @@ public class Laser {
     return true;
   }
 
+  public static boolean addBlock(Transaction trx, String status) {
+    Block block = new Block(trx, blockchain.get(blockchain.size() - 1).getCurrentHash(), System.currentTimeMillis(), status);
+    blockchain.add(block);
+    return Laser.isChainValid();
+  }
+
+  //approve or deny the transaction based on a permissioned status
+  public boolean validateTransaction(Transaction trx) {
+    if (trx.getResolveUser() == null && trx.getRequestUser().getClearance() < 2) {
+      if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
+        Laser.addBlock(trx, "Request: ");
+        return true;
+      }
+    }
+    if (trx.getResolveUser().getClearance() >= 2) {
+      if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
+        Laser.addBlock(trx, "Resolved: ");
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static boolean createGenesisBlock() {
-    Block block = new Block(new Transaction(0, "BUY"), "Genesis Block", System.currentTimeMillis());
+    Block block = new Block(new Transaction(0, "BUY"), "Genesis Block", System.currentTimeMillis(), "");
     blockchain.add(block);
     return true;
   }
   
-  public static ArrayList<Block> getBlockchain()
-  {
+  public static ArrayList<LASER.Block> getBlockchain() {
     return blockchain;
   }
 }
