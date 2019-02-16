@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.ArrayList;
+package LASER;
 import BTA.Transaction;
 
 public class Block {

@@ -2,12 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import LucaMember.User;
 import BTA.Transaction;
+package LASER;
+
+import BTA.Transaction;
+import LucaMember.User;
+import java.util.*;
+
 
 //L.A.S.E.R.: Luca Auditing Security Enterprise Repository
 public class Laser {
 
   private static ArrayList<Block> blockchain = new ArrayList<>();
 
+
+  //TODO Could possibly remove because of getClearance() method in User class
   // in response to the system admin confirming the ability to make a certain transactions
   public static boolean checkPermission(User user, int clearance) {
     return user.getClearance() > clearance;
@@ -20,16 +28,17 @@ public class Laser {
 
   public static boolean verifyRuntimeHash(User user) {
     Scanner scan = new Scanner(System.in);
-    System.out.println("Confirm Identity: ");
+    System.out.println("Confirm Identity (case sensitive, add a space between words): ");
     String threeWords = scan.next();
     if (Encryption.applySHA256(threeWords).equals(user.getRunTimeHash())) {
       System.out.println("Access Granted");
       return true;
     }
     else return false;
+    return Encryption.applySHA256(threeWords).equals(user.getRunTimeHash());
   }
 
-  //checks the validity of the blockchian after every block add
+  //checks the validity of the blockchain after every block add
   public static boolean isChainValid() {
     Block currentBlock;
     Block previousBlock;
@@ -40,6 +49,9 @@ public class Laser {
       //compare registered hash and calculated hash:
       if (!(currentBlock.getCurrentHash()).equals(Encryption.applySHA256(currentBlock.getPreviousHash()
               + currentBlock.getTimestamp() + currentBlock.getTransaction()))) {
+      if (!(currentBlock.getCurrentHash()).equals(
+              Encryption.applySHA256(currentBlock.getPreviousHash() +
+              currentBlock.getTimestamp() + currentBlock.getTransaction()))) {
         return false;
       }
       if (!(previousBlock.getCurrentHash().equals(currentBlock.getPreviousHash()))) {
@@ -67,6 +79,11 @@ public class Laser {
                             System.currentTimeMillis());
     blockchain.add(block);
     return true;
+  }
+  
+  public static ArrayList<Block> getBlockchain()
+  {
+    return blockchain;
   }
 }
 

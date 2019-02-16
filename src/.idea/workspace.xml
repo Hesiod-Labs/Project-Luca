@@ -2,9 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../out/production/Project-Luca/.idea/dictionaries/connormcmurry.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../out/production/Project-Luca/JAAS/auth/module/LucaLoginModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LASER/Block.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LASER/Encryption.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LASER/Laser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dictionaries/rdtat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dictionaries/rdtat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/.idea/dictionaries/rdtat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/.idea/dictionaries/rdtat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/ABP/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/ABP/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/BTA/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/Encryption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User$UserType.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User$UserType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/LucaMember/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/META-INF/Project-Luca.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/Project-Luca/Testing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/Project-Luca/auth/module/LucaLoginModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/connormcmurry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dictionaries/connormcmurry.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/emacs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Block.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LASER/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Laser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/LucaMember/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Testing.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,26 +47,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Block.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#961#962#0" expanded="true" />
-                <element signature="e#995#996#0" expanded="true" />
-                <element signature="e#1094#1095#0" expanded="true" />
-                <element signature="e#1130#1131#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1620">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="30">
+              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding>
                 <element signature="docComment;class#User#0" />
                 <element signature="e#1221#1413#0" />
@@ -53,25 +69,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Encryption.java">
+        <entry file="file://$PROJECT_DIR$/LASER/Laser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Laser.java">
+        <entry file="file://$PROJECT_DIR$/LASER/Block.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="49" column="3" lean-forward="true" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -79,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JAAS/auth/module/LucaLoginModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
+            <state relative-caret-position="480">
               <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
               <folding>
                 <element signature="docComment;method#commit#0;class#LucaLoginModule#0" />
@@ -103,6 +113,7 @@
         <option value="$PROJECT_DIR$/User.java" />
         <option value="$PROJECT_DIR$/Block.java" />
         <option value="$PROJECT_DIR$/Laser.java" />
+        <option value="$PROJECT_DIR$/LASER/Block.java" />
       </list>
     </option>
   </component>
@@ -119,24 +130,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="src" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="LucaMember" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -177,17 +173,17 @@
       <workItem from="1550261102892" duration="795000" />
       <workItem from="1550281128444" duration="5801000" />
       <workItem from="1550329060291" duration="2697000" />
+      <workItem from="1550332515326" duration="333000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10497000" />
+    <option name="totallyTimeSpent" value="10830000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1328" height="805" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26127526" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2651633" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -266,9 +262,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/User.java" />
+    <entry file="file://$PROJECT_DIR$/Transaction.java" />
     <entry file="file://$PROJECT_DIR$/JAAS/auth/module/LucaLoginModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
+        <state relative-caret-position="480">
           <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
           <folding>
             <element signature="docComment;method#commit#0;class#LucaLoginModule#0" />
@@ -278,80 +276,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/User.java">
+    <entry file="file://$PROJECT_DIR$/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6300">
-          <caret line="551" selection-start-line="551" selection-end-line="551" />
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;class#User#0" />
-            <element signature="e#1054#1246#0" />
-            <element signature="e#1285#1499#0" />
-            <element signature="e#1538#1635#0" />
-            <element signature="e#1675#1774#0" />
-            <element signature="e#1815#1911#0" />
-            <element signature="e#1950#2263#0" />
-            <element signature="e#2349#2462#0" />
-            <element signature="e#2510#3050#0" />
-            <element signature="e#3216#3676#0" />
-            <element signature="e#4814#5198#0" />
-            <element signature="e#6704#6883#0" />
-            <element signature="e#7597#7934#0" />
-            <element signature="e#9621#9880#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="442" column="36" selection-start-line="442" selection-start-column="36" selection-end-line="442" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Transaction#0" />
-            <element signature="e#1953#2053#0" />
-            <element signature="e#2093#2167#0" />
-            <element signature="e#2207#2455#0" />
-            <element signature="e#2503#2595#0" />
-            <element signature="e#2644#2755#0" />
-            <element signature="e#2799#4578#0" />
-            <element signature="e#4631#5006#0" />
-            <element signature="e#5050#5199#0" />
-            <element signature="e#5245#5438#0" />
-            <element signature="e#5677#5920#0" />
-            <element signature="e#6145#6539#0" />
-            <element signature="e#7469#7669#0" />
-            <element signature="e#8211#8321#0" />
-            <element signature="e#8452#8770#0" />
-            <element signature="e#8864#9471#0" />
-            <element signature="e#10000#10088#0" />
-            <element signature="e#10201#10395#0" />
-            <element signature="e#10514#10611#0" />
-            <element signature="e#10726#10797#0" />
-            <element signature="e#10880#10985#0" />
-            <element signature="e#11068#11266#0" />
-            <element signature="e#11363#11502#0" />
-            <element signature="e#11594#11732#0" />
-            <element signature="e#11824#11885#0" />
-            <element signature="e#11982#12069#0" />
-            <element signature="e#12160#12256#0" />
-            <element signature="e#12345#12440#0" />
-            <element signature="e#12949#13084#0" />
-            <element signature="e#13187#13359#0" />
-            <element signature="e#13466#13601#0" />
-            <element signature="e#13716#13882#0" />
-            <element signature="e#14002#14175#0" />
-            <element signature="e#14295#14567#0" />
-            <element signature="e#14682#14946#0" />
-            <element signature="e#15051#15228#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Encryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="-352">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Laser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -360,8 +308,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1620">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="30">
+          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#User#0" />
             <element signature="e#1221#1413#0" />
@@ -378,27 +326,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Block.java">
+    <entry file="file://$PROJECT_DIR$/LASER/Laser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#995#996#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1130#1131#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Laser.java">
+    <entry file="file://$PROJECT_DIR$/LASER/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="49" column="3" lean-forward="true" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
