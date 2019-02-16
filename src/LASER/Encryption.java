@@ -143,14 +143,6 @@ public class Encryption {
         return true;
     }
 
-    
-    
-    public static boolean decryptTransactionLog(File trxLog, int rank) {
-        LinkedList<String> requestUsers = new LinkedList<>();
-        LinkedList<String> resolveUsers = new LinkedList<>();
-        LinkedList<String> transactionData = new LinkedList<>();
-
-
     public static File decryptTransactionLog(File trxLog, User user) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(trxLog));
         File outputfile = new File("Your Transactions");

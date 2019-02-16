@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ABP/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/ABP/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LASER/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Block.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LASER/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/LucaMember/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +15,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="934">
-              <caret line="112" column="78" lean-forward="true" selection-start-line="112" selection-start-column="78" selection-end-line="112" selection-end-column="78" />
+            <state relative-caret-position="1069">
+              <caret line="115" column="78" lean-forward="true" selection-start-line="115" selection-start-column="78" selection-end-line="115" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -63,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LASER/Encryption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="141" column="56" selection-start-line="141" selection-start-column="56" selection-end-line="141" selection-end-column="56" />
+            <state relative-caret-position="173">
+              <caret line="143" column="5" lean-forward="true" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,15 +204,16 @@
       <workItem from="1550329060291" duration="2697000" />
       <workItem from="1550332515326" duration="715000" />
       <workItem from="1550333372469" duration="8871000" />
-      <workItem from="1550351000055" duration="7233000" />
+      <workItem from="1550351000055" duration="7422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27316000" />
+    <option name="totallyTimeSpent" value="27505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1328" height="805" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27293935" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -287,7 +284,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/LucaMember/User.java</url>
-          <line>190</line>
+          <line>192</line>
           <properties class="LucaMember.User" method="calculateHoldingsValue">
             <option name="EMULATED" value="true" />
           </properties>
@@ -326,8 +323,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="934">
-          <caret line="112" column="78" lean-forward="true" selection-start-line="112" selection-start-column="78" selection-end-line="112" selection-end-column="78" />
+        <state relative-caret-position="1069">
+          <caret line="115" column="78" lean-forward="true" selection-start-line="115" selection-start-column="78" selection-end-line="115" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -377,8 +374,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LASER/Encryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="141" column="56" selection-start-line="141" selection-start-column="56" selection-end-line="141" selection-end-column="56" />
+        <state relative-caret-position="173">
+          <caret line="143" column="5" lean-forward="true" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
