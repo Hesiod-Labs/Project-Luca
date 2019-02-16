@@ -110,7 +110,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
         Account.getAccountUsers().add(this);
         this.userBalance = new Balance(); //TODO Should contributions be a part of the userBalance?
         Account.getAccountBalance().updateBalance( new Balance(contribution));
-        this
+
     }
     
     /**
@@ -468,11 +468,6 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public Balance getUserBalance()
     {
         return userBalance;
-    }
-    
-    public String getRunTimeHash()
-    {
-        return runTimeHash;
     }
     
     /**
