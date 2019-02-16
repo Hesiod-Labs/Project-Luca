@@ -1,5 +1,5 @@
 package LASER;
-import BTA.*;
+import BTA.Transaction;
 import LucaMember.User;
 import java.io.FileWriter;
 import java.io.IOException;

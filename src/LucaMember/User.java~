@@ -25,7 +25,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
 {
     private Subject userSubject;
     
-    // private auth.principal.LucaPrincipal userPrincipal;
+    private auth.principal.LucaPrincipal userPrincipal;
     
     
     /**
@@ -67,7 +67,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     /**
      * Total dollar amount a user has added to the {@link Account} funds, with associated timestamps.
      */
-    //private Balance userContribution;
+    private Balance userContribution;
     
     /**
      * Dollar amount a user would have if all funds were to be liquidated and withdrawn from the account.
@@ -76,7 +76,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * is considered a general partner, a limited partner, or an investor.
      * // TODO Decide if this will represent the current value of investment (i.e. as it is) or something else
      */
-    //private Balance userBalance;
+    private Balance userBalance;
     
     private PublicKey userPublicKey;
     
@@ -106,8 +106,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
         //this.userPublicKey = kp.getPublic();
         this.clearance = role;
         this.timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
-        //this.userContribution = new Balance(contribution); // TODO lines 92 and 93
-        //userContribution.updateBalance(userContribution);
+        this.userContribution = new Balance(contribution); // TODO lines 92 and 93
+        userContribution.updateBalance(userContribution);
         Account.getAccountUsers().add(this);
         this.userBalance = new Balance(); //TODO Should contributions be a part of the userBalance?
         Account.getAccountBalance().updateBalance( new Balance(contribution));
@@ -461,14 +461,14 @@ public class User //TODO Consider separating non-admin and admin users as two su
     /**
      * @return Balance statements that detail how much the user has added to the funds for investing.
      */
-    /*public Balance getUserContribution()
+    public Balance getUserContribution()
     {
         return userContribution;
     }
     
     /**
      * @return Current and past balance statements of the user. Top balance statement is the most recent.
-     *
+     */
     public Balance getUserBalance()
     {
         return userBalance;
@@ -554,11 +554,10 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * @param userBalance Contains current and past balance statements with associated amounts, timestamps, and
      *                    transactions.
      */
-    /*
     public void setUserBalance(Balance userBalance)
     {
         this.userBalance = userBalance;
-    }*/
+    }
     
     public void setClearance(UserType newType)
     {

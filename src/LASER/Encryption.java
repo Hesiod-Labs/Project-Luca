@@ -134,7 +134,7 @@ public class Encryption {
         }
         else resolveUser = "null";
         sb.append(Encryption.encryptAES(trx.getRequestUser().toString(), Laser.laserKey)
-        + "\t" + resolveUser + "\t" + Encryption.encryptAES(trx.getTransactionData(), Laser.laserKey);
+        + "\t" + resolveUser + "\t" + Encryption.encryptAES(trx.getTransactionData(), Laser.laserKey));
         fw.write(sb.toString());
         return true;
     }
