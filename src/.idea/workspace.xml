@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="" />
+    <list default="true" id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTA/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/BTA/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LASER/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LASER/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/LASER/Laser.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,20 +19,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state relative-caret-position="934">
+              <caret line="112" column="78" lean-forward="true" selection-start-line="112" selection-start-column="78" selection-end-line="112" selection-end-column="78" />
               <folding>
-                <element signature="docComment;class#User#0" />
-                <element signature="e#1221#1413#0" />
-                <element signature="e#1452#1666#0" />
-                <element signature="e#1705#1802#0" />
-                <element signature="e#1842#1941#0" />
-                <element signature="e#1982#2078#0" />
-                <element signature="e#2117#2430#0" />
-                <element signature="e#2677#3217#0" />
-                <element signature="e#3383#3843#0" />
-                <element signature="e#4990#5374#0" />
-                <element signature="e#7874#8211#0" />
+                <element signature="e#17197#17198#0" expanded="true" />
+                <element signature="e#17237#17238#0" expanded="true" />
+                <element signature="e#17359#17360#0" expanded="true" />
+                <element signature="e#17390#17391#0" expanded="true" />
+                <element signature="e#17505#17506#0" expanded="true" />
+                <element signature="e#17536#17537#0" expanded="true" />
+                <element signature="e#17643#17644#0" expanded="true" />
+                <element signature="e#17675#17676#0" expanded="true" />
+                <element signature="e#17784#17785#0" expanded="true" />
+                <element signature="e#17817#17818#0" expanded="true" />
+                <element signature="e#17922#17923#0" expanded="true" />
+                <element signature="e#17953#17954#0" expanded="true" />
+                <element signature="e#18150#18151#0" expanded="true" />
+                <element signature="e#18184#18185#0" expanded="true" />
+                <element signature="e#18237#18238#0" expanded="true" />
+                <element signature="e#18274#18275#0" expanded="true" />
+                <element signature="e#18325#18326#0" expanded="true" />
+                <element signature="e#18361#18362#0" expanded="true" />
+                <element signature="e#18402#18403#0" expanded="true" />
+                <element signature="e#18444#18445#0" expanded="true" />
+                <element signature="e#18614#18615#0" expanded="true" />
+                <element signature="e#18653#18654#0" expanded="true" />
+                <element signature="e#18822#18823#0" expanded="true" />
+                <element signature="e#18856#18857#0" expanded="true" />
+                <element signature="e#18901#18902#0" expanded="true" />
+                <element signature="e#18938#18939#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -35,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ABP/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
+            <state relative-caret-position="15">
               <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
               <folding>
                 <element signature="docComment;class#Account#0" />
@@ -47,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LASER/Laser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-208">
-              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+            <state relative-caret-position="152">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2939#2940#0" expanded="true" />
@@ -61,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LASER/Block.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="375">
+              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -70,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LASER/Encryption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+            <state relative-caret-position="188">
+              <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BTA/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="226" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="150">
+              <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
               <folding>
                 <element signature="docComment;class#Transaction#0" />
                 <element signature="e#2060#2166#0" />
@@ -111,6 +132,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>applySHA</find>
+      <find>toString</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,6 +147,7 @@
         <option value="$PROJECT_DIR$/Block.java" />
         <option value="$PROJECT_DIR$/Laser.java" />
         <option value="$PROJECT_DIR$/LASER/Block.java" />
+        <option value="$PROJECT_DIR$/BTA/Transaction.java" />
         <option value="$PROJECT_DIR$/LASER/Laser.java" />
         <option value="$PROJECT_DIR$/LASER/Encryption.java" />
       </list>
@@ -213,12 +236,12 @@
       <workItem from="1550329060291" duration="2697000" />
       <workItem from="1550332515326" duration="715000" />
       <workItem from="1550333372469" duration="8871000" />
-      <workItem from="1550351000055" duration="367000" />
+      <workItem from="1550351000055" duration="6635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20450000" />
+    <option name="totallyTimeSpent" value="26718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1328" height="805" extended-state="0" />
@@ -293,7 +316,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/LucaMember/User.java</url>
-          <line>189</line>
+          <line>190</line>
           <properties class="LucaMember.User" method="calculateHoldingsValue">
             <option name="EMULATED" value="true" />
           </properties>
@@ -320,29 +343,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding>
-            <element signature="docComment;class#User#0" />
-            <element signature="e#1221#1413#0" />
-            <element signature="e#1452#1666#0" />
-            <element signature="e#1705#1802#0" />
-            <element signature="e#1842#1941#0" />
-            <element signature="e#1982#2078#0" />
-            <element signature="e#2117#2430#0" />
-            <element signature="e#2677#3217#0" />
-            <element signature="e#3383#3843#0" />
-            <element signature="e#4990#5374#0" />
-            <element signature="e#7874#8211#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ABP/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
+        <state relative-caret-position="15">
           <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
           <folding>
             <element signature="docComment;class#Account#0" />
@@ -350,17 +353,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LucaMember/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="934">
+          <caret line="112" column="78" lean-forward="true" selection-start-line="112" selection-start-column="78" selection-end-line="112" selection-end-column="78" />
+          <folding>
+            <element signature="e#17197#17198#0" expanded="true" />
+            <element signature="e#17237#17238#0" expanded="true" />
+            <element signature="e#17359#17360#0" expanded="true" />
+            <element signature="e#17390#17391#0" expanded="true" />
+            <element signature="e#17505#17506#0" expanded="true" />
+            <element signature="e#17536#17537#0" expanded="true" />
+            <element signature="e#17643#17644#0" expanded="true" />
+            <element signature="e#17675#17676#0" expanded="true" />
+            <element signature="e#17784#17785#0" expanded="true" />
+            <element signature="e#17817#17818#0" expanded="true" />
+            <element signature="e#17922#17923#0" expanded="true" />
+            <element signature="e#17953#17954#0" expanded="true" />
+            <element signature="e#18150#18151#0" expanded="true" />
+            <element signature="e#18184#18185#0" expanded="true" />
+            <element signature="e#18237#18238#0" expanded="true" />
+            <element signature="e#18274#18275#0" expanded="true" />
+            <element signature="e#18325#18326#0" expanded="true" />
+            <element signature="e#18361#18362#0" expanded="true" />
+            <element signature="e#18402#18403#0" expanded="true" />
+            <element signature="e#18444#18445#0" expanded="true" />
+            <element signature="e#18614#18615#0" expanded="true" />
+            <element signature="e#18653#18654#0" expanded="true" />
+            <element signature="e#18822#18823#0" expanded="true" />
+            <element signature="e#18856#18857#0" expanded="true" />
+            <element signature="e#18901#18902#0" expanded="true" />
+            <element signature="e#18938#18939#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LASER/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="375">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LASER/Laser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2939#2940#0" expanded="true" />
+            <element signature="e#2966#2967#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BTA/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="226" selection-start-line="226" selection-end-line="226" />
+        <state relative-caret-position="150">
+          <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
           <folding>
             <element signature="docComment;class#Transaction#0" />
             <element signature="e#2060#2166#0" />
@@ -382,22 +432,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LASER/Laser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2939#2940#0" expanded="true" />
-            <element signature="e#2966#2967#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LASER/Encryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="149" column="64" lean-forward="true" selection-start-line="149" selection-start-column="64" selection-end-line="149" selection-end-column="64" />
+        <state relative-caret-position="188">
+          <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
