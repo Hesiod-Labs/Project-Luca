@@ -3,21 +3,209 @@ import BTA.*;
 import LucaMember.User;
 
 import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Testing
 {
+    
+    Scanner commandLine = new Scanner(System.in);
+    
+    private static boolean isValidCommand(String input)
+    {
+        Command allCommands[] = Command.values();
+        int i = 0;
+        while(i < allCommands.length)
+        {
+            if(allCommands[i].name().equalsIgnoreCase(input))
+                return true;
+            else
+                i++;
+        }
+        return false;
+    }
+    
+    public enum Command
+    {
+        SHUTDOWN,
+        LOGOUT,
+        REQUEST,
+        RESOLVE,
+        ADD_USER,
+        REMOVE_USER,
+        VIEW_ALL_USERS,
+        VIEW_LOGGED_IN_USER,
+        VIEW_TRANSACTION_HISTORY,
+        VIEW_TRANSACTION_REQUESTS,
+        VIEW_ACCOUNT_BALANCE,
+        VIEW_BANK_BALANCE,
+        VIEW_PORTFOLIO_BALANCE,
+        VIEW_PORTFOLIO;
+       /*
+        private Method methodToRun;
+        
+        static {
+            try
+            {
+                REQUEST.methodToRun = User.class.getMethod("requestTransaction", Transaction.class);
+                RESOLVE.methodToRun = User.class.getMethod("resolveTransaction", Transaction.class, String.class);
+                ADD_USER.methodToRun = User.class.getMethod("addUser", User.class);
+                REMOVE_USER.methodToRun = User.class.getMethod("removeUser", User.class);
+                VIEW_ALL_USERS.methodToRun = Testing.class.getMethod("printUsersInfo");
+            }
+            catch(NoSuchMethodException nsm)
+            {
+                nsm.printStackTrace();
+            }
+        }
+        */
+    }
+    
+    private static void login()
+    {
+        ArrayList<String> userInfo = new ArrayList<>();
+        boolean run = true;
+        Scanner commandLine = new Scanner(System.in);
+        while(run)
+        {
+            System.out.println("'Existing' or 'New' user: ");
+            String userExistence = commandLine.next();
+            if(!(userExistence.equalsIgnoreCase("Existing")) &&
+                    !(userExistence.equalsIgnoreCase("New")) &&
+                    !(userExistence.equalsIgnoreCase("Shutdown")))
+            {
+                System.out.println("Please enter one of the following valid commands: "
+                        + "\n\t" + "EXISTING"
+                        + "\n\t" + "NEW"
+                        + "\n\t" + "SHUTDOWN" + "\n");
+            }
+    
+            if(userExistence.equalsIgnoreCase("New"))
+            {
+                System.out.println("What are your first, middle, and last name initials?");
+                String initials = commandLine.next();
+                userInfo.add(initials.trim());
+        
+                System.out.println("Enter your password: ");
+                String pw = commandLine.next();
+                userInfo.add(pw.trim());
+        
+                System.out.println("Provide 3 word to be used for your encryption hash (case sensitive):");
+                System.out.println("1st word: ");
+                String first = commandLine.next();
+                userInfo.add(first.trim());
+        
+                System.out.println("2nd word: ");
+                String second = commandLine.next();
+                userInfo.add(second.trim());
+        
+                System.out.println("3rd word: ");
+                String third = commandLine.next();
+                userInfo.add(third.trim());
+        
+                System.out.println("You will be set to a General User. An existing admin will update your status " +
+                        "if necessary.");
+                System.out.println("Enter contribution to the Account: ");
+                String contribution = commandLine.next();
+                userInfo.add(contribution.trim());
+        
+                new User(
+                        userInfo.get(0).substring(0, 1),
+                        userInfo.get(0).substring(1, 2),
+                        userInfo.get(0).substring(2, 3),
+                        userInfo.get(1),
+                        userInfo.get(2),
+                        userInfo.get(3),
+                        userInfo.get(4),
+                        User.UserType.GENERAL_USER,
+                        Double.parseDouble(userInfo.get(5)));
+                run = false;
+            }
+            
+            if(userExistence.equalsIgnoreCase("Existing"))
+            {
+                userInfo.clear();
+                
+                System.out.println("Username:" );
+                String username = commandLine.next();
+                userInfo.add(username.trim());
+    
+                System.out.println("Password: ");
+                String password = commandLine.next();
+                userInfo.add(password.trim());
+                
+               User[] allUsers =  Account.getAccountUsers().toArray(new User[] {});
+               
+               for(User u : allUsers)
+               {
+                   if(u.getUsername().equalsIgnoreCase(userInfo.get(0)) &&
+                           u.getPassword().equalsIgnoreCase(userInfo.get(1)))
+                   {
+                       runLuca();
+                   }
+                   else
+                   {
+                       System.out.println("User credentials do not exist within the account.");
+                   }
+               }
+            }
+        }
+        printUsersInfo();
+    }
+    
+    public static void runLuca()
+    {
+        boolean run = true;
+        Scanner commandLine = new Scanner(System.in);
+        while(run)
+        {
+            System.out.println("Enter a command: ");
+            
+            String userResponse = commandLine.next();
+            
+            if(isValidCommand(userResponse))
+            {
+                if(userResponse.equalsIgnoreCase(Command.SHUTDOWN.toString()))
+                {
+                    System.exit(0);
+                    commandLine.reset();
+                }
+                
+                if(userResponse.equalsIgnoreCase(Command.LOGOUT.toString()))
+                    login();
+            }
+            else
+            {
+                System.out.println("Please enter any of the following valid commands: ");
+                for(Command c : Command.values())
+                {
+                    System.out.println("\t" + c.toString());
+                }
+            }
+        }
+        commandLine.close();
+        System.exit(0);
+        }
+    
     public static void main(String[] args) throws InterruptedException
     {
         long starTime = System.nanoTime();
-        
+    
         /* Create an  account with a bank, portfolio, and storage for users*/
         new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
         
+        login();
+        runLuca();
+    
+        long endTime = System.nanoTime();
+        long totalTime = endTime - starTime;
+        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
+        
         /* Create a user and add it to the ABP */
-        User reqUser = new User("R", "E", "Q", "dog", "alpha", "beta", "chi", User.UserType.GENERAL_USER, 500);
-        User resUser = new User("R", "E", "S", "cat", "delta", "epsilon", "gamma", User.UserType.OFFICER, 500);
+        //User reqUser = new User("R", "E", "Q", "dog", "alpha", "beta", "chi", User.UserType.GENERAL_USER, 500);
+        //User resUser = new User("R", "E", "S", "cat", "delta", "epsilon", "gamma", User.UserType.OFFICER, 500);
         
         /* Display general ABP information */
+        /*
         printAccountInfo();
         
         printUsersInfo();
@@ -75,14 +263,12 @@ public class Testing
         printTransactionReceipt(t6);
         printAssetInfo(t6);
         
+        */
         printTransactionHistory();
         printBankBalanceHistory();
         printPortfolioHistory();
-    
-        long endTime = System.nanoTime();
-        long totalTime = endTime - starTime;
-        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
     }
+   
     
     public static void printAccountInfo()
     {
@@ -104,7 +290,8 @@ public class Testing
             System.out.println("--- USER INFORMATION ---");
             System.out.println("Username: " + user.getUsername());
             System.out.println("Password: " + user.getPassword());
-            System.out.println("Admin: " + user.getClearance());
+            System.out.println("");
+            System.out.println("Admin Status: " + user.getUserType());
             System.out.println("Total contributions: $" + user.getUserContribution().getCurrentValue() + "0");
             //System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
             System.out.println("% Holdings: " + user.calculatePctHoldings() + "%");

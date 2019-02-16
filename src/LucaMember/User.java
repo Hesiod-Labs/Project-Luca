@@ -8,6 +8,7 @@ import java.security.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * LucaMember associated with the {@link Account}. Each user has a {@link #username}, which is based on the user's first,
@@ -97,7 +98,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
         this.firstInit = first.toUpperCase();
         this.middleInit = middleInit.toUpperCase();
         this.lastInit = last.toUpperCase();
-        this.username = makeUsername(first, middleInit, last);
+        this.username = makeUsername(first.toUpperCase(), middleInit.toUpperCase(), last.toUpperCase());
         this.password = password;
         //this.runTimeHash = Encryption.applySHA256(w1 + w2 + w3);
         //KeyPair kp = Encryption.generateKeyPair();
@@ -129,10 +130,10 @@ public class User //TODO Consider separating non-admin and admin users as two su
         userArray[0] = first;
         userArray[1] = middle;
         userArray[2] = last;
-        userArray[3] = "1";
-        userArray[4] = "2";
-        userArray[5] = "3";
-        /*
+        //userArray[3] = "1";
+        //userArray[4] = "2";
+        //userArray[5] = "3";
+        
         Random randomGen = new Random(); // To generate the three random numbers following the user initials.
     
         // Generates three random numbers and adds them to userArray. Numbers generated are between 0 and 9.
@@ -140,7 +141,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
             int num = randomGen.nextInt(9);
             userArray[i] = Integer.toString(num);
         });
-        */
+        
     
         // To concatenate the initials and numbers.
         StringBuilder nameBuilder = new StringBuilder();
@@ -225,7 +226,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
             {
                 // Otherwise, add the request to the list of requests.
                 request.addTransactionRequest();
-                //LASER.Laser.validateTransaction();
+                //Laser.validateTransaction();
             }
             
         }
@@ -471,6 +472,11 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public Balance getUserBalance()
     {
         return userBalance;
+    }
+    
+    public UserType getUserType()
+    {
+        return this.clearance;
     }
     
     /**
