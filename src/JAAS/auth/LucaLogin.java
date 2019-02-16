@@ -84,7 +84,7 @@ public class LucaLogin
             System.out.println("\t" + p.toString());
         }
     
-        System.out.println("User has " + loggedInSubject.getPublicCredentials().size() + " Public Credential(s)");
+        System.out.println("LucaMember has " + loggedInSubject.getPublicCredentials().size() + " Public Credential(s)");
         
         System.exit(0);
     }

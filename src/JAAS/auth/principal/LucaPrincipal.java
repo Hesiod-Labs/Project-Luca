@@ -56,7 +56,7 @@ public class LucaPrincipal implements Principal, java.io.Serializable
      */
     public String toString()
     {
-        return ("SamplePrincipal:  " + name);
+        return ("LucaPrincipal:  " + name);
     }
     
     /**

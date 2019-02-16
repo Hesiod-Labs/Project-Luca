@@ -1,3 +1,7 @@
+import ABP.*;
+import BTA.*;
+import LucaMember.User;
+
 import java.time.format.DateTimeFormatter;
 
 public class Testing
@@ -9,11 +13,13 @@ public class Testing
         /* Create an  account with a bank, portfolio, and storage for users*/
         new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
         
-        /* Create a user and add it to the Account */
-        User reqUser = new User("R", "E", "Q", "dog", false, 1000);
-        User resUser = new User("R", "E", "S", "cat", true, 1000);
+        /* Create a user and add it to the ABP */
+        User reqUser = new User("R", "E", "Q", "dog", "alpha", "beta", "chi", User.UserType.GENERAL_USER, 500);
+        User resUser = new User("R", "E", "S", "cat", "delta", "epsilon", "gamma", User.UserType.OFFICER, 500);
         
-        /* Display general Account information */
+        User.class.getMethod("requestTransaction", Transaction.class).
+        
+        /* Display general ABP information */
         printAccountInfo();
         
         printUsersInfo();
@@ -100,7 +106,7 @@ public class Testing
             System.out.println("--- USER INFORMATION ---");
             System.out.println("Username: " + user.getUsername());
             System.out.println("Password: " + user.getPassword());
-            System.out.println("Admin: " + user.getPermissionStatus());
+            System.out.println("Admin: " + user.getClearance());
             System.out.println("Total contributions: $" + user.getUserContribution().getCurrentValue() + "0");
             //System.out.println("% Holdings: " + user.roundToThree(user.calculatePctHoldings()) + "%");
             System.out.println("% Holdings: " + user.calculatePctHoldings() + "%");

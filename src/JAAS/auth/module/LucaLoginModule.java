@@ -1,5 +1,6 @@
-package auth.module;
+package JAAS.auth.module;
 
+import LucaMember.User;
 import auth.principal.LucaPrincipal;
 
 import javax.security.auth.Subject;
@@ -137,24 +138,30 @@ public class LucaLoginModule implements LoginModule
         // verify the username/password
         boolean usernameCorrect = false;
         boolean passwordCorrect = false;
-        if(username.equals("testUser"))
-            usernameCorrect = true;
-        if(usernameCorrect &&
-                password.length == 12 &&
-                password[0] == 't' &&
-                password[1] == 'e' &&
-                password[2] == 's' &&
-                password[3] == 't' &&
-                password[4] == 'P' &&
-                password[5] == 'a' &&
-                password[6] == 's' &&
-                password[7] == 's' &&
-                password[8] == 'w' &&
-                password[9] == 'o' &&
-                password[10] == 'r' &&
-                password[11] == 'd')
+        int userIndex = 0;
+        User[] allUsers = new User[ABP.Account.getAccountUsers().size()];
+        User admin = new User("A", "D", "M", "admin", "a", "d", "m", User.UserType.SYSTEM_ADMIN, 0);
+        User ryan = new User("R", "D", "T", "running", "r", "d", "t", User.UserType.GENERAL_USER, 500);
+        admin.addUser(ryan);
+        ABP.Account.getAccountUsers().toArray(allUsers);
+        for(int i = 0; i < allUsers.length - 1; i++)
         {
-            
+            if(allUsers[i].getUsername().equalsIgnoreCase(username))
+            {
+                userIndex = i;
+                usernameCorrect = true;
+            }
+        }
+        
+        int numErrorsInPW = 0;
+        for(int j = 0; j < password.length - 1; j++)
+        {
+            if(password[j] != allUsers[userIndex].getPassword().charAt(j))
+                numErrorsInPW++;
+        }
+        
+        if(usernameCorrect && password.length == allUsers[userIndex].getPassword().length() && numErrorsInPW == 0)
+        {
             // authentication succeeded!!!
             passwordCorrect = true;
             if(debug)
@@ -177,7 +184,7 @@ public class LucaLoginModule implements LoginModule
             password = null;
             if(!usernameCorrect)
             {
-                throw new FailedLoginException("User Name Incorrect");
+                throw new FailedLoginException("LucaMember Name Incorrect");
             }
             else
             {

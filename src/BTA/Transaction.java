@@ -1,21 +1,26 @@
+package BTA;
+
+import ABP.*;
+import LucaMember.User;
+
 import java.security.*;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
 /**
  * Essentially, a movement of funds of funds between any two account entities, whether that is between the user and the
- * bank, or the bank and the portfolio. Every {@link User} must first request a transaction, before the funds are
- * reallocated. An admin {@link User} is able to resolve the transaction such that the funds or asset associated with
- * the transaction is either approved or denied. Also, an admin {@link User} who requests a transaction is able to
- * resolve the transaction immediately. In either case, to request or to resolve, the {@link User} is asked to confirm
- * the decision to help minimize accidental {@link User} action, particularly when resolving a transaction.
- * <p>When a transaction is first requested, the request {@link User}, the amount, the date and time requested,
+ * bank, or the bank and the portfolio. Every {@link LucaMember} must first request a transaction, before the funds are
+ * reallocated. An admin {@link LucaMember} is able to resolve the transaction such that the funds or asset associated with
+ * the transaction is either approved or denied. Also, an admin {@link LucaMember} who requests a transaction is able to
+ * resolve the transaction immediately. In either case, to request or to resolve, the {@link LucaMember} is asked to confirm
+ * the decision to help minimize accidental {@link LucaMember} action, particularly when resolving a transaction.
+ * <p>When a transaction is first requested, the request {@link LucaMember}, the amount, the date and time requested,
  * the type of transaction, the status of the transaction, and the transaction ID are set. By default, the status
- * of a requested transaction is set to <code>OPEN</code>. If the {@link User} requesting the transaction is a
+ * of a requested transaction is set to <code>OPEN</code>. If the {@link LucaMember} requesting the transaction is a
  * non-admin, the request is added to the list of requests ({@link Account}) to be resolved.</p>
- * <p>When a transaction is resolved by an admin {@link User} the {@link #resolveUser}, {@link #resolveDate}, and the
+ * <p>When a transaction is resolved by an admin {@link LucaMember} the {@link #resolveUser}, {@link #resolveDate}, and the
  * {@link #transactionStatus} are updated. If the status is set to <code>DENIED</code>, the request is removed from the
- * list of transaction requests (if requested by a non-admin {@link User}) and added to the transaction history
+ * list of transaction requests (if requested by a non-admin {@link LucaMember}) and added to the transaction history
  * ({@link Account}) without any funds being reallocated. If transaction is neither <code>DENIED</code> nor
  * <code>CANCELLED</code> (set when either the request or resolution is being made, the funds or {@link Asset}
  * associated with transaction are processed, and the appropriate {@link Balance}(s) are updated.</p>
@@ -25,12 +30,12 @@ import java.util.Scanner;
 public class Transaction
 {
     /**
-     * {@link User} requesting a transaction that can be be either an admin or non-admin
+     * {@link LucaMember} requesting a transaction that can be be either an admin or non-admin
      */
     private User requestUser;
     
     /**
-     * Admin {@link User} acting upon a requested transaction.
+     * Admin {@link LucaMember} acting upon a requested transaction.
      */
     private User resolveUser;
     
@@ -52,16 +57,16 @@ public class Transaction
     /**
      * Status is default set to <code>OPEN</code> when the transaction is requested. When the admin {@link #resolveUser}
      * resolves the transaction to go through, the status is updated corresponding to the type of transaction
-     * ({@link #getMatchingStatus()}. When either requesting or resolving the transaction, the {@link User} can decide
-     * to abandon the transaction, in which case the status is set to <code>CANCELLED</code>. If the admin {@link User}
+     * ({@link #getMatchingStatus()}. When either requesting or resolving the transaction, the {@link LucaMember} can decide
+     * to abandon the transaction, in which case the status is set to <code>CANCELLED</code>. If the admin {@link LucaMember}
      * decides to decline the transaction, the status is set to <code>DECLINED</code>.
      * <ul>
      *     <li><code>OPEN</code>: transaction was requested, but not acted upon (default).</li>
-     *     <li><code>CANCELLED</code>: {@link User} decides to not process the transaction. </li>
-     *     <li><code>DENIED</code>: transaction was requested, but was not approved by the admin {@link User}.</li>
+     *     <li><code>CANCELLED</code>: {@link LucaMember} decides to not process the transaction. </li>
+     *     <li><code>DENIED</code>: transaction was requested, but was not approved by the admin {@link LucaMember}.</li>
      *     <li><code>DEPOSITED</code>: funds have been added to the {@link Bank}.</li>
      *     <li><code>WITHDRAWN</code>: funds have been removed from the {@link Bank} and transferred to the
-     *     {@link User}(s).</li>
+     *     {@link LucaMember}(s).</li>
      *     <li><code>BOUGHT</code>: buy-order transaction was requested, the {@link Asset} has been acquired, and added
      *     to the {@link Portfolio}.</li>
      *     <li><code>SOLD</code>: sell-order transaction was requested, the {@link Asset} has been liquidated, and
@@ -150,8 +155,9 @@ public class Transaction
     }
     
     /**
-     * Requires that the {@link User} confirms the action to either request or resolve a transaction.
+     * Requires that the {@link LucaMember} confirms the action to either request or resolve a transaction.
      * @return <code>true</code> if response is "yes," and <code>false</code> if "no."
+     * \\TODO Change to while loop
      */
     public boolean confirmAction()
     {
@@ -168,7 +174,7 @@ public class Transaction
     }
     
     /**
-     * Default is <code>OPEN</code>. Updated when the admin {@link User} resolves the transaction.
+     * Default is <code>OPEN</code>. Updated when the admin {@link LucaMember} resolves the transaction.
      */
     public enum Status
     {
@@ -188,8 +194,8 @@ public class Transaction
     
     /**
      * //TODO Consider changing the resolveTransaction
-     * Used when an admin {@link User} is requesting a transaction. Since an admin {@link User} can request and resolve
-     * transactions immediately, to is more efficient and less prone to {@link User} error if the status of the
+     * Used when an admin {@link LucaMember} is requesting a transaction. Since an admin {@link LucaMember} can request and resolve
+     * transactions immediately, to is more efficient and less prone to {@link LucaMember} error if the status of the
      * transaction is updated to match the type of transaction as opposed to entering the updated status when resolving
      * it.
      * @return Status corresponding to the type of the transaction. Useful for automatically updating the status of
@@ -236,7 +242,7 @@ public class Transaction
     }
     
     /**
-     * @return {@link User} that requested the transaction.
+     * @return {@link LucaMember} that requested the transaction.
      */
     public User getRequestUser()
     {
@@ -244,7 +250,7 @@ public class Transaction
     }
     
     /**
-     * @return {@link User} that resolves the requested transaction. Can only be admin users.
+     * @return {@link LucaMember} that resolves the requested transaction. Can only be admin users.
      */
     public User getResolveUser()
     {
@@ -336,8 +342,8 @@ public class Transaction
     }
     
     /**
-     * Sets the {@link User} who requests the transaction.
-     * @param reqUser {@link User} who requests the transaction.
+     * Sets the {@link LucaMember} who requests the transaction.
+     * @param reqUser {@link LucaMember} who requests the transaction.
      */
     public void setRequestUser(User reqUser)
     {
@@ -345,8 +351,8 @@ public class Transaction
     }
     
     /**
-     * Sets the {@link User} who resolves the transaction. Can only be an admin {@link User}.
-     * @param adminUser {@link User} who resolves the transaction.
+     * Sets the {@link LucaMember} who resolves the transaction. Can only be an admin {@link LucaMember}.
+     * @param adminUser {@link LucaMember} who resolves the transaction.
      */
     public void setResolveUser(User adminUser)
     {
@@ -390,15 +396,6 @@ public class Transaction
         this.transactionStatus = status;
     }
     
-    /**
-     * Sets the type of the transaction.
-     * @param type If banking-related, either <code>DEPOSIT</code> or <code>WITHDRAW</code>. If trading-related,
-     *             <code>BUY</code>, <code>SELL</code>, <code>SHORT</code>, or <code>COVER</code>.
-     */
-    public void setTransactionType(Type type)
-    {
-        this.transactionType = type;
-    }
     
     /**
      * Sets the date-time numerical identifier of the transaction based on the instant the transaction is requested.
@@ -429,10 +426,6 @@ public class Transaction
         this.timestamp = timestamp;
     }
     
-    public void setTransactionAsset(Asset transactionAsset)
-    {
-        this.transactionAsset = transactionAsset;
-    }
     
     public void setTransactionData(String transactionData)
     {

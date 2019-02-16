@@ -1,9 +1,13 @@
+package BTA;
+
+import ABP.*;
+
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Stack;
 
 /** Contains information about current and past values of an entity, the {@link Transaction} associated with each value,
- * and date and time in which the value was current. The {@link User}, {@link Portfolio}, and {@link Bank} all have
+ * and date and time in which the value was current. The {@link LucaMember}, {@link Portfolio}, and {@link Bank} all have
  * separate balances that are updated in accordance with the transaction(s) that are requested and subsequently
  * resolved. All balance statements are stored in a {@link Stack} such that the current balance statement is on top.
  */

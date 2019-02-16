@@ -1,3 +1,8 @@
+package ABP;
+
+import BTA.*;
+import LucaMember.User;
+
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -5,9 +10,9 @@ import java.util.*;
 /**
  * An account within the Luca application. Each account has an associated {@link Bank},where funds not currently
  * invested are allocated. Each account has a {@link Portfolio}, which can contain owned {@link Asset}(s) and funds
- * actively used for investing. Each account has at least one {@link User} that can actively request transactions
+ * actively used for investing. Each account has at least one {@link LucaMember} that can actively request transactions
  * ({@link User#requestTransaction(Transaction)}) between the bank and the user, and between the bank and the
- * portfolio. A user with admin permissions ({@link User#getPermissionStatus()}) can act on requested transactions by
+ * portfolio. A user with admin permissions ({@link User#getClearance()} ()}) can act on requested transactions by
  * "resolving" ({@link User#resolveTransaction(Transaction, String)}), such that the transaction is either denied
  * or the funds associated with transaction are allocated appropriately. An account, user(s), bank, and portfolio
  * all have an associated {@link Balance}, which represents both the current amount of funds belonging to that
@@ -22,25 +27,28 @@ public class Account
     //TODO Look into FIFO and LIFO when calculating account balance
     /**
      * Sum of funds belonging to bank and the bank and portfolio.
+     *
      * @see Balance
      */
     private static Balance accountBalance;
     
     /**
      * Holds funds not for investing and has an associated balance.
+     *
      * @see Bank
      */
     private static Bank accountBank;
     
     /**
      * Can hold owned asset(s) and has an associated balance investing.
+     *
      * @see Portfolio
      */
     private static Portfolio accountPortfolio;
     
     /**
      * A list of {@link Transaction}s that have been requested, but have not yet been resolved. A
-     * {@link Transaction} requested by a non-admin {@link User} is automatically added to the list, but only
+     * {@link Transaction} requested by a non-admin {@link LucaMember} is automatically added to the list, but only
      * optionally added if requested by an admin user.
      * //TODO Add the option for an admin user to add to this list if the transaction should be resolved at a later time
      */
@@ -63,17 +71,19 @@ public class Account
     
     /**
      * All users associated with the account.
-     * @see User
+     *
+     * @see LucaMember
      */
     private static ArrayList<User> accountUsers;
     
     /**
      * Creates an account with an existing balance, bank, portfolio, and user(s).
-     * @param name Name designated to the account by the account owner. //TODO Consider adding an account OWNER
+     *
+     * @param name          Name designated to the account by the account owner. //TODO Consider adding an account OWNER
      * @param initialAmount Total funds in the account that is located in either the bank, portfolio, or both.
-     * @param b Bank associated with account. Holds funds not used for trading assets.
-     * @param users All users who are associated with the account.
-     * @param port Portfolio associated with the account. Holds owned assets and funds for trading.
+     * @param b             Bank associated with account. Holds funds not used for trading assets.
+     * @param users         All users who are associated with the account.
+     * @param port          Portfolio associated with the account. Holds owned assets and funds for trading.
      */
     public Account(String name, Balance initialAmount, Bank b, ArrayList<User> users, Portfolio port)
     {
@@ -83,12 +93,15 @@ public class Account
         accountUsers = users;
         accountPortfolio = port;
         timeCreated = ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS);
+        
+        //TODO For testing Login
     }
     
     /**
      * Creates an account, empty balance, and empty portfolio, all with names.
-     * @param accName Name of the account.
-     * @param bankName Name of the bank.
+     *
+     * @param accName       Name of the account.
+     * @param bankName      Name of the bank.
      * @param portfolioName Name of the portfolio.
      */
     public Account(String accName, String bankName, String portfolioName)
@@ -99,20 +112,12 @@ public class Account
     /**
      * Creates an account with only a name, and an empty balance, bank, and portfolio, and no user.
      * Not recommended to use if it is important to have names associated with the bank and portfolio.
+     *
      * @param accName Name of the account.
      */
     public Account(String accName)
     {
         this(accName, new Balance(), new Bank(), new ArrayList<User>(), new Portfolio());
-    }
-    
-    /**
-     * Returns the net value of the account based on the current balances of the bank and portfolio.
-     * @return Overall dollar value of the account.
-     */
-    public double getCurrentAccountValue()
-    {
-        return Bank.getBankBalance().getCurrentValue() + Portfolio.getPortfolioBalance().getCurrentValue();
     }
     
     /**
@@ -122,24 +127,6 @@ public class Account
     public static Balance getAccountBalance()
     {
         return accountBalance;
-    }
-    
-    /**
-     * @return Bank associated with the account.
-     * @see Bank
-     */
-    public static Bank getAccountBank()
-    {
-        return accountBank;
-    }
-    
-    /**
-     * @return Portfolio associated with the account.
-     * @see Portfolio
-     */
-    public static Portfolio getAccountPortfolio()
-    {
-        return accountPortfolio;
     }
     
     /**
@@ -163,7 +150,7 @@ public class Account
     
     /**
      * @return List of users associated with the account.
-     * @see User
+     * @see LucaMember
      */
     public static ArrayList<User> getAccountUsers()
     {
@@ -176,74 +163,5 @@ public class Account
     public static String getAccountName()
     {
         return accountName;
-    }
-    
-    /**
-     * @return Date and time in which the account is created. Timezone set to America/New York.
-     */
-    public static ZonedDateTime getTimeCreated()
-    {
-        return timeCreated;
-    }
-    
-    /**
-     * Sets the balance of the account.
-     * WARNING: DO NOT USE UNLESS THE ACCOUNT DOES NOT ALREADY HAVE A BALANCE. OTHERWISE, ALL PAST TRANSACTIONS
-     * WILL BE LOST SINCE ALL TRANSACTIONS ARE TIED TO THE BALANCE OBJECT.
-     * @param accountBalance {@link Balance} of the account, which contains balances of {@link Bank} and {@link Portfolio}.
-     */
-    public static void setAccountBalance(Balance accountBalance)
-    {
-        Account.accountBalance = accountBalance;
-    }
-    
-    /**
-     * Sets the bank of the account.
-     * <p>WARNING: DO NOT USE UNLESS THE ACCOUNT DOES NOT ALREADY HAVE A BANK.</p>
-     * @param bank {@link Bank} associated with the account.
-     */
-    public static void setAccountBank(Bank bank)
-    {
-        Account.accountBank = bank;
-    }
-    
-    /**
-     * Sets the portfolio of the account.
-     * <p>WARNING: DO NOT USE UNLESS THE ACCOUNT DOES NOT ALREADY HAVE A PORTFOLIO.</p>
-     * @param portfolio {@link Portfolio} associated with the account.
-     */
-    public static void setAccountPortfolio(Portfolio portfolio)
-    {
-        Account.accountPortfolio = portfolio;
-    }
-    
-    /**
-     * Sets the list of users associated with the account.
-     * <p>WARNING: DO NOT USE UNLESS THE ACCOUNT DOES NOT ALREADY HAVE USERS.</p>
-     * @param allUsers Any {@link User} who is active in the account.
-     */
-    public static void setAccountUsers(ArrayList<User> allUsers)
-    {
-        Account.accountUsers = allUsers;
-    }
-    
-    /**
-     * Sets the name of the account.
-     * <p>WARNING: DO NOT USE UNLESS THE ACCOUNT DOES NOT ALREADY HAVE A NAME.</p>
-     * @param accountName Name designated to the account.
-     */
-    public static void setAccountName(String accountName)
-    {
-        Account.accountName = accountName;
-    }
-    
-    /**
-     * Sets the date and time in which the account was created. Timezone set to America/New York.
-     * <p>WARNING: DO NOT USE UNLESS THE ACCOUNT THE TIME IN WHICH THE COUNT WAS CREATED IS INCORRECT.</p>
-     * @param timeCreated Date and time in which the account is created.
-     */
-    public static void setTimeCreated(ZonedDateTime timeCreated)
-    {
-        Account.timeCreated = timeCreated;
     }
 }
