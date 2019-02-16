@@ -382,7 +382,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public enum UserType
     {
         SYSTEM_ADMIN (4), OFFICER (3), SECTOR_HEAD (2), GENERAL_USER (1);
-        
+
         private int rank;
         UserType(int rank)
         {
@@ -569,4 +569,6 @@ public class User //TODO Consider separating non-admin and admin users as two su
     {
         this.userPublicKey = userPublicKey;
     }
+
+    public String getRunTimeHash() { return this.runTimeHash; }
 }

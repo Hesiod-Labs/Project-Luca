@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/emacs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Laser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/User.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#995#996#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1056#1057#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Encryption.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Laser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#445#446#0" expanded="true" />
+                <element signature="e#490#491#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JAAS/auth/module/LucaLoginModule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#LucaLoginModule#0" />
+                <element signature="docComment;method#initialize#0;class#LucaLoginModule#0" />
+                <element signature="docComment;method#login#0;class#LucaLoginModule#0" />
+                <element signature="docComment;method#commit#0;class#LucaLoginModule#0" />
+                <element signature="docComment;method#abort#0;class#LucaLoginModule#0" />
+                <element signature="docComment;method#logout#0;class#LucaLoginModule#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="551" selection-start-line="551" selection-end-line="551" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#User#0" />
+                <element signature="e#1054#1246#0" />
+                <element signature="e#1285#1499#0" />
+                <element signature="e#1538#1635#0" />
+                <element signature="e#1675#1774#0" />
+                <element signature="e#1815#1911#0" />
+                <element signature="e#1950#2263#0" />
+                <element signature="e#2349#2462#0" />
+                <element signature="e#2510#3050#0" />
+                <element signature="e#3216#3676#0" />
+                <element signature="e#4814#5198#0" />
+                <element signature="e#6704#6883#0" />
+                <element signature="e#7597#7934#0" />
+                <element signature="e#9621#9880#0" />
+                <element signature="e#17369#17426#0" />
+                <element signature="e#17505#17644#0" />
+                <element signature="e#17991#18104#0" />
+                <element signature="e#18200#18317#0" />
+                <element signature="e#18403#18501#0" />
+                <element signature="e#18596#18696#0" />
+                <element signature="e#18793#18889#0" />
+                <element signature="e#18982#19282#0" />
+                <element signature="e#19383#19479#0" />
+                <element signature="e#19580#19834#0" />
+                <element signature="e#19954#20269#0" />
+                <element signature="e#20415#20685#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="501">
+              <caret line="442" column="36" selection-start-line="442" selection-start-column="36" selection-end-line="442" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Transaction#0" />
+                <element signature="e#1953#2053#0" />
+                <element signature="e#2093#2167#0" />
+                <element signature="e#2207#2455#0" />
+                <element signature="e#2503#2595#0" />
+                <element signature="e#2644#2755#0" />
+                <element signature="e#2799#4578#0" />
+                <element signature="e#4631#5006#0" />
+                <element signature="e#5050#5199#0" />
+                <element signature="e#5245#5438#0" />
+                <element signature="e#5677#5920#0" />
+                <element signature="e#6145#6539#0" />
+                <element signature="e#7469#7669#0" />
+                <element signature="e#8211#8321#0" />
+                <element signature="e#8452#8770#0" />
+                <element signature="e#8864#9471#0" />
+                <element signature="e#10000#10088#0" />
+                <element signature="e#10201#10395#0" />
+                <element signature="e#10514#10611#0" />
+                <element signature="e#10726#10797#0" />
+                <element signature="e#10880#10985#0" />
+                <element signature="e#11068#11266#0" />
+                <element signature="e#11363#11502#0" />
+                <element signature="e#11594#11732#0" />
+                <element signature="e#11824#11885#0" />
+                <element signature="e#11982#12069#0" />
+                <element signature="e#12160#12256#0" />
+                <element signature="e#12345#12440#0" />
+                <element signature="e#12949#13084#0" />
+                <element signature="e#13187#13359#0" />
+                <element signature="e#13466#13601#0" />
+                <element signature="e#13716#13882#0" />
+                <element signature="e#14002#14175#0" />
+                <element signature="e#14295#14567#0" />
+                <element signature="e#14682#14946#0" />
+                <element signature="e#15051#15228#0" />
+                <element signature="e#16043#16044#0" expanded="true" />
+                <element signature="e#16071#16072#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Transaction.java" />
+        <option value="$PROJECT_DIR$/Encryption.java" />
+        <option value="$PROJECT_DIR$/Block.java" />
+        <option value="$PROJECT_DIR$/User.java" />
+        <option value="$PROJECT_DIR$/Laser.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1328" />
+    <option name="height" value="805" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JAAS" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="LucaLogin.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550288585240" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.postfix.templates" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fce9f45c-28bd-45dd-9555-17d160745df3" name="Default Changelist" comment="" />
+      <created>1550170362537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550170362537</updated>
+      <workItem from="1550170363895" duration="1204000" />
+      <workItem from="1550261102892" duration="795000" />
+      <workItem from="1550281128444" duration="5801000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7800000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1328" height="805" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25738725" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.13183731" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25738725" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.13183731" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/JAAS/auth/module/LucaLoginModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#LucaLoginModule#0" />
+            <element signature="docComment;method#initialize#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#login#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#commit#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#abort#0;class#LucaLoginModule#0" />
+            <element signature="docComment;method#logout#0;class#LucaLoginModule#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="442" column="36" selection-start-line="442" selection-start-column="36" selection-end-line="442" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Transaction#0" />
+            <element signature="e#1953#2053#0" />
+            <element signature="e#2093#2167#0" />
+            <element signature="e#2207#2455#0" />
+            <element signature="e#2503#2595#0" />
+            <element signature="e#2644#2755#0" />
+            <element signature="e#2799#4578#0" />
+            <element signature="e#4631#5006#0" />
+            <element signature="e#5050#5199#0" />
+            <element signature="e#5245#5438#0" />
+            <element signature="e#5677#5920#0" />
+            <element signature="e#6145#6539#0" />
+            <element signature="e#7469#7669#0" />
+            <element signature="e#8211#8321#0" />
+            <element signature="e#8452#8770#0" />
+            <element signature="e#8864#9471#0" />
+            <element signature="e#10000#10088#0" />
+            <element signature="e#10201#10395#0" />
+            <element signature="e#10514#10611#0" />
+            <element signature="e#10726#10797#0" />
+            <element signature="e#10880#10985#0" />
+            <element signature="e#11068#11266#0" />
+            <element signature="e#11363#11502#0" />
+            <element signature="e#11594#11732#0" />
+            <element signature="e#11824#11885#0" />
+            <element signature="e#11982#12069#0" />
+            <element signature="e#12160#12256#0" />
+            <element signature="e#12345#12440#0" />
+            <element signature="e#12949#13084#0" />
+            <element signature="e#13187#13359#0" />
+            <element signature="e#13466#13601#0" />
+            <element signature="e#13716#13882#0" />
+            <element signature="e#14002#14175#0" />
+            <element signature="e#14295#14567#0" />
+            <element signature="e#14682#14946#0" />
+            <element signature="e#15051#15228#0" />
+            <element signature="e#16043#16044#0" expanded="true" />
+            <element signature="e#16071#16072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Encryption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="551" selection-start-line="551" selection-end-line="551" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#User#0" />
+            <element signature="e#1054#1246#0" />
+            <element signature="e#1285#1499#0" />
+            <element signature="e#1538#1635#0" />
+            <element signature="e#1675#1774#0" />
+            <element signature="e#1815#1911#0" />
+            <element signature="e#1950#2263#0" />
+            <element signature="e#2349#2462#0" />
+            <element signature="e#2510#3050#0" />
+            <element signature="e#3216#3676#0" />
+            <element signature="e#4814#5198#0" />
+            <element signature="e#6704#6883#0" />
+            <element signature="e#7597#7934#0" />
+            <element signature="e#9621#9880#0" />
+            <element signature="e#17369#17426#0" />
+            <element signature="e#17505#17644#0" />
+            <element signature="e#17991#18104#0" />
+            <element signature="e#18200#18317#0" />
+            <element signature="e#18403#18501#0" />
+            <element signature="e#18596#18696#0" />
+            <element signature="e#18793#18889#0" />
+            <element signature="e#18982#19282#0" />
+            <element signature="e#19383#19479#0" />
+            <element signature="e#19580#19834#0" />
+            <element signature="e#19954#20269#0" />
+            <element signature="e#20415#20685#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Laser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>src</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
