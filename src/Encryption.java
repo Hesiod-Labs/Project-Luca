@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.LinkedList;
 
 
 // TRY CATCH SHOULD NOT BE VERSION CONTROL IT IS NOT GOOD PRACTICE
@@ -13,11 +12,11 @@ import java.util.LinkedList;
 //One and Two way encryption and signature functions for the LASER protocol
 public class Encryption {
     // utilizing secure hashing algorithm 256 bit for ONE WAY encryption
-    public static String applySHA256(String trx) {
+    protected static String applySHA256(String trx) {
         try { // try catch should not be used as version control
             MessageDigest encrypted = MessageDigest.getInstance("SHA-256");
             byte[] hash = encrypted.digest(trx.getBytes("UTF-8"));
-            StringBuffer hexHash = new StringBuffer();
+            StringBuilder hexHash = new StringBuilder();
             for (byte hash1 : hash) {
                 String hexChar = Integer.toHexString(0xff & (int) hash1);
                 if (hexChar.length() == 1) {
@@ -33,9 +32,9 @@ public class Encryption {
     }
 
     // an Address signs a transaction with its private key
-    public static byte[] applySignature(PrivateKey privateKey, String input) {
+    private static byte[] applySignature(PrivateKey privateKey, String input) {
         Signature dsa;
-        byte[] sig = new byte[0];
+        byte[] sig;
         try { // try catch should not be used as version control
             dsa = Signature.getInstance("DSA", "SUN");
             dsa.initSign(privateKey);
@@ -115,13 +114,12 @@ public class Encryption {
     }
 
     // generates a key pair for a given address
-    public static KeyPair generateKeyPair() {
+    private static KeyPair generateKeyPair() {
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
             SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
             keyGen.initialize(1024, random);
-            KeyPair keyPair = keyGen.generateKeyPair();
-            return keyPair;
+            return keyGen.generateKeyPair();
         }
         catch(Exception e) {
             throw new RuntimeException(e);

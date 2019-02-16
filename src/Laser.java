@@ -1,32 +1,31 @@
-import java.security.*;
 import java.util.ArrayList;
-import java.security.MessageDigest;
-import java.security.*;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Scanner;
+
 
 //L.A.S.E.R.: Luca Auditing Security Enterprise Repository
 public class Laser {
 
-  public boolean checkPermission(Transaction request, Address user) {
-    // if the correct boolean is met then allow the access to specifc keys
-    return false;
+  public static ArrayList<Block> blockchain = new ArrayList<>();
+
+  // in response to the system admin confirming the ability to make a certain transactions
+  public static boolean checkPermission(User user, int clearance) {
+    return user.getClearance() > clearance;
   }
 
   //Verifies who the original requesting user using the signature, data, and public key without translating the data itself
   public static boolean verifiySignature(Transaction trx) {
-    return Encryption.verifyECDSASig(trx.publicKey, trx.transactionData, trx.getSignature());
-  }
-  
-  public boolean verifyRuntimeHash() {
-    // how to request three words input from the user
-    //verify that the three words are in deed hashed to be the runtime hash
-    // SHA 256 hash the username, pw, and three prompted words
-    return true
+    return Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature());
   }
 
-  public static ArrayList<Block> blockchain = new ArrayList<Block>();
+  public static boolean verifyRuntimeHash(User user) {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Confirm Identity: ");
+    String threeWords = scan.next();
+    if (Encryption.applySHA256(threeWords).equals(user.getRunTimeHash())) {
+      return true;
+    }
+    else return false;
+  }
 
   //checks the validity of the blockchian after every block add
   public static boolean isChainValid() {
@@ -37,21 +36,22 @@ public class Laser {
       currentBlock = blockchain.get(index);
       previousBlock = blockchain.get(index - 1);
       //compare registered hash and calculated hash:
-      if (!currentBlock.currentHash.equals(Encryption.applySHA256(currentBlock.previousHash
-              + Long.toString(currentBlock.timestamp) + currentBlock.transaction.toString())) {
+      if (!(currentBlock.getCurrentHash()).equals(Encryption.applySHA256(currentBlock.getPreviousHash()
+              + Long.toString(currentBlock.getTimestamp()) + currentBlock.getTransaction()))) {
         return false;
       }
       //compare previous hash and registered previous hash
-      if (!previousBlock.currentHash.equals(currentBlock.previousHash)) {
+      if (!(previousBlock.getCurrentHash().equals(currentBlock.getPreviousHash()))) {
         return false;
       }
     }
     return true;
   }
 
-    //adds a new block to the blockchain
-    public static void addBlock(Block newBlock) {
-      blockchain.add(newBlock);
+  public static boolean createGenesisBlock() {
+    Block block = new Block(new Transaction(0, "BUY"), "Genesis Block", System.currentTimeMillis());
+    blockchain.add(block);
+    return true;
   }
 }
 

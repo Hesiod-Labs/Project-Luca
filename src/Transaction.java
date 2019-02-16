@@ -438,5 +438,10 @@ public class Transaction
     {
         this.transactionData = transactionData;
     }
+
+    public String toString(){
+        return this.transactionData;
+    }
+
 }
 

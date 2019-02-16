@@ -3,30 +3,40 @@ import java.util.ArrayList;
 
 public class Block {
   
-  public String hash;
-  public String previousHash;
-  private Enterprise transaction;
-  private long timestamp; //as number of milliseconds since 1/1/1970.
+  private String currentHash;
+  private String previousHash;
+  private Transaction trx;
+  private long timestamp;
   
   //Block Constructor, will take a specific kind of Transaction
-  public Block(Transaction trx, String previousHash, long mineTime) {
-    this.transaction = instance;
+  public Block(Transaction trx, String previousHash, long timestamp) {
     this.previousHash = previousHash;
-    this.timestamp = mineTime;
-    this.currentHash = Encryption.applySHA256(previousHash + Long.toString(timestamp) + transaction.toString());
+    this.trx = trx;
+    this.timestamp = timestamp;
+    this.currentHash = Encryption.applySHA256(previousHash + " " + String.valueOf(timestamp) + " " + trx.toString());
   }
   
   //approve or deny the transaction based on a permissioned status
-  public boolean validateTransaction(Enterprise instance) {
+  public boolean validateTransaction(Transaction trx) {
     //if certain characterisitcs are possessed or criteria is retained
     //then begin the creation of the block for the blockchain
     //else return an error statement
     return true;
   }
-  
-  //Add transactions to this block if its valid
-  public boolean addTransaction(Transaction trx) {
-    //add if its the second block or if the transaction was properly processed
-    return true;
+
+  public String getCurrentHash() {
+    return this.currentHash;
+  }
+
+  public String getPreviousHash() {
+    return this.previousHash;
+  }
+
+  public long getTimestamp() {
+    return this.timestamp;
+  }
+
+  public String getTransaction() {
+    return this.trx.toString();
   }
 }
