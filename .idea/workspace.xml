@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TransactionHistory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TransactionHistory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABP/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABP/Portfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTA/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTA/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LASER/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LucaMember/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,28 +42,6 @@
     <expand />
     <select />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="644">
-                    <caret line="186" column="64" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="64" />
-                    <folding>
-                      <element signature="imports" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExportToHTMLSettings">
     <option name="printScope" value="4" />
     <option name="OUTPUT_DIRECTORY" value="C:\Users\rdtat\Desktop\Luca Duplicates" />
@@ -78,6 +51,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4464">
+              <caret line="186" column="64" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LASER/Laser.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,10 +80,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="509" column="5" lean-forward="true" selection-start-line="509" selection-start-column="5" selection-end-line="509" selection-end-column="5" />
+            <state relative-caret-position="-122">
+              <caret line="449" column="20" lean-forward="true" selection-start-line="449" selection-start-column="20" selection-end-line="449" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5788#5874#1" />
+                <element signature="method#addWordToUserHash#0;class#Testing#0" />
+                <element signature="method#isValidNumber#0;class#Testing#0" />
+                <element signature="class#Command#0;class#Testing#0" />
               </folding>
             </state>
           </provider>
@@ -327,7 +316,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550404408826" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550407866391" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Transaction.java" />
@@ -490,7 +479,7 @@
       <workItem from="1549814593115" duration="637000" />
       <workItem from="1550084240018" duration="1746000" />
       <workItem from="1550278638019" duration="8471000" />
-      <workItem from="1550328449091" duration="73478000" />
+      <workItem from="1550328449091" duration="77323000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -566,7 +555,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356687000" />
+    <option name="totallyTimeSpent" value="360532000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -580,7 +569,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.19656284" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.63645834" weight="0.19656284" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -901,16 +890,6 @@
     <entry file="file://$PROJECT_DIR$/src/BTA/Asset.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="186" column="64" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BTA/Asset$Sector.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -937,12 +916,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.java">
+    <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="509" column="5" lean-forward="true" selection-start-line="509" selection-start-column="5" selection-end-line="509" selection-end-column="5" />
+        <state relative-caret-position="4464">
+          <caret line="186" column="64" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Testing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-122">
+          <caret line="449" column="20" lean-forward="true" selection-start-line="449" selection-start-column="20" selection-end-line="449" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5788#5874#1" />
+            <element signature="method#addWordToUserHash#0;class#Testing#0" />
+            <element signature="method#isValidNumber#0;class#Testing#0" />
+            <element signature="class#Command#0;class#Testing#0" />
           </folding>
         </state>
       </provider>
