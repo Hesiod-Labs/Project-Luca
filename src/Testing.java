@@ -536,17 +536,17 @@ public class Testing
         {
             System.out.println("Timestamp: " + request.getTimestamp());
             System.out.println("Date Requested: " + request.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Request User: " + request.getRequestUser());
+            System.out.println("Request User: " + request.getRequestUser().getUsername());
             System.out.println("Transaction Type: " + request.getTransactionType());
             System.out.println("Transaction Amount: " + request.getTransactionAmount());
-            System.out.println("Transaction: " + request.getSignature());
+            System.out.println("Transaction Signature: " + Arrays.toString(request.getSignature()));
             if(request.getTransactionAsset() != null)
             {
                 System.out.println("Associated Asset Symbol: " + request.getTransactionAsset().getSymbol());
                 System.out.println("Currently Owned: " + request.getTransactionAsset().isOwned());
             }
+            System.out.println(" ");
         }
-        System.out.println(" ");
     }
     
     public static void printTransactionReceipt(Transaction transaction)
@@ -616,7 +616,7 @@ public class Testing
             Transaction hist_trans = Account.getTransactionHistory().pop();
             System.out.println("Timestamp: " + hist_trans.getTimestamp());
             System.out.println("Date Requested: " + hist_trans.getRequestDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-            System.out.println("Request User: " + hist_trans.getRequestUser());
+            System.out.println("Request User: " + hist_trans.getRequestUser().getUsername());
             System.out.println("Date Resolved: " + hist_trans.getResolveDate().format(DateTimeFormatter.RFC_1123_DATE_TIME));
             System.out.println("Resolve User: " + hist_trans.getResolveUser());
             System.out.println("Transaction Type: " + hist_trans.getTransactionType());
@@ -634,44 +634,35 @@ public class Testing
     {
         System.out.println("--- ACCOUNT BALANCE HISTORY ---");
         Stack<Balance> accountHistory = Account.getAccountBalance().getBalanceHistory();
-        while(!accountHistory.isEmpty())
-        {
             for(Balance b : accountHistory)
             {
                 System.out.println("Current Value: $" + b.getBalanceAmount() + "0");
                 System.out.println("Timestamp: " + b.getBalanceTimeStamp());
             }
             System.out.println(" ");
-        }
     }
     
     public static void printBankBalanceHistory()
     {
         System.out.println("--- BANK BALANCE HISTORY ---");
         Stack<Balance> bankHistory = Bank.getBankBalance().getBalanceHistory();
-        while(!bankHistory.isEmpty())
-        {
             for(Balance b : bankHistory)
             {
                 System.out.println("Current Value: $" + b.getBalanceAmount() + "0");
                 System.out.println("Timestamp: " + b.getBalanceTimeStamp());
             }
             System.out.println(" ");
-        }
     }
     
     public static void printPortfolioHistory()
     {
         System.out.println("--- PORTFOLIO BALANCE HISTORY ---");
         Stack<Balance> portfolioHistory = Portfolio.getPortfolioBalance().getBalanceHistory();
-        while(!portfolioHistory.isEmpty())
-        {
             for(Balance b : portfolioHistory)
             {
                 System.out.println("Current Value: $" + b.getBalanceAmount() + "0");
                 System.out.println("Timestamp: " + b.getBalanceTimeStamp());
             }
             System.out.println(" ");
-        }
     }
 }
