@@ -30,14 +30,14 @@ public class Account
      *
      * @see Balance
      */
-    //private static Balance accountBalance;
+    private static Balance accountBalance;
     
     /**
      * Holds funds not for investing and has an associated balance.
      *
      * @see Bank
      */
-    //private static Bank accountBank;
+    private static Bank accountBank;
     
     /**
      * Can hold owned asset(s) and has an associated balance investing.

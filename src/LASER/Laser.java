@@ -52,16 +52,18 @@ public class Laser {
   }
 
   public static boolean addBlock(Transaction trx, String status) {
-    Block block = new Block(trx, blockchain.get(blockchain.size() - 1).getCurrentHash(), System.currentTimeMillis(), status);
-    blockchain.add(block);
+    Block block = new Block(trx, getBlockchain().get(getBlockchain().size() - 1).getCurrentHash(),
+            System.currentTimeMillis(), status);
+    getBlockchain().add(block);
+    
     return Laser.isChainValid();
   }
 
   //approve or deny the transaction based on a permissioned status
-  public boolean validateTransaction(Transaction trx) {
+  public static boolean validateTransaction(Transaction trx) {
     if (trx.getResolveUser() == null && trx.getRequestUser().getClearance() < 2) {
       if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
-        Laser.addBlock(trx, "Request: ");
+        addBlock(trx, "Request: ");
         return true;
       }
     }

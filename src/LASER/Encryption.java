@@ -1,15 +1,12 @@
 package LASER;
 import BTA.Transaction;
 import LucaMember.User;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.*;
-
 import java.util.*;
-
-import java.util.Arrays;
-import java.util.Base64;
 
 
 //One and Two way encryption and signature functions for the LASER protocol

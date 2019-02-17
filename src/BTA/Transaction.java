@@ -94,13 +94,6 @@ public class Transaction
      */
     private Asset transactionAsset;
     
-    /**
-     * Date-based identity associated with each transaction.
-     * Format: YEAR MONTH DAY HOUR MINUTE SECOND
-     * Example: January 1, 2019 @ 12:34:56 is formatted as 201911123456
-     */
-    private String transactionID;
-    
     private byte[] signature;
     
     private long timestamp;
@@ -134,24 +127,6 @@ public class Transaction
     {
         this((transactionAsset.getStartPrice() * transactionAsset.getVolume()), type);
         this.transactionAsset = transactionAsset;
-    }
-    
-    //TODO Will use LASER's Encryption class method
-    @Deprecated
-    /**
-     * Creates a numerical identifier for a transaction based on the date and time in which the transaction is
-     * requested.
-     * @return Numerical date-time identifier based on when the transaction is requested.
-     */
-    public long generateID()
-    {
-        return Long.valueOf(
-        this.getRequestDate().getYear() + "" +
-                this.getRequestDate().getMonthValue() + "" +
-                this.getRequestDate().getDayOfMonth() + "" +
-                this.getRequestDate().getHour() + "" +
-                this.getRequestDate().getMinute() + "" +
-                this.getRequestDate().getSecond());
     }
     
     /**
@@ -301,14 +276,6 @@ public class Transaction
     }
     
     /**
-     * @return Date and time, as one number, in which the transaction was requested.
-     */
-    public String getTransactionID()
-    {
-        return transactionID;
-    }
-    
-    /**
      * @return If the transaction is trading-related, the associated {@link Asset}.
      */
     public Asset getTransactionAsset()
@@ -396,16 +363,6 @@ public class Transaction
         this.transactionStatus = status;
     }
     
-    
-    /**
-     * Sets the date-time numerical identifier of the transaction based on the instant the transaction is requested.
-     * @param ID Date-time numerical identifier.
-     */
-    public void setTransactionID(String ID)
-    {
-        this.transactionID = ID;
-    }
-    
     public void setUserPublicKey(PublicKey userPublicKey)
     {
         this.userPublicKey = userPublicKey;
@@ -425,7 +382,6 @@ public class Transaction
     {
         this.timestamp = timestamp;
     }
-    
     
     public void setTransactionData(String transactionData)
     {
