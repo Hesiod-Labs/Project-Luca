@@ -29,4 +29,8 @@ public class Block {
   public Transaction getTransaction() {
     return this.trx;
   }
+
+  public String toString() {
+    return this.currentHash;
+  }
 }
