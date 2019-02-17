@@ -299,12 +299,14 @@ public class Testing
                             if(!Portfolio.getPortfolio().isEmpty())
                             {
                                 System.out.println("--- SELECT ASSET ---");
+                                int i = 0;
                                 for(Asset a : Portfolio.getPortfolio())
                                 {
                                     System.out.println("Name: " + a.getAssetName() + " (" + a.getSymbol() + ")");
                                     System.out.println("Enter 'yes' if to liquidate this holding and 'no' to move on to the next asset: ");
                                     if(commandLine.next().equalsIgnoreCase("yes"))
                                     {
+                                        i++;
                                         String type;
                                         System.out.println("Final price: ");
                                         double finalPrice = Double.parseDouble(commandLine.next());
@@ -324,7 +326,8 @@ public class Testing
                                         }
                                     }
                                 }
-                                System.out.println("No asset was selected to be liquidated.");
+                                if(i == 0)
+                                    System.out.println("No asset was selected to be liquidated.");
                             }
                             else
                             {
@@ -410,7 +413,7 @@ public class Testing
                             {
                                 if(t.getTransactionAsset() != null)
                                 {
-                                    netReturns = netReturns + t.getTransactionAsset().getReturns();
+                                    netReturns = (netReturns + t.getTransactionAsset().getReturns())/2;
                                 }
                             }
                             printPortfolioHistory();
