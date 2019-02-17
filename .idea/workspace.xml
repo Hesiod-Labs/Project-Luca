@@ -75,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-346">
-              <caret line="618" column="92" selection-start-line="618" selection-start-column="92" selection-end-line="618" selection-end-column="92" />
+            <state relative-caret-position="734">
+              <caret line="513" column="5" lean-forward="true" selection-start-line="513" selection-start-column="5" selection-end-line="513" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -260,7 +260,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550397660449" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550397964018" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Transaction.java" />
@@ -423,7 +423,7 @@
       <workItem from="1549814593115" duration="637000" />
       <workItem from="1550084240018" duration="1746000" />
       <workItem from="1550278638019" duration="8471000" />
-      <workItem from="1550328449091" duration="68461000" />
+      <workItem from="1550328449091" duration="68714000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -499,7 +499,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351670000" />
+    <option name="totallyTimeSpent" value="351923000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -524,7 +524,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.23120837" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.41294006" />
-      <window_info active="true" anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Run" order="4" type="FLOATING" visible="true" weight="0.9604167" />
+      <window_info anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Run" order="4" type="FLOATING" visible="true" weight="0.9604167" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -532,7 +532,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
-      <window_info anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Terminal" order="12" type="FLOATING" visible="true" weight="0.62083334" />
+      <window_info active="true" anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Terminal" order="12" type="FLOATING" visible="true" weight="0.62083334" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3282588" />
@@ -916,8 +916,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-346">
-          <caret line="618" column="92" selection-start-line="618" selection-start-column="92" selection-end-line="618" selection-end-column="92" />
+        <state relative-caret-position="734">
+          <caret line="513" column="5" lean-forward="true" selection-start-line="513" selection-start-column="5" selection-end-line="513" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
