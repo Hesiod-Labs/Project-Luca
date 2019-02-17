@@ -13,37 +13,33 @@ public class Testing
     private static ArrayList<String> userInfo = new ArrayList<>();
     private static User loggedIn;
     
-    private static boolean isValidCommand(String input)
+    
+    public static void main(String[] args) throws InterruptedException
     {
-        Command allCommands[] = Command.values();
-        int i = 0;
-        while(i < allCommands.length)
+        /* Create an  account with a bank, portfolio, and storage for users*/
+        new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
+        User testadmin = new User("A", "D", "M", "password", "alpha", "beta", "chi",
+                User.UserType.SYSTEM_ADMIN, 1000);
+        User testOfficer = new User("O", "F", "F", "password", "the", "best", "officer", User.UserType.OFFICER, 500);
+        User testSectorHead = new User("S", "E", "C", "password", "the", "best", "head", User.UserType.SECTOR_HEAD, 500);
+        try
         {
-            if(allCommands[i].name().equalsIgnoreCase(input))
-                return true;
-            else
-                i++;
+            login();
         }
-        return false;
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            runLuca();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
     }
     
-    public enum Command
-    {
-        SHUTDOWN,
-        LOGOUT,
-        REQUEST,
-        RESOLVE,
-        VIEW_TRANSACTION_HISTORY,
-        VIEW_TRANSACTION_REQUESTS,
-        VIEW_ACCOUNT_HISTORY,
-        VIEW_BANK_HISTORY,
-        VIEW_PORTFOLIO_HISTORY,
-    
-        REMOVE_USER,
-        VIEW_ALL_USERS,
-        VIEW_LOGGED_IN_USER,
-        VIEW_PORTFOLIO;
-    }
     private static void login() throws IOException
     {
         boolean run = true;
@@ -136,15 +132,6 @@ public class Testing
         }
     }
     
-    private static void addWordToUserHash()
-    {
-        String word = commandLine.next();
-        while(word.toCharArray().length == 0)
-        {
-            System.out.println("You must enter at least 1 character.");
-        }
-        userInfo.add(word.trim());
-    }
     
     private static void runLuca() throws IOException
     {
@@ -444,6 +431,15 @@ public class Testing
         System.exit(0);
     }
     
+    private static void addWordToUserHash()
+    {
+        String word = commandLine.next();
+        while(word.toCharArray().length == 0)
+        {
+            System.out.println("You must enter at least 1 character.");
+        }
+        userInfo.add(word.trim());
+    }
     
     private static String isValidNumber()
     {
@@ -471,31 +467,39 @@ public class Testing
         return Double.toString(amount);
     }
     
-    public static void main(String[] args) throws InterruptedException
+        public enum Command
     {
-        /* Create an  account with a bank, portfolio, and storage for users*/
-        new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
-        User testadmin = new User("A", "D", "M", "password", "alpha", "beta", "chi",
-                User.UserType.SYSTEM_ADMIN, 1000);
-        User testOfficer = new User("O", "F", "F", "password", "the", "best", "officer", User.UserType.OFFICER, 500);
-        User testSectorHead = new User("S", "E", "C", "password", "the", "best", "head", User.UserType.SECTOR_HEAD, 500);
-        try
-        {
-            login();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-        try
-        {
-            runLuca();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        SHUTDOWN,
+        LOGOUT,
+        REQUEST,
+        RESOLVE,
+        VIEW_TRANSACTION_HISTORY,
+        VIEW_TRANSACTION_REQUESTS,
+        VIEW_ACCOUNT_HISTORY,
+        VIEW_BANK_HISTORY,
+        VIEW_PORTFOLIO_HISTORY,
+    
+        REMOVE_USER,
+        VIEW_ALL_USERS,
+        VIEW_LOGGED_IN_USER,
+        VIEW_PORTFOLIO;
     }
+    
+        private static boolean isValidCommand(String input)
+    {
+        Command allCommands[] = Command.values();
+        int i = 0;
+        while(i < allCommands.length)
+        {
+            if(allCommands[i].name().equalsIgnoreCase(input))
+                return true;
+            else
+                i++;
+        }
+        return false;
+    }
+    
+
     
     private static void printAccountInfo()
     {
