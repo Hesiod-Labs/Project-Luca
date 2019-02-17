@@ -8,7 +8,7 @@ import java.util.*;
 public class Testing
 {
     
-    public static Scanner commandLine = new Scanner(System.in);
+    private static Scanner commandLine = new Scanner(System.in);
     private static ArrayList<String> userInfo = new ArrayList<>();
     private static User loggedIn;
     
@@ -130,6 +130,12 @@ public class Testing
                             System.out.println("User credentials do not exist within the account.");
                         }
                     }
+                }
+                
+                if(userExistence.equalsIgnoreCase("Shutdown"))
+                {
+                    commandLine.close();
+                    System.exit(0);
                 }
             }
             printUsersInfo();
@@ -261,10 +267,6 @@ public class Testing
             login();
             runLuca();
         }
-    
-        
-        
-        
         
         public static void printAccountInfo()
         {

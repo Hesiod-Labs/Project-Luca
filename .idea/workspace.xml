@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABP/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABP/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTA/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTA/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LASER/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LASER/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LASER/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LucaMember/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,8 +49,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="696">
-                    <caret line="149" column="49" lean-forward="true" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="49" />
+                  <state relative-caret-position="1464">
+                    <caret line="145" column="69" lean-forward="true" selection-start-line="145" selection-start-column="69" selection-end-line="145" selection-end-column="69" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -87,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="3312">
+              <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Basic_Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="62" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="62" selection-end-column="5" />
+            <state relative-caret-position="5592">
+              <caret line="233" column="9" lean-forward="true" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -229,10 +223,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>true</find>
-      <find>id</find>
-      <find>.formatName(</find>
-      <find>roun</find>
       <find>Luca_L</find>
       <find>login</find>
       <find>round</find>
@@ -259,6 +249,10 @@
       <find>getCurrentVa</find>
       <find>transaction</find>
       <find>transactiondata</find>
+      <find>printAcc</find>
+      <find>printUser</find>
+      <find>norm</find>
+      <find>enum Com</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -329,8 +323,8 @@
         <option value="$PROJECT_DIR$/src/LASER/Laser.java" />
         <option value="$PROJECT_DIR$/src/BTA/Transaction.java" />
         <option value="$PROJECT_DIR$/src/LucaMember/User.java" />
-        <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/Basic_Testing.java" />
+        <option value="$PROJECT_DIR$/src/Testing.java" />
       </list>
     </option>
   </component>
@@ -393,14 +387,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550366975075" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550368412527" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Transaction.java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -556,7 +550,7 @@
       <workItem from="1549814593115" duration="637000" />
       <workItem from="1550084240018" duration="1746000" />
       <workItem from="1550278638019" duration="8471000" />
-      <workItem from="1550328449091" duration="37503000" />
+      <workItem from="1550328449091" duration="38938000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -632,7 +626,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="320712000" />
+    <option name="totallyTimeSpent" value="322147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -658,7 +652,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.23120837" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.41354167" />
-      <window_info active="true" anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Run" order="4" type="FLOATING" visible="true" weight="0.9604167" />
+      <window_info anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Run" order="4" type="FLOATING" weight="0.9604167" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -666,7 +660,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32912722" />
-      <window_info anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Terminal" order="12" type="FLOATING" weight="0.62083334" />
+      <window_info active="true" anchor="bottom" x="1920" y="0" width="1920" height="1080" id="Terminal" order="12" type="FLOATING" visible="true" weight="0.62083334" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Duplicates" order="14" weight="0.9604167" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32916668" />
@@ -966,16 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="149" column="49" lean-forward="true" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LASER/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -983,20 +967,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.java">
+    <entry file="file://$PROJECT_DIR$/src/Basic_Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="5592">
+          <caret line="233" column="9" lean-forward="true" selection-start-line="233" selection-start-column="9" selection-end-line="233" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Basic_Testing.java">
+    <entry file="file://$PROJECT_DIR$/src/BTA/Asset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="62" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="62" selection-end-column="5" />
+        <state relative-caret-position="1464">
+          <caret line="145" column="69" lean-forward="true" selection-start-line="145" selection-start-column="69" selection-end-line="145" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Testing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3312">
+          <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
