@@ -1,8 +1,8 @@
 package LASER;
 import BTA.*;
 import LucaMember.User;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.io.File;
 
@@ -10,23 +10,29 @@ import java.io.File;
 //L.A.S.E.R.: Luca Auditing Security Enterprise Repository
 public class Laser {
 
-  public static File transactionHistory = new File("Transaction History");
+  public static File transactionHistory = new File("TransactionHistory.txt");
 
   public static ArrayList<Block> blockchain = new ArrayList<>();
 
   public static String laserKey = "L.A.S.E.R.: Luca Auditing Security Enterprise Repository";
 
-  public static File initializeFile(File transactionHistory) throws IOException {
-    FileWriter fw = new FileWriter(transactionHistory);
-    fw.write("Request User\tResolve User\tTransaction\n");
-    return transactionHistory;
-  }
 
   public static boolean verifyRuntimeHash(User user) {
     Scanner scan = new Scanner(System.in);
     System.out.println("Confirm Identity (case sensitive, add a space between words): ");
-    String threeWords = scan.next();
+    String w1 = scan.next();
+    String w2 = scan.next();
+    String w3 = scan.next();
+    String threeWords = w1 + w2 + w3;
+    if (!(Encryption.applySHA256(threeWords).equals(user.getRunTimeHash()))) {
+      System.out.println("The transaction has been cancelled");
+    }
     return Encryption.applySHA256(threeWords).equals(user.getRunTimeHash());
+  }
+
+  public static void initializeFile(File file) throws IOException {
+    PrintWriter pw = new PrintWriter(file);
+    pw.close();
   }
 
   //checks the validity of the blockchain after every block add
@@ -51,26 +57,28 @@ public class Laser {
     return true;
   }
 
-  public static boolean addBlock(Transaction trx, String status) {
+  public static boolean addBlock(Transaction trx, String status) throws IOException {
     Block block = new Block(trx, getBlockchain().get(getBlockchain().size() - 1).getCurrentHash(),
             System.currentTimeMillis(), status);
-    getBlockchain().add(block);
-    
+    blockchain.add(block);
+    Encryption.logEncryptedTransaction(trx);
     return Laser.isChainValid();
-  }
+    }
 
   //approve or deny the transaction based on a permissioned status
-  public static boolean validateTransaction(Transaction trx) {
-    if (trx.getResolveUser() == null && trx.getRequestUser().getClearance() < 2) {
-      if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
-        addBlock(trx, "Request: ");
-        return true;
+  public static boolean validateTransaction(Transaction trx) throws IOException {
+    if (Laser.verifyRuntimeHash(trx.getRequestUser())) {
+      if (trx.getRequestUser().getClearance() < 2) {
+        if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
+          addBlock(trx, "Request: ");
+          return true;
+        }
       }
-    }
-    if (trx.getResolveUser().getClearance() >= 2) {
-      if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
-        Laser.addBlock(trx, "Resolved: ");
-        return true;
+      if (trx.getResolveUser().getClearance() >= 2) {
+        if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
+          Laser.addBlock(trx, "Resolved: ");
+          return true;
+        }
       }
     }
     return false;
@@ -84,6 +92,14 @@ public class Laser {
   
   public static ArrayList<LASER.Block> getBlockchain() {
     return blockchain;
+  }
+
+  public static ArrayList<String> getBlockchainToString() {
+    ArrayList<String> output = new ArrayList<>(getBlockchain().size());
+    for (Block block : getBlockchain()) {
+      output.add(block.toString());
+    }
+    return output;
   }
 }
 

@@ -2,6 +2,7 @@ import ABP.*;
 import BTA.*;
 import LucaMember.User;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -43,7 +44,7 @@ public class Testing
         VIEW_LOGGED_IN_USER,
         VIEW_PORTFOLIO;
     }
-    private static void login()
+    private static void login() throws IOException
     {
         boolean run = true;
         while(run)
@@ -113,12 +114,9 @@ public class Testing
                 System.out.print("Password: ");
                 String password = commandLine.next().toUpperCase();
                 userInfo.add(password.trim());
-                
-                Iterator<User> findPerson = Account.getAccountUsers().iterator();
-                
-                while(findPerson.hasNext())
+    
+                for(User someone : Account.getAccountUsers())
                 {
-                    User someone = findPerson.next();
                     if(someone.getUsername().equalsIgnoreCase(userInfo.get(0))
                             && someone.getPassword().equalsIgnoreCase(userInfo.get(1)))
                     {
@@ -148,7 +146,7 @@ public class Testing
         userInfo.add(word.trim());
     }
     
-    private static void runLuca()
+    private static void runLuca() throws IOException
     {
         long startTime = System.nanoTime();
         boolean run = true;
@@ -481,8 +479,22 @@ public class Testing
                 User.UserType.SYSTEM_ADMIN, 1000);
         User testOfficer = new User("O", "F", "F", "password", "the", "best", "officer", User.UserType.OFFICER, 500);
         User testSectorHead = new User("S", "E", "C", "password", "the", "best", "head", User.UserType.SECTOR_HEAD, 500);
-        login();
-        runLuca();
+        try
+        {
+            login();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            runLuca();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
     }
     
     private static void printAccountInfo()

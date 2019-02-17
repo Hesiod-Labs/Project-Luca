@@ -2,12 +2,13 @@ import ABP.*;
 import BTA.*;
 import LucaMember.User;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
 
 public class Basic_Testing
 {
-    public static void main(String[] args) throws InterruptedException
+    public static void main(String[] args) throws InterruptedException, IOException
     {
         
         /* Create an  account with a bank, portfolio, and storage for users*/
@@ -78,6 +79,8 @@ public class Basic_Testing
         printTransactionHistory();
         printBankBalanceHistory();
         printPortfolioHistory();
+        System.out.println(LASER.Laser.getBlockchainToString());
+        //Encryption.decryptTransactionLog();
     }
     
     public static void printAccountInfo()

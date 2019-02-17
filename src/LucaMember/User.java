@@ -5,6 +5,8 @@ import BTA.*;
 import LASER.*;
 
 import java.math.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
@@ -204,7 +206,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * is added to the transaction request list.
      * @param request Requested transaction.
      */
-    public void requestTransaction(Transaction request)
+    public void requestTransaction(Transaction request) throws IOException
     {
         // Confirms the action to request a transaction during runtime.
         if(request.confirmAction())
@@ -216,8 +218,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
             request.setRequestUser(this);
             request.setTransactionData(request.getTransactionType().toString() + " " +
                     request.getRequestDate().toString());
-            request.setSignature(
-                    Encryption.applySignature(request.getRequestUser().getUserPrivateKey(),
+            request.setSignature(Encryption.applySignature(request.getRequestUser().getUserPrivateKey(),
                     request.getTransactionData()));
             
             // If the user is an admin, resolve the transaction immediately.
@@ -230,10 +231,11 @@ public class User //TODO Consider separating non-admin and admin users as two su
                 // Otherwise, add the request to the list of requests.
                 request.addTransactionRequest();
             }
-            if(Laser.getBlockchain().size() == 0)
+            if(Laser.getBlockchain().size() == 0) {
                 Laser.createGenesisBlock();
-            else
-                Laser.validateTransaction(request);
+                Laser.initializeFile(Laser.transactionHistory);
+            }
+            Laser.validateTransaction(request);
         }
         else
             // If the user declines confirmation, the transaction request is cancelled.
@@ -294,7 +296,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
      * Allows a user to contribute more towards investing.
      * @param amount Dollar amount to add to the {@link Account}.
      */
-    public void contribute(double amount)
+    public void contribute(double amount) throws IOException
     {
         this.userContribution.updateBalance(new Balance(amount));
         this.requestTransaction(new Transaction("Deposit", amount));
