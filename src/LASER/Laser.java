@@ -24,9 +24,7 @@ public class Laser {
     String w2 = scan.next();
     String w3 = scan.next();
     String threeWords = w1 + w2 + w3;
-    if (!(Encryption.applySHA256(threeWords).equals(user.getRunTimeHash()))) {
-      System.out.println("The transaction has been cancelled");
-    }
+    
     return Encryption.applySHA256(threeWords).equals(user.getRunTimeHash());
   }
 

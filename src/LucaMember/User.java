@@ -4,9 +4,8 @@ import ABP.*;
 import BTA.*;
 import LASER.*;
 
-import java.math.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.math.*;
 import java.security.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
@@ -235,7 +234,8 @@ public class User //TODO Consider separating non-admin and admin users as two su
                 Laser.createGenesisBlock();
                 Laser.initializeFile(Laser.transactionHistory);
             }
-            Laser.validateTransaction(request);
+            if(!Laser.validateTransaction(request))
+                request.setTransactionStatus(Transaction.Status.CANCELLED);
         }
         else
             // If the user declines confirmation, the transaction request is cancelled.
@@ -392,8 +392,9 @@ public class User //TODO Consider separating non-admin and admin users as two su
     
     public enum UserSector
     {
-        MEI, CS_IT, CONS, HEALTH, OPTIONS, CRYPTO, FOREX;
+        CRYPTO, CS_IT, FOREX, HEALTHCARE, MEI, OPTIONS, REIT_FIG
     }
+    
     public enum UserType
     {
         SYSTEM_ADMIN (4), OFFICER (3), SECTOR_HEAD (2), GENERAL_USER (1);

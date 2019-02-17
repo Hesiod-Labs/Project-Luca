@@ -184,7 +184,7 @@ public class Asset
     /** The different economic sectors to which an asset can belong. */
     public enum Sector
     {
-        CONSUMERS, ENERGY, FINANCIALS, HEALTHCARE, INDUSTRIALS, MATERIALS, REAL_ESTATE, TECHNOLOGY, TELECOM, UTILITIES
+        CRYPTO, CS_IT, FOREX, HEALTHCARE, MEI, OPTIONS, REIT_FIG;
     }
     
     /**

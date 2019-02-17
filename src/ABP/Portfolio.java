@@ -9,7 +9,7 @@ import java.util.*;
 public class Portfolio
 {
     /**
-     * Contains all assets owned by the {@link Account}. {@link LinkedHashSet} is used here so as to preserve the order
+     * Contains all assets owned by the {@link Account}. {@link LinkedList} is used here so as to preserve the order
      * in which the assets were acquired. This is useful in the case where two acquisition transactions of the same
      * asset are resolved at different times with different prices, so each can be handled uniquely.
      */

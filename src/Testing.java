@@ -16,6 +16,7 @@ public class Testing
     
     public static void main(String[] args) throws InterruptedException
     {
+        long startTime = System.nanoTime();
         /* Create an  account with a bank, portfolio, and storage for users*/
         new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
         User testadmin = new User("A", "D", "M", "password", "alpha", "beta", "chi",
@@ -38,6 +39,10 @@ public class Testing
         {
             e.printStackTrace();
         }
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
+        System.exit(0);
     }
     
     private static void login() throws IOException
@@ -117,6 +122,7 @@ public class Testing
                             && someone.getPassword().equalsIgnoreCase(userInfo.get(1)))
                     {
                         loggedIn = someone;
+                        run = false;
                         runLuca();
                     }
                 }
@@ -127,15 +133,14 @@ public class Testing
                 commandLine.close();
                 System.exit(0);
             }
-            printUsersInfo();
-            printAccountInfo();
         }
     }
     
     
     private static void runLuca() throws IOException
     {
-        long startTime = System.nanoTime();
+        printUsersInfo();
+        printAccountInfo();
         boolean run = true;
         Scanner commandLine = new Scanner(System.in);
         while(run)
@@ -414,6 +419,34 @@ public class Testing
                 {
                     printPortfolioHistory();
                 }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_LOGGED_IN_USER.toString()))
+                {
+                    System.out.println("--- LOGGED-IN USER INFO ---");
+                    System.out.println("Username: " + loggedIn.getUsername());
+                    System.out.println("Password: " + loggedIn.getPassword());
+                    System.out.println("Public Key: " + loggedIn.getUserPublicKey());
+                    System.out.println("Private Key: " + loggedIn.getUserPrivateKey());
+                    System.out.println("Clearance: " + loggedIn.getUserType());
+                    System.out.println("Time Created: " + loggedIn.getTimeCreated());
+                    System.out.println("Runtime Hash : " + loggedIn.getRunTimeHash());
+                    System.out.println("Percent Holdings: " + loggedIn.calculatePctHoldings() + "%");
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_ALL_USERS.toString()))
+                {
+                    System.out.println("--- ACCOUNT USERS ---");
+                    for(User u : Account.getAccountUsers())
+                    {
+                        System.out.println("Username: " + u.getUsername() + " (" + u.getUserType() + ")");
+                    }
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_PORTFOLIO.toString()))
+                {
+                    System.out.println("--- PORTFOLIO HOLDINGS ---");
+                    for(Asset a : Portfolio.getPortfolio())
+                    {
+                        System.out.println("Name (symbol) [sector]: " + a.getAssetName() + " (" + a.getSymbol() + ")" + " [" + a.getSector() + "]");
+                    }
+                }
             }
             else
             {
@@ -425,10 +458,6 @@ public class Testing
             }
         }
         commandLine.close();
-        long endTime = System.nanoTime();
-        long totalTime = endTime - startTime;
-        System.out.println("Total Runtime: " + totalTime / 1000000000.0 + " sec");
-        System.exit(0);
     }
     
     private static void addWordToUserHash()
@@ -478,8 +507,6 @@ public class Testing
         VIEW_ACCOUNT_HISTORY,
         VIEW_BANK_HISTORY,
         VIEW_PORTFOLIO_HISTORY,
-    
-        REMOVE_USER,
         VIEW_ALL_USERS,
         VIEW_LOGGED_IN_USER,
         VIEW_PORTFOLIO;
@@ -546,7 +573,7 @@ public class Testing
             System.out.println("Transaction Signature: " + Arrays.toString(request.getSignature()));
             if(request.getTransactionAsset() != null)
             {
-                System.out.println("Associated Asset Symbol: " + request.getTransactionAsset().getSymbol());
+                System.out.println("Associated Asset Symbol: " + request.getTransactionAsset().getSymbol() + "(" + request.getTransactionAsset().getSector() + ")");
                 System.out.println("Currently Owned: " + request.getTransactionAsset().isOwned());
             }
             System.out.println(" ");
@@ -593,7 +620,7 @@ public class Testing
     {
         System.out.println("------ ASSET INFORMATION ---");
         Asset asset = transaction.getTransactionAsset();
-        System.out.println("Asset Name: " + asset.getAssetName() + " (" + asset.getSymbol() + ")");
+        System.out.println("Asset Name: " + asset.getAssetName() + " (" + asset.getSymbol() + ")" + "[" + asset.getSector() + "]");
         System.out.println("Currently Owned: " + asset.isOwned());
         System.out.println("Number of Shares: " + asset.getVolume());
         System.out.println("Start Price: $" + asset.getStartPrice() + "0");
@@ -626,7 +653,9 @@ public class Testing
             System.out.println("Transaction Type: " + hist_trans.getTransactionType());
             System.out.println("Transaction Amount: " + hist_trans.getTransactionAmount());
             if(!(hist_trans.getTransactionAsset() == null))
-                System.out.println("Associated Asset Symbol: " + hist_trans.getTransactionAsset().getSymbol());
+            {
+                System.out.println("Associated Asset Symbol: " + hist_trans.getTransactionAsset().getSymbol() + "(" + hist_trans.getTransactionAsset().getSector() + ")");
+            }
             else
                 System.out.println("Associated Asset Symbol: No associated asset with transaction.");
             System.out.println(" ");
