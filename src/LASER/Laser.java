@@ -34,9 +34,9 @@ public class Laser {
     Block currentBlock;
     Block previousBlock;
     //loop through blockchain to check hashes:
-    for (int index = 1; index < blockchain.size(); index++) {
-      currentBlock = blockchain.get(index);
-      previousBlock = blockchain.get(index - 1);
+    for (int index = 1; index < getBlockchain().size(); index++) {
+      currentBlock = getBlockchain().get(index);
+      previousBlock = getBlockchain().get(index - 1);
       //compare registered hash and calculated hash:
       if (!(currentBlock.getCurrentHash()).equals(
               Encryption.applySHA256(currentBlock.getPreviousHash() +
@@ -77,8 +77,8 @@ public class Laser {
   }
 
   public static boolean createGenesisBlock() {
-    Block block = new Block(new Transaction(0, "BUY"), "Genesis Block", System.currentTimeMillis(), "");
-    blockchain.add(block);
+    Block block = new Block(new Transaction("BUY", 0), "Genesis Block", System.currentTimeMillis(), "");
+    getBlockchain().add(block);
     return true;
   }
   

@@ -4,6 +4,7 @@ import ABP.*;
 import BTA.*;
 import LASER.*;
 
+import java.math.*;
 import java.security.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
@@ -100,7 +101,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
         this.lastInit = last.toUpperCase();
         this.username = makeUsername(first.toUpperCase(), middleInit.toUpperCase(), last.toUpperCase());
         this.password = password;
-        //this.runTimeHash = Encryption.applySHA256(w1 + w2 + w3);
+        this.runTimeHash = Encryption.applySHA256(w1 + w2 + w3);
         KeyPair kp = Encryption.generateKeyPair();
         this.userPrivateKey = kp.getPrivate();
         this.userPublicKey = kp.getPublic();
@@ -109,8 +110,9 @@ public class User //TODO Consider separating non-admin and admin users as two su
         this.userContribution = new Balance(contribution); // TODO lines 92 and 93
         userContribution.updateBalance(userContribution);
         Account.getAccountUsers().add(this);
-        this.userBalance = new Balance(); //TODO Should contributions be a part of the userBalance?
+        //this.userBalance = new Balance(); //TODO Should contributions be a part of the userBalance?
         Account.getAccountBalance().updateBalance( new Balance(contribution));
+        Bank.getBankBalance().updateBalance(new Balance(contribution));
     }
     
     /**
@@ -158,6 +160,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     //TODO Add JavaDoc
     public double calculatePctHoldings()
     {
+        MathContext mc = new MathContext(6, RoundingMode.HALF_UP);
         double thisUserContributed = this.getUserContribution().getCurrentValue();
         double accountContributions = 0;
         for(User user : Account.getAccountUsers())
@@ -166,6 +169,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
             accountContributions += eachUserContrib;
             
         }
+        
         return (thisUserContributed/accountContributions)*100;
     }
     
@@ -293,7 +297,7 @@ public class User //TODO Consider separating non-admin and admin users as two su
     public void contribute(double amount)
     {
         this.userContribution.updateBalance(new Balance(amount));
-        this.requestTransaction(new Transaction(amount, "Deposit"));
+        this.requestTransaction(new Transaction("Deposit", amount));
     }
     
     /**

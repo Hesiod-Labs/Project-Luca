@@ -21,14 +21,14 @@ public class Basic_Testing
         
         printUsersInfo();
         
-        Transaction t1 = new Transaction(1000, "Deposit");
+        Transaction t1 = new Transaction("Deposit", 1000);
         printTransactionReceipt(t1);
         reqUser.requestTransaction(t1);
         printTransactionReceipt(t1);
         resUser.resolveTransaction(t1, "Deposited");
         printTransactionReceipt(t1);
         
-        Transaction t2 = new Transaction(200, "Withdraw");
+        Transaction t2 = new Transaction("Withdraw", 200);
         printTransactionReceipt(t2);
         reqUser.requestTransaction(t2);
         printTransactionReceipt(t2);

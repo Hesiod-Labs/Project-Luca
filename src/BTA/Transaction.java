@@ -106,10 +106,10 @@ public class Transaction
     
     /**
      * Creates a transaction with no associated {@link Asset}.
-     * @param amount Dollar amount requested. Always positive.
      * @param type Determines if the transaction is related to the {@link Bank} and/or {@link Portfolio}.
+     * @param amount Dollar amount requested. Always positive.
      */
-    public Transaction(double amount, String type)
+    public Transaction(String type, double amount)
     {
         this.transactionAmount = amount;
         this.transactionStatus = Status.OPEN;
@@ -125,7 +125,7 @@ public class Transaction
      */
     public Transaction(String type, Asset transactionAsset)
     {
-        this((transactionAsset.getStartPrice() * transactionAsset.getVolume()), type);
+        this(type, transactionAsset.getStartPrice() * transactionAsset.getVolume());
         this.transactionAsset = transactionAsset;
     }
     
