@@ -9,21 +9,21 @@ import java.util.*;
 
 public class Testing
 {
-    
     private static Scanner commandLine = new Scanner(System.in);
     private static ArrayList<String> userInfo = new ArrayList<>();
+    private static ArrayList<String> transInfo = new ArrayList<>();
+    private static ArrayList<String> assetInfo = new ArrayList<>();
     private static User loggedIn;
+    private static boolean run = true;
     
-    
-    public static void main(String[] args) throws InterruptedException
+    public static void main(String[] args)
     {
         long startTime = System.nanoTime();
         /* Create an  account with a bank, portfolio, and storage for users*/
         new Account("Hesiod Account", "Hesiod Bank", "Hesiod Portfolio");
-        User testadmin = new User("A", "D", "M", "password", "alpha", "beta", "chi",
-                User.UserType.SYSTEM_ADMIN, 1000);
-        User testOfficer = new User("O", "F", "F", "password", "the", "best", "officer", User.UserType.OFFICER, 500);
-        User testSectorHead = new User("S", "E", "C", "password", "the", "best", "head", User.UserType.SECTOR_HEAD, 500);
+        new User("A", "D", "M", "password", "alpha", "beta", "chi", User.UserType.SYSTEM_ADMIN, 1000);
+        new User("O", "F", "F", "password", "the", "best", "officer", User.UserType.OFFICER, 500);
+        new User("S", "E", "C", "password", "the", "best", "head", User.UserType.SECTOR_HEAD, 500);
         try
         {
             login();
@@ -137,12 +137,28 @@ public class Testing
         }
     }
     
+    private static void shutdown()
+    {
+        run = false;
+        commandLine.reset();
+        System.exit(0);
+    }
+    
+    private static void logout()
+    {
+        userInfo.clear();
+        try
+        {
+            login();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     private static void runLuca() throws IOException
     {
-        printUsersInfo();
-        printAccountInfo();
-        boolean run = true;
-        Scanner commandLine = new Scanner(System.in);
         while(run)
         {
             System.out.println("Enter a command: ");
@@ -153,102 +169,78 @@ public class Testing
             {
                 if(userResponse.equalsIgnoreCase(Command.SHUTDOWN.toString()))
                 {
-                    run = false;
-                    System.exit(0);
-                    commandLine.reset();
+                    shutdown();
                 }
-                
                 if(userResponse.equalsIgnoreCase(Command.LOGOUT.toString()))
                 {
-                    userInfo.clear();
-                    login();
+                    logout();
                 }
-                
                 if(userResponse.equalsIgnoreCase(Command.REQUEST.toString()))
                 {
-                    ArrayList<String> transInfo = new ArrayList<>();
                     if(loggedIn.getClearance() >= 1)
                     {
-                        System.out.println("Valid forms of transaction: " +
-                                "\n\t" + "DEPOSIT" +
-                                "\n\t" + "WITHDRAW" +
-                                "\n\t" + "BUY" +
-                                "\n\t" + "SELL" +
-                                "\n\t" + "SHORT" +
-                                "\n\t" + "COVER");
+                        printValidTransactions();
+                        
                         System.out.print("Specify the type of transaction: ");
                         String transType = commandLine.next();
-                        if(!(transType.equalsIgnoreCase("Deposit")) &&
-                                !(transType.equalsIgnoreCase("Withdraw")) &&
-                                !(transType.equalsIgnoreCase("Buy")) &&
-                                !(transType.equalsIgnoreCase("Sell")) &&
-                                !(transType.equalsIgnoreCase("Short")) &&
-                                !(transType.equalsIgnoreCase("Cover")))
+                        
+                        for(Transaction.Type t : Transaction.Type.values())
                         {
-                            System.out.println("Please enter one of the following valid forms of transaction: " +
-                                    "\n\t" + "DEPOSIT" +
-                                    "\n\t" + "WITHDRAW" +
-                                    "\n\t" + "BUY" +
-                                    "\n\t" + "SELL" +
-                                    "\n\t" + "SHORT" +
-                                    "\n\t" + "COVER");
+                            if(transType.equalsIgnoreCase(t.toString()))
+                                transInfo.add(transType);
+                            else
+                            {
+                                printValidTransactions();
+                            }
                         }
-                        else
-                            transInfo.add(transType);
-                        ArrayList<String> assetInfo = new ArrayList<>();
-                        if(transType.equalsIgnoreCase("Deposit") ||
-                                transType.equalsIgnoreCase("Withdraw"))
+                        if(transType.equalsIgnoreCase("Deposit") || transType.equalsIgnoreCase("Withdraw"))
                         {
                             System.out.print("Enter the amount associated with the transaction (U.S. dollar): ");
                             transInfo.add(isValidNumber());
-    
+                            
                             String requestType = transInfo.get(0);
                             double amount = Double.parseDouble(transInfo.get(1));
+                            
                             Transaction req = new Transaction(requestType, amount);
                             loggedIn.requestTransaction(req);
                             System.out.println("--- TRANSACTION INFO ---");
                             printTransactionReceipt(req);
-                            if(req.getTransactionAsset() != null)
-                            {
-                                System.out.println("--- ASSOCIATED ASSET INFO ---");
-                                printAssetInfo(req);
-                            }
                         }
-                        if(transType.equalsIgnoreCase("Buy") ||
-                                transType.equalsIgnoreCase("Short"))
+                        
+                        if(transType.equalsIgnoreCase("Buy") || transType.equalsIgnoreCase("Short"))
                         {
                             System.out.println("--- ENTER ASSET INFORMATION --- ");
-    
+                            
                             double doublePrice = 0;
                             double doubleVolume = 0;
                             double totalPrice = doublePrice * doubleVolume;
-    
-                            boolean suffientFunds = false;
-                            while(!suffientFunds)
+                            
+                            boolean sufficientFunds = false;
+                            while(!sufficientFunds)
                             {
                                 System.out.print("Company Name: ");
                                 assetInfo.add(commandLine.next().toUpperCase());
-    
+                                
                                 System.out.print("Stock Symbol: ");
                                 assetInfo.add(commandLine.next().toUpperCase());
-    
+                                
                                 System.out.println("Valid Sectors: ");
                                 System.out.println(Arrays.toString(Asset.Sector.values()));
                                 System.out.println("\t" + "Sector: ");
                                 assetInfo.add(commandLine.next().toUpperCase());
-    
+                                
                                 System.out.println("Volume: ");
                                 String inputVolume = commandLine.next();
                                 assetInfo.add(inputVolume);
                                 doubleVolume = Double.parseDouble(inputVolume);
-    
+                                
                                 System.out.println("Start Price (U.S dollar): ");
                                 String inputPrice = commandLine.next();
                                 assetInfo.add(inputPrice);
                                 doublePrice = Double.parseDouble(inputPrice);
-    
+                                
                                 totalPrice = doublePrice * doubleVolume;
-    
+                                
                                 if(totalPrice > Bank.getBankBalance().getCurrentValue())
                                 {
                                     if(doublePrice > Bank.getBankBalance().getCurrentValue())
@@ -259,16 +251,10 @@ public class Testing
                                     System.out.println("Total price exceeds bank funds. Acquire either a different asset or fewer shares.");
                                     assetInfo.clear();
                                 }
-                                suffientFunds = true;
-    
-                                System.out.println("Valid forms of transaction: " +
-                                        "\n\t" + "LIMIT" +
-                                        "\n\t" + "MARKET" +
-                                        "\n\t" + "STOP_LIMIT" +
-                                        "\n\t" + "STOP_LOSS" +
-                                        "\n\t" + "TRAILING_STOP_LIMIT" +
-                                        "\n\t" + "TRAILING_STOP_LOSS");
-    
+                                sufficientFunds = true;
+                                
+                                printValidOrderTypes();
+                                
                                 System.out.println("Order Type: ");
                                 String orderType = commandLine.next();
                                 assetInfo.add(orderType.toUpperCase());
@@ -280,21 +266,12 @@ public class Testing
                             double startPrice = Double.parseDouble(assetInfo.get(4));
                             String orderType = assetInfo.get(5);
                             Asset requestedAsset = new Asset(name, symbol, sector, volume, startPrice, orderType);
-    
-                            Transaction newTrans = new Transaction(transInfo.get(0), requestedAsset);
-                            loggedIn.requestTransaction(newTrans);
-                            System.out.println("--- TRANSACTION INFO ---");
-                            printTransactionReceipt(newTrans);
-                            if(newTrans.getTransactionAsset() != null)
-                            {
-                                System.out.println("--- ASSOCIATED ASSET INFO ---");
-                                printAssetInfo(newTrans);
-                            }
+                            
+                            printTransactionAndAsset(transInfo.get(0), requestedAsset);
                             assetInfo.clear();
                         }
-    
-                        if(transType.equalsIgnoreCase("Sell") ||
-                                transType.equalsIgnoreCase("Cover"))
+                        
+                        if(transType.equalsIgnoreCase("Sell") || transType.equalsIgnoreCase("Cover"))
                         {
                             if(!Portfolio.getPortfolio().isEmpty())
                             {
@@ -315,19 +292,13 @@ public class Testing
                                             type = "Sell";
                                         else
                                             type = "Cover";
-                                        Transaction requested = new Transaction(type, a);
-                                        loggedIn.requestTransaction(requested);
-                                        System.out.println("--- TRANSACTION INFO ---");
-                                        printTransactionReceipt(requested);
-                                        if(requested.getTransactionAsset() != null)
-                                        {
-                                            System.out.println("--- ASSOCIATED ASSET INFO ---");
-                                            printAssetInfo(requested);
-                                        }
+                                        printTransactionAndAsset(type, a);
                                     }
                                 }
                                 if(i == 0)
+                                {
                                     System.out.println("No asset was selected to be liquidated.");
+                                }
                             }
                             else
                             {
@@ -336,123 +307,111 @@ public class Testing
                         }
                     }
                 }
-                        if(userResponse.equalsIgnoreCase(Command.RESOLVE.toString()))
+                if(userResponse.equalsIgnoreCase(Command.RESOLVE.toString()))
+                {
+                    if(loggedIn.getClearance() >= 2)
+                    {
+                        for(Transaction transaction : Account.getTransactionRequests())
                         {
-                            if(loggedIn.getClearance() >= 2)
+                            String transType = transaction.getTransactionType().toString();
+                            Asset transAsset = transaction.getTransactionAsset();
+                            printTransactionAndAsset(transType, transAsset);
+                            
+                            System.out.println("'Deny' or 'Allow' the requested transaction: ");
+                            boolean completed = false;
+                            while(!completed)
                             {
-                                for(Transaction transaction : Account.getTransactionRequests())
+                                String response = commandLine.next();
+                                if(response.equalsIgnoreCase("Deny"))
                                 {
-                                    System.out.println("--- TRANSACTION INFO ---");
-                                    printTransactionReceipt(transaction);
-                                    if(transaction.getTransactionAsset() != null)
-                                    {
-                                        System.out.println("--- ASSOCIATED ASSET INFO ---");
-                                        printAssetInfo(transaction);
-                                    }
-                                    System.out.println("'Deny' or 'Allow' the requested transaction: ");
-                                    boolean completed = false;
-                                    while(!completed)
-                                    {
-                                        String response = commandLine.next();
-                                        if(response.equalsIgnoreCase("Deny"))
-                                        {
-                                            loggedIn.resolveTransaction(transaction, "DENIED");
-                                            System.out.println("--- UPDATED TRANSACTION INFO ---");
-                                            printTransactionReceipt(transaction);
-                                            if(transaction.getTransactionAsset() != null)
-                                            {
-                                                System.out.println("--- UPDATED ASSOCIATED ASSET INFO ---");
-                                                printAssetInfo(transaction);
-                                            }
-                                            completed = true;
-                                        }
-                                        if(response.equalsIgnoreCase("Allow"))
-                                        {
-                                            loggedIn.resolveTransaction(transaction, transaction.getMatchingStatus().toString());
-                                            System.out.println("--- UPDATED TRANSACTION INFO ---");
-                                            printTransactionReceipt(transaction);
-                                            if(transaction.getTransactionAsset() != null)
-                                            {
-                                                System.out.println("--- UPDATED ASSOCIATED ASSET INFO ---");
-                                                printAssetInfo(transaction);
-                                            }
-                                            completed = true;
-                                        }
-                                        if(!response.equalsIgnoreCase("Deny") && !response.equalsIgnoreCase("Allow"))
-                                        {
-                                            System.out.println("Enter either 'Deny' or 'Allow' to resolve the transaction.");
-                                        }
-                                    }
+                                    loggedIn.resolveTransaction(transaction, "DENIED");
+                                    System.out.println("--- UPDATED ---");
+                                    printTransactionAndAsset(transType, transAsset);
+                                    completed = true;
+                                }
+                                if(response.equalsIgnoreCase("Allow"))
+                                {
+                                    loggedIn.resolveTransaction(transaction, transaction.getMatchingStatus().toString());
+                                    System.out.println("--- UPDATED ---");
+                                    printTransactionAndAsset(transType, transAsset);
+                                    completed = true;
+                                }
+                                if(!response.equalsIgnoreCase("Deny") && !response.equalsIgnoreCase("Allow"))
+                                {
+                                    System.out.println("Enter either 'Deny' or 'Allow' to resolve the transaction.");
                                 }
                             }
-                            else
-                            {
-                                System.out.println("You must have at least SECTOR HEAD clearance to resolve transactions.");
-                            }
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_TRANSACTION_HISTORY.toString()))
-                        {
-                            printTransactionHistory();
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_TRANSACTION_REQUESTS.toString()))
-                        {
-                            printTransactionRequests();
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_ACCOUNT_HISTORY.toString()))
-                        {
-                            printAccountBalanceHistory();
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_BANK_HISTORY.toString()))
-                        {
-                            printBankBalanceHistory();
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_PORTFOLIO_HISTORY.toString()))
-                        {
-                            double netReturns = 0;
-                            for(Transaction t : Account.getTransactionHistory())
-                            {
-                                if(t.getTransactionAsset() != null)
-                                {
-                                    netReturns = (netReturns + t.getTransactionAsset().getReturns())/2;
-                                }
-                            }
-                            printPortfolioHistory();
-                            System.out.println("Net Returns: $" + netReturns + "0");
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_LOGGED_IN_USER.toString()))
-                        {
-                            System.out.println("--- LOGGED-IN USER INFO ---");
-                            System.out.println("Username: " + loggedIn.getUsername());
-                            System.out.println("Password: " + loggedIn.getPassword());
-                            System.out.println("Public Key: " + loggedIn.getUserPublicKey());
-                            System.out.println("Private Key: " + loggedIn.getUserPrivateKey());
-                            System.out.println("Clearance: " + loggedIn.getUserType());
-                            System.out.println("Time Created: " + loggedIn.getTimeCreated());
-                            System.out.println("Runtime Hash : " + loggedIn.getRunTimeHash());
-                            System.out.println("Percent Holdings: " + loggedIn.calculatePctHoldings() + "%");
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_ALL_USERS.toString()))
-                        {
-                            System.out.println("--- ACCOUNT USERS ---");
-                            for(User u : Account.getAccountUsers())
-                            {
-                                System.out.println("Username: " + u.getUsername() + " (" + u.getUserType() + ")");
-                            }
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_PORTFOLIO.toString()))
-                        {
-                            System.out.println("--- PORTFOLIO HOLDINGS ---");
-                            for(Asset a : Portfolio.getPortfolio())
-                            {
-                                System.out.println("Name (symbol) [sector]: " + a.getAssetName() + " (" + a.getSymbol() + ")" + " [" + a.getSector() + "]");
-                            }
-                        }
-                        if(userResponse.equalsIgnoreCase(Command.VIEW_BLOCKCHAIN.toString()))
-                        {
-                            System.out.println("--- BLOCK CHAIN ---");
-                            System.out.println(Arrays.toString(Laser.getBlockchain().toArray()));
                         }
                     }
+                    else
+                    {
+                        System.out.println("You must have at least SECTOR HEAD clearance to resolve transactions.");
+                    }
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_TRANSACTION_HISTORY.toString()))
+                {
+                    printTransactionHistory();
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_TRANSACTION_REQUESTS.toString()))
+                {
+                    printTransactionRequests();
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_ACCOUNT_HISTORY.toString()))
+                {
+                    printAccountBalanceHistory();
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_BANK_HISTORY.toString()))
+                {
+                    printBankBalanceHistory();
+                }
+                //TODO Fix calculation
+                if(userResponse.equalsIgnoreCase(Command.VIEW_PORTFOLIO_HISTORY.toString()))
+                {
+                    double netReturns = 0;
+                    for(Transaction t : Account.getTransactionHistory())
+                    {
+                        if(t.getTransactionAsset() != null)
+                        {
+                            netReturns = (netReturns + t.getTransactionAsset().getReturns())/2;
+                        }
+                    }
+                    printPortfolioHistory();
+                    System.out.println("Net Returns: $" + netReturns + "0");
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_LOGGED_IN_USER.toString()))
+                {
+                    System.out.println("--- LOGGED-IN USER INFO ---");
+                    System.out.println("Username: " + loggedIn.getUsername());
+                    System.out.println("Password: " + loggedIn.getPassword());
+                    System.out.println("Public Key: " + loggedIn.getUserPublicKey());
+                    System.out.println("Private Key: " + loggedIn.getUserPrivateKey());
+                    System.out.println("Clearance: " + loggedIn.getUserType());
+                    System.out.println("Time Created: " + loggedIn.getTimeCreated());
+                    System.out.println("Runtime Hash : " + loggedIn.getRunTimeHash());
+                    System.out.println("Percent Holdings: " + loggedIn.calculatePctHoldings() + "%");
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_ALL_USERS.toString()))
+                {
+                    printUsersInfo();
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_ACCOUNT_INFO.toString()))
+                {
+                    printAccountInfo();
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_PORTFOLIO.toString()))
+                {
+                    System.out.println("--- PORTFOLIO HOLDINGS ---");
+                    for(Asset a : Portfolio.getPortfolio())
+                    {
+                        System.out.println("Name (symbol) [sector]: " + a.getAssetName() + " (" + a.getSymbol() + ")" + " [" + a.getSector() + "]");
+                    }
+                }
+                if(userResponse.equalsIgnoreCase(Command.VIEW_BLOCKCHAIN.toString()))
+                {
+                    System.out.println("--- BLOCK CHAIN ---");
+                    System.out.println(Arrays.toString(Laser.getBlockchain().toArray()));
+                }
+            }
             else
             {
                 System.out.println("Please enter any of the following valid commands: ");
@@ -513,14 +472,27 @@ public class Testing
         VIEW_BANK_HISTORY,
         VIEW_PORTFOLIO_HISTORY,
         VIEW_ALL_USERS,
+        VIEW_ACCOUNT_INFO,
         VIEW_LOGGED_IN_USER,
         VIEW_PORTFOLIO,
-        VIEW_BLOCKCHAIN;
+        VIEW_BLOCKCHAIN
+    }
+    
+    private static void printValidTransactions()
+    {
+        System.out.println("Valid forms of transaction: ");
+        System.out.println(Arrays.toString(Transaction.Type.values()));
+    }
+    
+    private static void printValidOrderTypes()
+    {
+        System.out.println("Valid order types: ");
+        System.out.println(Arrays.toString(Asset.OrderType.values()));
     }
     
     private static boolean isValidCommand(String input)
     {
-        Command allCommands[] = Command.values();
+        Command[] allCommands = Command.values();
         int i = 0;
         while(i < allCommands.length)
         {
@@ -564,7 +536,7 @@ public class Testing
         }
     }
     
-    public static void printTransactionRequests()
+    private static void printTransactionRequests()
     {
         System.out.println("--- TRANSACTION REQUESTS ---");
         for(Transaction request : Account.getTransactionRequests())
@@ -584,7 +556,28 @@ public class Testing
         }
     }
     
-    public static void printTransactionReceipt(Transaction transaction)
+    private static void printTransactionAndAsset(String transType, Asset a)
+    {
+        Transaction req = new Transaction(transType, a);
+    
+        try
+        {
+            loggedIn.requestTransaction(req);
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("--- TRANSACTION INFO ---");
+        printTransactionReceipt(req);
+        if(req.getTransactionAsset() != null)
+        {
+            System.out.println("--- ASSOCIATED ASSET INFO ---");
+            printAssetInfo(req);
+        }
+    }
+    
+    private static void printTransactionReceipt(Transaction transaction)
     {
         if(!transaction.getTransactionStatus().name().equalsIgnoreCase("Cancelled"))
         {
@@ -620,7 +613,7 @@ public class Testing
         System.out.println(" ");
     }
     
-    public static void printAssetInfo(Transaction transaction)
+    private static void printAssetInfo(Transaction transaction)
     {
         System.out.println("------ ASSET INFORMATION ---");
         Asset asset = transaction.getTransactionAsset();
@@ -643,7 +636,7 @@ public class Testing
         System.out.println(" ");
     }
     
-    public static void printTransactionHistory()
+    private static void printTransactionHistory()
     {
         System.out.println("--- TRANSACTION HISTORY ---");
         while(!Account.getTransactionHistory().isEmpty())
@@ -667,7 +660,7 @@ public class Testing
         System.out.println("No transactions have been requested/resolved.");
     }
     
-    public static void printAccountBalanceHistory()
+    private static void printAccountBalanceHistory()
     {
         System.out.println("--- ACCOUNT BALANCE HISTORY ---");
         Stack<Balance> accountHistory = Account.getAccountBalance().getBalanceHistory();
@@ -679,7 +672,7 @@ public class Testing
         System.out.println(" ");
     }
     
-    public static void printBankBalanceHistory()
+    private static void printBankBalanceHistory()
     {
         System.out.println("--- BANK BALANCE HISTORY ---");
         Stack<Balance> bankHistory = Bank.getBankBalance().getBalanceHistory();
@@ -691,7 +684,7 @@ public class Testing
         System.out.println(" ");
     }
     
-    public static void printPortfolioHistory()
+    private static void printPortfolioHistory()
     {
         System.out.println("--- PORTFOLIO BALANCE HISTORY ---");
         Stack<Balance> portfolioHistory = Portfolio.getPortfolioBalance().getBalanceHistory();

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+@Deprecated
 public class Basic_Testing
 {
     public static void main(String[] args) throws InterruptedException, IOException
