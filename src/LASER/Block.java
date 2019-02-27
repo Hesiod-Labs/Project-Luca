@@ -8,7 +8,6 @@ public class Block {
   private Transaction trx;
   private long timestamp;
   
-  //Block Constructor, will take a specific kind of Transaction
   public Block(Transaction trx, String previousHash, long timestamp, String status) {
     this.previousHash = previousHash;
     this.trx = trx;
