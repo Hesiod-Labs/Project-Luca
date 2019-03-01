@@ -7,15 +7,15 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 
 /**
- * The repository for which inactive trading funds are kept. The bank can be assigned a name. Otherwise, it is default
- * called "Unnamed Bank." The bank has a {@link Balance} that contains both the current value of the bank, as well as
- * past values. Each time the bank's balance is updated, the time in which it is updated, the amount, and the
- * associated transaction are all recorded as part of the new balance. Users can {@link #deposit(Transaction)} funds
- * from their own balance or from some external source. Depositing funds adds value to the bank, but does not affect
- * the {@link Portfolio} balance. Users can also {@link #withdraw(Transaction)} funds, which removes funds from the
- * bank is transferred to whomever requested the withdrawal.
+ * The repository in which inactive trading funds are kept. The bank can be assigned a name. Otherwise, it is assigned
+ * the default name "Unnamed Bank." The bank has a {@link Balance} that contains both the current value of the bank, as
+ * well as past values. Each time the bank's balance is updated, the time in which it is updated, the amount, and the
+ * associated transaction are all recorded as part of the new balance. Depositing funds ({@link #deposit(Transaction)})
+ * adds value to the bank, but does not affect the {@link Portfolio} balance. Likewise, withdrawing funds
+ * ({@link #withdraw(Transaction)}, removes funds from the bank and transfers said funds to whomever
+ * requested the withdrawal.
  * @author hLabs
- * @since 0.1a
+ * @since 1.0
  */
 public class Bank
 {
@@ -45,19 +45,17 @@ public class Bank
      * the amount associated with the transaction.
      * @param name Name designated to the bank.
      * @param firstTransaction A transaction that sets the bank.
-     * //TODO The transaction can be negative, so should print some kind of warning beforehand.
      */
     public Bank(String name, Transaction firstTransaction)
     {
-        //TODO This should work, in terms of updating the balance history, since it's being set to the bank balance.
         this(name, new Balance(firstTransaction));
     }
     
     /**
      * Creates a bank with a non-default name and some initial value, but no associated transaction.
      * While it is important to have all historical balances be tied to the actual transaction, this constructor is
-     * useful when used in tandem with the {@link Balance} constructor that only takes a <code>double</code> initial amount,
-     * since multiple balance objects can be created to update both the bank and portfolio while maintaining the
+     * useful when used in tandem with the {@link Balance} constructor that only takes a <code>double</code> initial
+     * amount, since multiple balance objects can be created to update both the bank and portfolio while maintaining the
      * transaction with which the balance is associated.
      * @param name Name designated to the bank.
      * @param initialAmount Some dollar amount to be put in the bank, but is not recorded as a deposit.
@@ -84,23 +82,31 @@ public class Bank
     {
         this("Unnamed Bank", new Balance());
         Balance createdAt = new Balance();
+        createdAt.updateBalance(createdAt);
     }
     
     /**
      * Deposits money into the bank. Called by {@link User#resolveTransaction(Transaction, String)} after a transaction
-     * of type "DEPOSIT" ({@link Transaction.Type}) has been requested. Once the deposit transaction is resolved, the
-     * timestamp of when it is resolved is set, the transaction status is updated to "DEPOSITED"
-     * ({@link Transaction.Status}), and the bank's balance is updated to account for the newly added funds.
-     * A transaction only of type "DEPOSIT" can be resolved and added to the bank.
+     * of type <code>DEPOSIT</code> ({@link Transaction.Type}) has been requested. Once the deposit transaction is
+     * resolved by an admin {@link User}, the timestamp of when it is resolved is set, the transaction status is
+     * updated to <code>DEPOSITED</code> ({@link Transaction.Status}), and the bank's balance is updated to account for
+     * the newly added funds. A transaction only of type <code></code> can be resolved and added to the bank.
      * @see Balance
      * @param transaction Associated with the deposit.
      */
     public static void deposit(Transaction transaction)
     {
-        transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-        transaction.setTransactionStatus(Transaction.Status.DEPOSITED);
-        getBankBalance().updateBalance(Balance.transferTo(transaction));
-        Account.getAccountBalance().updateBalance(Balance.transferTo(transaction)); //TODO Add to description
+        if(transaction.getTransactionType().equals(Transaction.Type.DEPOSIT))
+        {
+            transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+            transaction.setTransactionStatus(Transaction.Status.DEPOSITED);
+            getBankBalance().updateBalance(Balance.transferTo(transaction));
+            Account.getAccountBalance().updateBalance(Balance.transferTo(transaction)); //TODO Add to description
+        }
+        else
+        {
+            throw new IllegalArgumentException("Only transactions of type DEPOSIT are allowed to be deposited.");
+        }
     }
     
     /**
@@ -114,17 +120,25 @@ public class Bank
      */
     public static void withdraw(Transaction transaction)
     {
-        transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
-        transaction.setTransactionStatus(Transaction.Status.WITHDRAWN);
-        User requestedBy = transaction.getRequestUser();
-        requestedBy.getUserBalance().updateBalance(Balance.transferTo(transaction));
-        getBankBalance().updateBalance(Balance.transferFrom(transaction));
-        Account.getAccountBalance().updateBalance(Balance.transferFrom(transaction)); //TODO Add to description
+        if(transaction.getTransactionType().equals(Transaction.Type.WITHDRAW))
+        {
+            transaction.setResolveDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
+            transaction.setTransactionStatus(Transaction.Status.WITHDRAWN);
+            User requestedBy = transaction.getRequestUser();
+            requestedBy.getUserBalance().updateBalance(Balance.transferTo(transaction));
+            getBankBalance().updateBalance(Balance.transferFrom(transaction));
+            Account.getAccountBalance().updateBalance(Balance.transferFrom(transaction));
+        }
+        else
+        {
+            throw new IllegalArgumentException("Only transactions of type WITHDRAW are allowed to be withdrawn.");
+        }
     }
     
     /**
-     * @return Entire balance repository whose most recent entry is the current value of the bank. Each entry before
+     * Entire balance repository whose most recent entry is the current value of the bank. Each entry before
      * the most recent entry are previous balances that all have timestamps and associated transactions.
+     * @return All balance information of the bank.
      * @see Balance
      */
     public static Balance getBankBalance()
@@ -133,31 +147,11 @@ public class Bank
     }
     
     /**
+     * The name designated to the bank. Set at the time of the {@link Account}'s creation.
      * @return Name designated to the bank.
      */
     public static String getBankName()
     {
         return bankName;
-    }
-    
-    /**
-     * Sets the bank's balance repository.
-     * <p>WARNING: DO NOT USE UNLESS THE BANK'S BALANCE HAS NOT ALREADY BEEN SET. DOING SO WILL OVERWRITE THE
-     * CURRENT BANK BALANCE AND ALL PAST BALANCES WILL BE LOST.</p>
-     * @param bankBalance Includes both current and past bank values with timestamps and transactions.
-     */
-    public static void setBankBalance(Balance bankBalance)
-    {
-        Bank.bankBalance = bankBalance;
-    }
-    
-    /**
-     * Set's the bank's name.
-     * <p>"WARNING: IT IS NOT RECOMMENDED TO SET THE BANK'S NAME AFTER IT HAS ALREADY BEEN SET.</p>
-     * @param bankName Name designated to the bank.
-     */
-    public static void setBankName(String bankName)
-    {
-        Bank.bankName = bankName;
     }
 }

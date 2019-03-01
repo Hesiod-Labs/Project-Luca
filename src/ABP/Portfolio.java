@@ -4,8 +4,21 @@ import BTA.*;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.LinkedList;
 
+/**
+ * The repository in which active trading funds are kept. The portfolio can be assigned a name. Otherwise, it is assigned
+ * the default name "Unnamed Portfolio." The portfolio has a {@link Balance} that contains both the current value of the
+ * portfolio, as well as past values. Each time the portfolio's balance is updated, the time in which it is updated,
+ * the amount, and the associated transaction are all recorded as part of the new balance. Note that the portfolio's
+ * balance is <it>not</it> the returns of the portfolio; this information is stored in the
+ * {@link Portfolio portfolioReturns} Balance. {@link Asset}s are acquired through the processes of buying
+ * ({@link #buyOrder(Transaction)}) and shorting ({@link #shortOrder(Transaction)}). Conversely, {@link Asset}s are
+ * liquidated through the processes of selling ({@link Asset#sellAsset()})and covering ({@link Asset#coverAsset()}).
+ * //TODO Move buy/sell methods to Asset or short/cover to Portfolio
+ * @author hLabs
+ * @since 1.0
+ */
 public class Portfolio
 {
     /**
@@ -28,6 +41,12 @@ public class Portfolio
     private static Balance portfolioBalance;
     
     /**
+     * Contains information on the net returns of the portfolio over time, such as date and time information, as well
+     * as the transaction that resulted in a new value of returns.
+     */
+    private static Balance portfolioReturns;
+    
+    /**
      * Date and time in which the portfolio is created.
      */
     private static ZonedDateTime timeCreated;
@@ -48,6 +67,7 @@ public class Portfolio
         Portfolio.nameOfPortFolio = name;
         Portfolio.portfolioBalance = portfolioBalance;
         Portfolio.portfolio = portfolio;
+        portfolioReturns = new Balance();
     }
     
     /**
@@ -60,7 +80,7 @@ public class Portfolio
      */
     public Portfolio(String name, Balance portfolioBalance)
     {
-        this(name, portfolioBalance, new LinkedList<Asset>());
+        this(name, portfolioBalance, new LinkedList<>());
     }
     
     /**
@@ -71,7 +91,7 @@ public class Portfolio
      */
     public Portfolio(String name)
     {
-        this(name, new Balance(), new LinkedList<Asset>());
+        this(name, new Balance(), new LinkedList<>());
     }
     
     /**
@@ -80,17 +100,16 @@ public class Portfolio
      */
     public Portfolio()
     {
-        this("Unnamed Portfolio", new Balance(), new LinkedList<Asset>());
+        this("Unnamed Portfolio", new Balance(), new LinkedList<>());
     }
     
     /**
-     * //TODO Add description about associated transaction with asset to all forms of resolutions
      * Acquires the asset associated with a "BUY" transaction request ({@link Transaction.Type}). If the request is not
      * denied during resolution, the start date and owned statuses of the asset belonging to the transaction are set.
      * The status of the transaction is set to "BOUGHT" ({@link Transaction.Status}). The amount associated with
-     * buying the asset is transferred from the {@link Bank} to the portfolio. If the amount required to buy the asset
-     * is greater than that which resides in the {@link Bank}, a message is printed and the transaction status is set
-     * to "CANCELLED" ({@link Transaction.Status}).
+     * buying the asset is transferred from the {@link Bank} to the portfolio. The transaction associated with acquiring
+     * the asset is also set. If the amount required to buy the asset is greater than that which resides in the
+     * {@link Bank}, a message is printed and the transaction status is set to "CANCELLED" ({@link Transaction.Status}).
      * @param transaction Contains the asset to be bought.
      */
     public static void buyOrder(Transaction transaction)
@@ -117,59 +136,10 @@ public class Portfolio
     
     /**
      * Liquidates a bought asset ({@link Transaction.Status}) if the asset currently exists in the portfolio.
-     * //TODO Scenario 1: sell all of the asset. This is accounted for in what's written right now
-     * //TODO Scenario 2: sell a portion of the asset.
-     * //TODO Sell one transaction's worth of asset (as written now)
-     * //TODO Sell more than one transaction's worth of asset, but not everything (maximize returns or manually)
-     * Steps: getAsset...calculate returns based on how much is being sold...update asset remaining in the portfolio
      * @param transaction Contains the asset to be sold.
      */
     public static void sellOrder(Transaction transaction)
     {
-        /* THE CODE COMMENTED OUT HERE IS PART OF THE CURRENT ATTEMPT TO DETECT ADVANCED CASES, SUCH AS WHEN THE AMOUNT
-        OF STOCKS TO SELL IS NOT EQUAL OR TIED TO A UNIT ASSET, SO SHARES OF ASSETS BELONGING TO SEPARATE BUY
-        TRANSACTIONS MUST BE SOLD IN ORDER TO MAXIMIZE RETURNS.
-        
-        // If the sell transaction has a specified unit asset, sell only that asset.
-        // If the sell transaction has a specified non-unit asset, sell to maximize returns.
-        String symbol = transaction.getTransactionAsset().getSymbol();
-        
-        int totalSharesToSell = 0;
-        for(Asset a : getPortfolio())
-        {
-            if(a.getSymbol().equalsIgnoreCase(symbol) && a.getAcquisitionTransaction().getTransactionType().
-                    equals(Transaction.Type.BUY))
-                totalSharesToSell++;
-        }
-        
-        if(totalSharesToSell > 0)
-        {
-            if(totalSharesToSell >= transaction.getTransactionAsset().getVolume())
-            {
-                Predicate<Asset> symbolOccur = s -> s.getSymbol().equalsIgnoreCase(symbol);
-                Predicate<Asset> buyOnly = symbolOccur.and(a -> a.getAcquisitionTransaction().getTransactionType().equals(Transaction.Type.BUY));
-                List<Asset> assetList = Portfolio.getPortfolio().stream().filter(buyOnly).collect(Collectors.toList());
-                int numAssetsToSell = assetList.size();
-                for(Asset nextAsset : assetList)
-                {
-                    nextAsset.getVolume();
-                    
-                    System.out.println("Symbol: " + nextAsset.getSymbol() + "\n" + "Associated acquisition transaction " +
-                            "ID: " +
-                            nextAsset.getAcquisitionTransaction().getTransactionID());
-                }
-                
-            }
-            else
-            {
-                System.out.println("Not enough shares in the portfolio to sell. Select a lower number of shares.");
-            }
-        }
-        else
-        {
-            System.out.println("Asset cannot be sold since it does not exist in the portfolio.");
-        }
-        */
         // Check that the asset associated with the transaction is in the portfolio.
         if(Portfolio.getPortfolio().contains(transaction.getTransactionAsset()))
         {
@@ -187,7 +157,6 @@ public class Portfolio
         else
             System.out.println("Asset cannot be sold since it does not exist in the portfolio.");
     }
-    //}
     
     /**
      * //TODO Add more @links to this description
@@ -204,8 +173,14 @@ public class Portfolio
         double amountToShort = transaction.getTransactionAmount();
         double numShares = transaction.getTransactionAsset().getVolume();
         double pricePerShare = transaction.getTransactionAsset().getStartPrice();
-        double safetyFunds = Bank.getBankBalance().getCurrentValue();
+        double safetyFunds = Bank.getBankBalance().getCurrentValue() - numShares*pricePerShare;
+        
+        System.out.println("Safety funds: " + safetyFunds);
+        
         double safetyPerShare = (safetyFunds / numShares); // TODO This calculates correctly
+    
+        System.out.println("Safety Per Share: " + safetyPerShare);
+        
         double safetyPercent = (safetyPerShare / pricePerShare)*100.0;
         if(amountToShort < safetyFunds)
         {
@@ -228,6 +203,7 @@ public class Portfolio
     
     /**
      * //TODO Add more @links in the description.
+     * // TODO Fix negative bug
      * Covers a shorted asset based on the condition that the asset is currently being shorted in the portfolio. The
      * resolution date is set to when the asset is covered. The transaction status is set to "COVERED." Asset returns
      * and duration of owning the asset are calculated. The asset is set to not owned and is removed from the portfolio.
@@ -260,12 +236,13 @@ public class Portfolio
      * {@link #shortOrder(Transaction)} methods.
      * @param asset Asset to be added to the portfolio.
      */
-    public static void addToPortfolio(Asset asset)
+    private static void addToPortfolio(Asset asset)
     {
         getPortfolio().add(asset);
     }
     
     /**
+     * Returns the portfolio, which contains all of the assets.
      * @return Portfolio containing the assets currently owned.
      */
     public static LinkedList<Asset> getPortfolio()
@@ -274,6 +251,7 @@ public class Portfolio
     }
     
     /**
+     * Returns the name of the portfolio.
      * @return Name designated to the portfolio. If not specified a non-default name, returns "Unnamed Portfolio."
      */
     public static String getNameOfPortFolio()
@@ -282,6 +260,8 @@ public class Portfolio
     }
     
     /**
+     * Returns the balance of the portfolio, which contains the dollar amount and time/date info being utilized for
+     * investing.
      * @return Current and past values of funds existing within the portfolio used for trading. Also contains
      * associated transaction and timestamp information for each balance statement.
      * @see Balance
@@ -292,54 +272,11 @@ public class Portfolio
     }
     
     /**
-     * @return Date and time in which the portfolio was created. Timezone set to America/New York.
+     * Returns the net returns of the portfolio. The most recent balance is the most current returns value.
+     * @return Time/date and dollar amount info of net returns after liquidating each asset.
      */
-    public static ZonedDateTime getTimeCreated()
+    public static Balance getPortfolioReturns()
     {
-        return timeCreated;
-    }
-    
-    /**
-     * Sets the portfolio of owned assets.
-     * WARNING: DO NOT USE UNLESS PORTFOLIO HAS NOT BEEN SET. OTHERWISE, ALL OWNED ASSETS WILL BE LOSSED.
-     * @param portfolio Assets owned.
-     */
-    public static void setPortfolio(LinkedList<Asset> portfolio)
-    {
-        Portfolio.portfolio = portfolio;
-    }
-    
-    /**
-     * Sets the name designated to the portfolio.
-     * WARNING: DO NOT USE UNLESS THE PORTFOLIO NAME HAS NOT BEEN SET.
-     * @param nameOfPortFolio Name designated to the portfolio.
-     */
-    public static void setNameOfPortFolio(String nameOfPortFolio)
-    {
-        Portfolio.nameOfPortFolio = nameOfPortFolio;
-    }
-    
-    /**
-     * Sets the balance, current, and past, of the portfolio.
-     * WARNING: DO NOT USE UNLESS THE PORTFOLIO BALANCE HAS NOT ALREADY BEEN SET. OTHERWISE, THE CURRENT AND PAST
-     * BALANCE STATEMENTS WILL BE LOSSED.
-     * @param portfolioBalance Current and past balance statements of the portfolio with associated amounts, timestamps,
-     *                         and transactions. In this case, it specifically represents the amount transferred from
-     *                         the {@link Bank} to trade. Once an asset is liquidated, the original amount transferred
-     *                         is removed from the portfolio balance.
-     */
-    public static void setPortfolioBalance(Balance portfolioBalance)
-    {
-        Portfolio.portfolioBalance = portfolioBalance;
-    }
-    
-    /**
-     * Sets the time in which the portfolio is created.
-     * WARNING: DO NOT USE UNLESS THE TIME CREATED IS INCORRECT.
-     * @param timeCreated Date and time in which the portfolio is created.
-     */
-    public static void setTimeCreated(ZonedDateTime timeCreated)
-    {
-        Portfolio.timeCreated = timeCreated;
+        return portfolioReturns;
     }
 }

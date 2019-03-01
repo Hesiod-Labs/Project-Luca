@@ -83,7 +83,7 @@ public class Laser {
   }
 
   public static boolean createGenesisBlock() {
-    Block block = new Block(new Transaction("BUY", 0), "Genesis Block", System.currentTimeMillis(), "");
+    Block block = new Block(new Transaction(Transaction.Type.BUY, 0), "Genesis Block", System.currentTimeMillis(), "");
     getBlockchain().add(block);
     return true;
   }
@@ -100,5 +100,3 @@ public class Laser {
     return output;
   }
 }
-
-

@@ -6,9 +6,31 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 
 /**
- * A stock or option that is owned in the {@link Portfolio}.
+ * A stock (option functionality to be implemented in future versions) that is owned the {@link Portfolio}. Has basic
+ * identification information, such as the name and stock symbol of the company, the sector (based on Hesiod Financial),
+ * volume of shares, order type, and the associated transaction to acquire and/or liquidate the asset holding;
+ * in addition to returns-based information, such as start/end price, net returns. At the time of acquisition
+ * (buy/short), the following information is established:
+ * <ul>
+ *     <li><code>assetName</code></li>
+ *     <li><code>assetSymbol</code></li>
+ *     <li><code>sector</code></li>
+ *     <li><code>volume</code></li>
+ *     <li><code>startPrice</code></li>
+ *     <li><code>startDate</code></li>
+ *     <li><code>own</code> (set to <code>true</code>)</li>
+ *     <li><code>orderType</code></li>
+ *     <li><code>acquisitionTransaction</code></li>
+ * </ul>
+ * At the time of liquidation (sell/cover), the remaining data fields are assigned:
+ * <ul>
+ *     <li><code>endPrice</code></li>
+ *     <li><code>timeHeld</code></li>
+ *     <li><code>own</code> (set to <code>false</code>)</li>
+ *     <li><code>liquidationTransaction</code></li>
+ * </ul>
  * @author hLabs
- * @since 0.1a
+ * @since 1.0
  */
 public class Asset
 {
@@ -20,21 +42,18 @@ public class Asset
     /**
      * Stock symbol in accordance with New York Stock Exchange. Example: CMG.
      */
-    private String symbol;
+    private String assetSymbol;
     
     /**
-     * Sector of the economy to which the asset belongs:
+     * Sector of the Hesiod Financial portfolio to which the asset belongs:
      * <ul>
-     *     <li>Consumers</li>
-     *     <li>Energy</li>
-     *     <li>Financials</li>
-     *     <li>Healthcare</li>
-     *     <li>Industrials</li>
-     *     <li>Materials</li>
-     *     <li>Real Estate</li>
-     *     <li>Technology</li>
-     *     <li>Telecom</li>
-     *     <li>Utilities</li>
+     *     <li>Cryptocurrency (CRYPTO)</li>
+     *     <li>Communication Services and Information Technology (CS-IT)</li>
+     *     <li>Real Estate and Financials (REIT_FIG)</li>
+     *     <li>Foreign Exchange (FOREX)</li>
+     *     <li>Materials, Energy, Industrials (MEI)</li>
+     *     <li>Consumer D&S and Healthcare (CONSUMER_HEALTHCARE)</li>
+     *     <li>Options (OPTIONS)</li>
      * </ul>
      */
     private Sector sector;
@@ -91,10 +110,14 @@ public class Asset
      */
     private OrderType orderType;
     
-    //TODO Created for the purpose of filtering assets while liquidating assets comment getter and setter methods
+    /**
+     * The transaction tied to the acquisition of the asset.
+     */
     private Transaction acquisitionTransaction;
     
-    //TODO Same as above
+    /**
+     * The transaction tied to the liquidation of the asset.
+     */
     private Transaction liquidationTransaction;
     
     /**
@@ -106,15 +129,15 @@ public class Asset
      * @param orgPrice Price at which the asset is first acquired.
      * @param orderType Determines at what price and when the asset is acquired or liquidated ({@link #orderType}).
      */
-    public Asset(String nameOfAsset, String sym, String sect, int vol, double orgPrice, String orderType)
+    public Asset(String nameOfAsset, String sym, Sector sect, int vol, double orgPrice, OrderType orderType)
     {
         this.assetName = nameOfAsset;
-        this.symbol = sym;
-        this.sector = Sector.valueOf(sect.toUpperCase());
+        this.assetSymbol = sym;
+        this.sector = sect;
         this.volume = vol;
         this.startPrice = orgPrice;
         this.own = false;
-        this.orderType = OrderType.valueOf(orderType.toUpperCase());
+        this.orderType = orderType;
     }
     
     /**
@@ -126,10 +149,15 @@ public class Asset
         this.setEndDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
         this.setOwn(false);
         this.setReturns(calculateReturns());
+        // TODO Portfolio.getPortfolioReturns().updateBalance(Balance.transferTo());
         this.calculateTimeHeld();
         Portfolio.getPortfolio().remove(this);
     }
     
+    /**
+     * Covers an asset, recording the time in which the cover action is performed, calculates the duration and returns
+     * of owning the asset, and finally removes the asset from the {@link Account} portfolio.
+     */
     public void coverAsset()
     {
         this.setEndDate(ZonedDateTime.now(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.SECONDS));
@@ -158,7 +186,7 @@ public class Asset
      * @param endPrice Share price of asset at time of liquidation.
      * @return Hypothetical returns of owning the asset.
      */
-    public double calculateHypotheticalReturns(double startPrice, double endPrice)
+    private double calculateHypotheticalReturns(double startPrice, double endPrice)
     {
         Asset hypothetical = this;
         hypothetical.setStartPrice(startPrice);
@@ -167,28 +195,24 @@ public class Asset
     }
     
     /**
-     * //TODO Check that ZonedDateTime accounts for Zone offset when calculating
      * Calculates the amount of time between when the asset is acquired and liquidated.
      * @see Portfolio#sellOrder(Transaction)
-     * @return The amount of time in seconds.
      */
-    private double calculateTimeHeld()
+    private void calculateTimeHeld()
     {
         ZonedDateTime start = this.getStartDate();
         ZonedDateTime end = this.getEndDate();
         double duration = ChronoUnit.SECONDS.between(start, end);
         this.setTimeHeld(duration);
-        return duration;
     }
     
     /** The different economic sectors to which an asset can belong. */
     public enum Sector
     {
-        CRYPTO, CS_IT, FOREX, HEALTHCARE, MEI, OPTIONS, REIT_FIG;
+        CONSUMER_HEALTHCARE, CRYPTO, CS_IT, FOREX, MEI, OPTIONS, REIT_FIG;
     }
     
     /**
-     * //TODO https://scs.fidelity.com/webxpress/help/topics/help_definition_t.shtml#trailingstoplimit
      * Different ways in which an asset can be acquired or liquidated. Descriptions originally from Fidelity.com.
      * <ul>
      *     <li>Limit: The stock is eligible to be purchased at or below the limit price, but never above it. When a
@@ -212,6 +236,8 @@ public class Asset
      *     security goes down. If the price of the security is moving against the customer's order, the stop price does
      *     not adjust.</li>
      * </ul>
+     * @see <a href = "https://scs.fidelity.com/webxpress/help/topics/help_definition_t.shtml#trailingstoplimit">
+     *     https://scs.fidelity.com/</a>
      */
     public enum OrderType
     {
@@ -219,6 +245,7 @@ public class Asset
     }
     
     /**
+     * The full name of the asset.
      * @return Full name of the asset.
      */
     public String getAssetName()
@@ -227,15 +254,18 @@ public class Asset
     }
     
     /**
+     * The symbol of the asset.
      * @return Symbol of the asset, per the New York Stock Exchange.
      */
     public String getSymbol()
     {
-        return symbol;
+        return assetSymbol;
     }
     
     /**
+     * The sector to which the asset belongs, according to those existing in Hesiod Financial
      * @return Economic sector to which the asset belongs.
+     * @see Sector
      */
     public Sector getSector()
     {
@@ -243,6 +273,7 @@ public class Asset
     }
     
     /**
+     * The number of shares of the asset.
      * @return Number of shares of the asset.
      */
     public int getVolume()
@@ -251,6 +282,7 @@ public class Asset
     }
     
     /**
+     * The dollar price at which the asset is acquired in the {@link Portfolio}.
      * @return Dollar price at which the asset is acquired in the {@link Portfolio}.
      */
     public double getStartPrice()
@@ -259,6 +291,7 @@ public class Asset
     }
     
     /**
+     * The dollar price at which the asset is liquidated from the {@link Portfolio}.
      * @return Dollar price at which the asset is liquidated from the {@link Portfolio}.
      */
     public double getEndPrice()
@@ -267,8 +300,9 @@ public class Asset
     }
     
     /**
-     * @return Dollar amount earned or lossed in trading the asset. Known only after the {@link #startPrice} and
+     * The net dollar amount returned by owning an asset. Known only after the {@link #startPrice} and
      * {@link #endPrice} are set.
+     * @return Net dollar amount gained by owning an asset.
      */
     public double getReturns()
     {
@@ -276,7 +310,8 @@ public class Asset
     }
     
     /**
-     * @return Date and time in which the asset is added to the {@link Portfolio}.
+     * The date and time in which the asset is added to the {@link Portfolio}.
+     * @return Date and time information.
      */
     public ZonedDateTime getStartDate()
     {
@@ -284,7 +319,8 @@ public class Asset
     }
     
     /**
-     * @return Date and time in which the asset is liquidated from the {@link Portfolio}.
+     * The date and time in which the asset is removed from the {@link Portfolio}.
+     * @return Date and time information.
      */
     public ZonedDateTime getEndDate()
     {
@@ -292,7 +328,8 @@ public class Asset
     }
     
     /**
-     * @return Number of seconds between {@link #startDate} and {@link #endDate}.
+     * The number of seconds between {@link #startDate} and {@link #endDate}.
+     * @return Number of seconds.
      */
     public double getTimeHeld()
     {
@@ -300,7 +337,8 @@ public class Asset
     }
     
     /**
-     * @return <code>true</code> of the asset exists in the {@link Portfolio} and <code>false</code> if not.
+     * <code>true</code> of the asset exists in the {@link Portfolio} and <code>false</code> if not.
+     * @return <code>true</code> if owned and <code>false</code> if not.
      */
     public boolean isOwned()
     {
@@ -308,57 +346,31 @@ public class Asset
     }
     
     /**
-     * @return The order type that determines when and at what price the asset should be acquired or liquidated.
+     * The order type that determines when and what price the asset should be acquired or liquidated.
+     * @return Order type
+     * @see OrderType
      */
     public OrderType getOrderType()
     {
         return orderType;
     }
     
+    /**
+     * The transaction associated with acquiring the asset.
+     * @return Associated transaction.
+     */
     public Transaction getAcquisitionTransaction()
     {
         return acquisitionTransaction;
     }
     
+    /**
+     * The transaction associated with liquidating the asset.
+     * @return Associated transaction.
+     */
     public Transaction getLiquidationTransaction()
     {
         return liquidationTransaction;
-    }
-    
-    /**
-     * WARNING: DO NOT CHANGE UNLESS THE CURRENT NAME IS INCORRECT.
-     * @param assetName Full name of the asset.
-     */
-    public void setAssetName(String assetName)
-    {
-        this.assetName = assetName;
-    }
-    
-    /**
-     * WARNING: DO NOT CHANGE UNLESS THE CURRENT SYMBOL IS INCORRECT.
-     * @param symbol Asset symbol per the New York Stock Exchange.
-     */
-    public void setSymbol(String symbol)
-    {
-        this.symbol = symbol;
-    }
-    
-    /**
-     * WARNING: DO NOT CHANGE UNLESS THE CURRENT SECTOR IS INCORRECT.
-     * @param sector Economic sector to which the asset belongs.
-     */
-    public void setSector(Sector sector)
-    {
-        this.sector = sector;
-    }
-    
-    /**
-     * WARNING: DO NOT CHANGE UNLESS THE CURRENT VOLUME IS INCORRECT.
-     * @param volume Number of shares of an asset.
-     */
-    public void setVolume(int volume)
-    {
-        this.volume = volume;
     }
     
     /**
@@ -416,6 +428,7 @@ public class Asset
     }
     
     /**
+     * <code>true</code> if the asset exists in the {@link Portfolio} and <code>false</code> if not.
      * @param own <code>true</code> if the asset exists in the {@link Portfolio} and <code>false</code> if not.
      */
     public void setOwn(boolean own)
@@ -424,19 +437,18 @@ public class Asset
     }
     
     /**
-     * WARNING: DO NOT CHANGE UNLESS THE CURRENT ORDER TYPE IS INCORRECT.
-     * @param orderType Order type of that asset that details when and at what price to acquire or liquidate the asset.
+     * Sets the transaction associated with acquiring the asset.
+     * @param acquisitionTransaction Associated transaction.
      */
-    public void setOrderType(OrderType orderType)
-    {
-        this.orderType = orderType;
-    }
-    
     public void setAcquisitionTransaction(Transaction acquisitionTransaction)
     {
         this.acquisitionTransaction = acquisitionTransaction;
     }
     
+    /**
+     * Sets the transaction associated with liquidating the asset.
+     * @param liquidationTransaction Associated transaction.
+     */
     public void setLiquidationTransaction(Transaction liquidationTransaction)
     {
         this.liquidationTransaction = liquidationTransaction;

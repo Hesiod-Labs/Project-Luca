@@ -94,14 +94,19 @@ public class Transaction
      */
     private Asset transactionAsset;
     
+    //TODO Connor: please add appropriate field description
     private byte[] signature;
     
+    //TODO Connor: please add appropriate field description
     private long timestamp;
     
+    //TODO Connor: please add appropriate field description
     private String transactionData;
     
+    //TODO Connor: please add appropriate field description
     private PublicKey userPublicKey;
     
+    //TODO Connor: please add appropriate field description
     private PrivateKey userPrivateKey;
     
     /**
@@ -109,11 +114,18 @@ public class Transaction
      * @param type Determines if the transaction is related to the {@link Bank} and/or {@link Portfolio}.
      * @param amount Dollar amount requested. Always positive.
      */
-    public Transaction(String type, double amount)
+    public Transaction(Type type, double amount) throws IllegalArgumentException
     {
-        this.transactionAmount = amount;
-        this.transactionStatus = Status.OPEN;
-        this.transactionType = Type.valueOf(type.toUpperCase());
+        if(amount < 0)
+        {
+            throw new IllegalArgumentException("Amount must be nonnegative.");
+        }
+        else
+        {
+            this.transactionAmount = amount;
+            this.transactionStatus = Status.OPEN;
+            this.transactionType = type;
+        }
     }
     
     /**
@@ -121,28 +133,37 @@ public class Transaction
      * Creates a transaction with an associated {@link Asset}.
      * @param type Since there is an an associated {@link Asset}, will be <code>BUY</code>, <code>SELL</code>,
      *             <code>SHORT</code>, or <code>COVER</code>.
-     * @param transactionAsset {@link Asset} associated with the transaction.
+     * @param asset {@link Asset} associated with the transaction.
      */
-    public Transaction(String type, Asset transactionAsset)
+    public Transaction(Type type, Asset asset)
     {
-        this(type, transactionAsset.getStartPrice() * transactionAsset.getVolume());
-        this.transactionAsset = transactionAsset;
+        if(type == Type.DEPOSIT || type == Type.WITHDRAW)
+            throw new IllegalArgumentException("Transaction type must be either BUY/SELL/SHORT/COVER.");
+        else
+        {
+            this.transactionAmount = transactionAsset.getStartPrice()*transactionAsset.getVolume();
+            this.transactionAsset = asset;
+            this.transactionStatus = Status.OPEN;
+            this.transactionType = type;
+        }
     }
     
     /**
      * Requires that the {@link LucaMember} confirms the action to either request or resolve a transaction.
      * @return <code>true</code> if response is "yes," and <code>false</code> if "no."
-     * \\TODO Change to while loop
      */
     public boolean confirmAction()
     {
         Scanner reader = new Scanner(System.in);
-        System.out.println("Type \"yes\" or \"no\" to confirm this action: ");
         String response = reader.next();
-        if(!response.trim().equalsIgnoreCase("yes") && !response.trim().equalsIgnoreCase("no"))
+        boolean confirmed = false;
+        while(!confirmed)
         {
-            System.out.println("Please try again. Make sure you type either \"yes\" or \"no\".");
-            confirmAction();
+            System.out.println("Type \"yes\" or \"no\" to confirm this action: ");
+            if(!response.trim().equalsIgnoreCase("yes") && !response.trim().equalsIgnoreCase("no"))
+                System.out.println("Please try again. Make sure you type either \"yes\" or \"no\".");
+            else
+                confirmed = true;
         }
         reader.reset();
         return response.equalsIgnoreCase("yes");
@@ -168,7 +189,6 @@ public class Transaction
     }
     
     /**
-     * //TODO Consider changing the resolveTransaction
      * Used when an admin {@link LucaMember} is requesting a transaction. Since an admin {@link LucaMember} can request and resolve
      * transactions immediately, to is more efficient and less prone to {@link LucaMember} error if the status of the
      * transaction is updated to match the type of transaction as opposed to entering the updated status when resolving
@@ -225,6 +245,7 @@ public class Transaction
     }
     
     /**
+     * Returns the the user who resolved the transaction. Admin members only.
      * @return {@link LucaMember} that resolves the requested transaction. Can only be admin users.
      */
     public User getResolveUser()
@@ -233,8 +254,9 @@ public class Transaction
     }
     
     /**
-     * @return Dollar amount associated with the transaction. If the transaction is trading-related, the transaction
+     * Returns dollar amount associated with the transaction. If the transaction is trading-related, the transaction
      * amount is the amount required by to acquire the {@link Asset}.
+     * @return Dollar amount associated with the transaction.
      */
     public double getTransactionAmount()
     {
@@ -242,7 +264,8 @@ public class Transaction
     }
     
     /**
-     * @return Date and time in which the transaction is requested. Timezone set to America/New York.
+     * Date and time in which the transaction is requested. Timezone set to America/New York.
+     * @return Date and time info.
      * @see ZonedDateTime
      */
     public ZonedDateTime getRequestDate()
@@ -251,7 +274,8 @@ public class Transaction
     }
     
     /**
-     * @return Date and time in which the transaction is resolved. Timezone set to America/New York.
+     * Date and time in which the transaction is resolved. Timezone set to America/New York.
+     * @return Date and time info.
      * @see ZonedDateTime
      */
     public ZonedDateTime getResolveDate()
@@ -260,7 +284,9 @@ public class Transaction
     }
     
     /**
-     * @return Current status of the transaction.
+     * Current status of the transaction.
+     * @return Status of transaction.
+     * @see Status
      */
     public Status getTransactionStatus()
     {
@@ -268,7 +294,9 @@ public class Transaction
     }
     
     /**
+     * Describes what entities to which the transaction is related.
      * @return Describes what entities to which the transaction is related.
+     * @see Type
      */
     public Type getTransactionType()
     {
@@ -276,33 +304,39 @@ public class Transaction
     }
     
     /**
-     * @return If the transaction is trading-related, the associated {@link Asset}.
+     * If the transaction is trading-related, the associated {@link Asset}.
+     * @return Associated asset.
      */
     public Asset getTransactionAsset()
     {
         return transactionAsset;
     }
     
+    //TODO Connor: please add appropriate description
     public PublicKey getUserPublicKey()
     {
         return userPublicKey;
     }
     
+    //TODO Connor: please add appropriate description
     public PrivateKey getUserPrivateKey()
     {
         return userPrivateKey;
     }
     
+    //TODO Connor: please add appropriate description
     public byte[] getSignature()
     {
         return signature;
     }
     
+    //TODO Connor: please add appropriate description
     public long getTimestamp()
     {
         return timestamp;
     }
     
+    //TODO Connor: please add appropriate description
     public String getTransactionData()
     {
         return transactionData;
@@ -363,26 +397,31 @@ public class Transaction
         this.transactionStatus = status;
     }
     
+    //TODO Connor: please add appropriate description
     public void setUserPublicKey(PublicKey userPublicKey)
     {
         this.userPublicKey = userPublicKey;
     }
     
+    //TODO Connor: please add appropriate description
     public void setUserPrivateKey(PrivateKey userPrivateKey)
     {
         this.userPrivateKey = userPrivateKey;
     }
     
+    //TODO Connor: please add appropriate description
     public void setSignature(byte[] signature)
     {
         this.signature = signature;
     }
     
+    //TODO Connor: please add appropriate description
     public void setTimestamp(long timestamp)
     {
         this.timestamp = timestamp;
     }
     
+    //TODO Connor: please add appropriate description
     public void setTransactionData(String transactionData)
     {
         this.transactionData = transactionData;

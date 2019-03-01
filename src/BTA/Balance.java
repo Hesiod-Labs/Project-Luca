@@ -84,7 +84,6 @@ public class Balance
     }
     
     /**
-     * //TODO Might be more concise to use Math.copySign()
      * Used if a balance value is to be increased, the amount of which is determined by the transaction parameter.
      * The new balance statement amount is then set to the transaction amount and returned to be added to the
      * {@link #balanceHistory}.
@@ -115,7 +114,8 @@ public class Balance
     }
     
     /**
-     * @return Returns the value of the most recent balance statement that represents the overall balance value.
+     * Returns the value of the most recent balance statement that represents the overall balance value.
+     * @return Current balance value.
      */
     public double getCurrentValue()
     {
@@ -126,6 +126,7 @@ public class Balance
     }
     
     /**
+     * Dollar amount associated with a specific balance statement value.
      * @return Dollar amount associated with a specific balance statement value.
      */
     public double getBalanceAmount()
@@ -134,6 +135,7 @@ public class Balance
     }
     
     /**
+     * Date and time in which a balance statement was recorded, specifically when resolving transactions.
      * @return Date and time in which a balance statement was recorded, specifically when resolving transactions.
      */
     public ZonedDateTime getBalanceTimeStamp()
@@ -142,6 +144,7 @@ public class Balance
     }
     
     /**
+     * For investing transactions, the transaction involved when updating the balance value.
      * @return For investing transactions, the transaction involved when updating the balance value.
      */
     public Transaction getAssociatedTransaction()
@@ -150,6 +153,7 @@ public class Balance
     }
     
     /**
+     * All past balance statements with associated amounts, timestamps, and likely associated transactions.
      * @return All past balance statements with associated amounts, timestamps, and likely associated transactions.
      */
     public Stack<Balance> getBalanceHistory()
@@ -162,7 +166,7 @@ public class Balance
      * balance statements.
      * @param balanceAmount Dollar amount tied to a specific balance statement.
      */
-    public void setBalanceAmount(double balanceAmount)
+    private void setBalanceAmount(double balanceAmount)
     {
         this.balanceAmount = balanceAmount;
     }
@@ -181,7 +185,7 @@ public class Balance
      * If a balance statement is an effect of a trading transaction, then the balance has that transaction tied to it.
      * @param associatedTransaction Transaction used when updating the balance statement.
      */
-    public void setAssociatedTransaction(Transaction associatedTransaction)
+    private void setAssociatedTransaction(Transaction associatedTransaction)
     {
         this.associatedTransaction = associatedTransaction;
     }
