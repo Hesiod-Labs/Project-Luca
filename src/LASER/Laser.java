@@ -3,6 +3,11 @@ import BTA.*;
 import LucaMember.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SignatureException;
 import java.util.*;
 import java.io.File;
 
@@ -14,17 +19,14 @@ public class Laser {
 
   public static ArrayList<Block> blockchain = new ArrayList<>();
 
-  public static String laserKey = "L.A.S.E.R.: Luca Auditing Security Enterprise Repository";
 
-
-  public static boolean verifyRuntimeHash(User user) {
+  public static boolean verifyRuntimeHash(User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
     Scanner scan = new Scanner(System.in);
     System.out.println("Confirm Identity (case sensitive, add a space between words): ");
     String w1 = scan.next();
     String w2 = scan.next();
     String w3 = scan.next();
     String threeWords = w1 + w2 + w3;
-    
     return Encryption.applySHA256(threeWords).equals(user.getRunTimeHash());
   }
 
@@ -34,7 +36,7 @@ public class Laser {
   }
 
   //checks the validity of the blockchain after every block add
-  public static boolean isChainValid() {
+  public static boolean isChainValid() throws NoSuchAlgorithmException, UnsupportedEncodingException {
     Block currentBlock;
     Block previousBlock;
     //loop through blockchain to check hashes:
@@ -55,16 +57,17 @@ public class Laser {
     return true;
   }
 
-  public static boolean addBlock(Transaction trx, String status) throws IOException {
+  public static boolean addBlock(Transaction trx, String status) throws NoSuchAlgorithmException, UnsupportedEncodingException {
     Block block = new Block(trx, getBlockchain().get(getBlockchain().size() - 1).getCurrentHash(),
             System.currentTimeMillis(), status);
     blockchain.add(block);
-    Encryption.logEncryptedTransaction(trx);
+    // some kind of internal logging of the transaction 
     return Laser.isChainValid();
     }
 
   //approve or deny the transaction based on a permissioned status
-  public static boolean validateTransaction(Transaction trx) throws IOException {
+  public static boolean validateTransaction(Transaction trx) throws IOException, NoSuchAlgorithmException,
+          NoSuchProviderException, InvalidKeyException, SignatureException {
     if (Laser.verifyRuntimeHash(trx.getRequestUser())) {
       if (trx.getRequestUser().getClearance() < 2) {
         if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
