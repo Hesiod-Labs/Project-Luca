@@ -8,11 +8,16 @@ public class Block {
   private Transaction trx;
   private long timestamp;
   
-  public Block(Transaction trx, String previousHash, long timestamp, String status) {
+  public Block(Transaction trx, String previousHash, long timestamp) {
     this.previousHash = previousHash;
     this.trx = trx;
     this.timestamp = timestamp;
-    this.currentHash = Encryption.applySHA256(status + trx.toString() + previousHash + timestamp);
+    try {
+      this.currentHash = Encryption.applySHA256(trx.toString() + previousHash + timestamp);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public String getCurrentHash() { return this.currentHash; }
