@@ -3,11 +3,6 @@ import BTA.*;
 import LucaMember.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.SignatureException;
 import java.util.*;
 import java.io.File;
 
@@ -20,7 +15,7 @@ public class Laser {
   public static ArrayList<Block> blockchain = new ArrayList<>();
 
 
-  public static boolean verifyRuntimeHash(User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+  public static boolean verifyRuntimeHash(User user) {
     Scanner scan = new Scanner(System.in);
     System.out.println("Confirm Identity (case sensitive, add a space between words): ");
     String w1 = scan.next();
@@ -36,7 +31,7 @@ public class Laser {
   }
 
   //checks the validity of the blockchain after every block add
-  public static boolean isChainValid() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+  public static boolean isChainValid() {
     Block currentBlock;
     Block previousBlock;
     //loop through blockchain to check hashes:
@@ -57,27 +52,26 @@ public class Laser {
     return true;
   }
 
-  public static boolean addBlock(Transaction trx, String status) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+  public static boolean addBlock(Transaction trx) {
     Block block = new Block(trx, getBlockchain().get(getBlockchain().size() - 1).getCurrentHash(),
-            System.currentTimeMillis(), status);
+            System.currentTimeMillis());
     blockchain.add(block);
     // some kind of internal logging of the transaction 
     return Laser.isChainValid();
     }
 
   //approve or deny the transaction based on a permissioned status
-  public static boolean validateTransaction(Transaction trx) throws IOException, NoSuchAlgorithmException,
-          NoSuchProviderException, InvalidKeyException, SignatureException {
+  public static boolean validateTransaction(Transaction trx) {
     if (Laser.verifyRuntimeHash(trx.getRequestUser())) {
       if (trx.getRequestUser().getClearance() < 2) {
         if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
-          addBlock(trx, "Request: ");
+          addBlock(trx);
           return true;
         }
       }
       if (trx.getResolveUser().getClearance() >= 2) {
         if (Encryption.verifySignature(trx.getUserPublicKey(), trx.getTransactionData(), trx.getSignature())) {
-          Laser.addBlock(trx, "Resolved: ");
+          Laser.addBlock(trx);
           return true;
         }
       }
@@ -85,10 +79,10 @@ public class Laser {
     return false;
   }
 
-  public static boolean createGenesisBlock() {
-    Block block = new Block(new Transaction(Transaction.Type.BUY, 0), "Genesis Block", System.currentTimeMillis(), "");
+  public static String createGenesisBlock() {
+    Block block = new Block(new Transaction(Transaction.Type.BUY, 0), "Genesis Block", System.currentTimeMillis());
     getBlockchain().add(block);
-    return true;
+    return block.getCurrentHash();
   }
   
   public static ArrayList<LASER.Block> getBlockchain() {

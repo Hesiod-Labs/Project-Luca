@@ -116,9 +116,9 @@ public class User
         this.userContribution = new Balance(contribution);
         userContribution.updateBalance(userContribution);
         this.userSector = sectors;
-        Account.getAccountUsers().add(this);
+        //Account.getAccountUsers().add(this);
         this.userBalance = new Balance();
-        Account.getAccountBalance().updateBalance( new Balance(contribution));
+//        Account.getAccountBalance().updateBalance( new Balance(contribution));
         Bank.getBankBalance().updateBalance(new Balance(contribution));
     }
     
