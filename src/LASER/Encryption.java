@@ -1,10 +1,7 @@
 package LASER;
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
+import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.*;
 
@@ -13,18 +10,6 @@ import java.util.*;
 public class Encryption {
     // utilizing secure hashing algorithm 256 bit for ONE WAY encryption
     // algorithm instance is "SHA-256" and charsetName is "UTF-8"
-<<<<<<< HEAD
-    //TODO Handle exception errors
-    public static String applySHA256(String trx)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest encrypted = MessageDigest.getInstance("SHA-256");
-        byte[] hash = encrypted.digest(trx.getBytes("UTF-8"));
-        StringBuilder hexHash = new StringBuilder();
-        for (byte hashi : hash) {
-            String hexChar = Integer.toHexString(0xff & (int) hashi);
-            if (hexChar.length() == 1) {
-                hexHash.append('0');
-=======
     public static String applySHA256(String trx) {
         try {
             MessageDigest encrypted = MessageDigest.getInstance("SHA-256");
@@ -36,27 +21,17 @@ public class Encryption {
                     hexHash.append('0');
                 }
                 hexHash.append(hexChar);
->>>>>>> 6e1b2b366b8eedf1a49f8bddc44ccf93d08096e3
             }
             return hexHash.toString();
         }
-        catch (Exception e) {
+        catch (NoSuchAlgorithmException | UnsupportedEncodingException  e) {
             e.printStackTrace();
+            e.getMessage();
         }
         return null;
     }
 
     // an Address signs a transaction with its private key
-<<<<<<< HEAD
-    // TODO Handle exception errors
-    public static byte[] applySignature(PrivateKey privateKey, String input)
-            throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException, SignatureException {
-        Signature dsa = Signature.getInstance("DSA", "SUN");
-        dsa.initSign(privateKey);
-        byte[] strByte = input.getBytes();
-        dsa.update(strByte);
-        return dsa.sign();
-=======
     public static byte[] applySignature(PrivateKey privateKey, String input) {
         try {
             Signature dsa = Signature.getInstance("DSA", "SUN");
@@ -65,11 +40,10 @@ public class Encryption {
             dsa.update(strByte);
             return dsa.sign();
         }
-        catch (Exception e) {
+        catch (NoSuchAlgorithmException | NoSuchProviderException | SignatureException | InvalidKeyException e) {
             e.printStackTrace();
         }
         return null;
->>>>>>> 6e1b2b366b8eedf1a49f8bddc44ccf93d08096e3
     }
 
     //verifies that a specific public key is tied to the private key that signed a transaction
@@ -87,7 +61,7 @@ public class Encryption {
     }
 
     // sets a secret key for encryption or decryption
-    public static SecretKeySpec setKey(String myKey) {
+    private static SecretKeySpec setKey(String myKey) {
         try {
             byte[] key = myKey.getBytes("UTF-8");
             MessageDigest sha = MessageDigest.getInstance("SHA-1");
