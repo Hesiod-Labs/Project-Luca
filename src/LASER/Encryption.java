@@ -13,6 +13,7 @@ import java.util.*;
 public class Encryption {
     // utilizing secure hashing algorithm 256 bit for ONE WAY encryption
     // algorithm instance is "SHA-256" and charsetName is "UTF-8"
+    //TODO Handle exception errors
     public static String applySHA256(String trx)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest encrypted = MessageDigest.getInstance("SHA-256");
@@ -29,6 +30,7 @@ public class Encryption {
     }
 
     // an Address signs a transaction with its private key
+    // TODO Handle exception errors
     public static byte[] applySignature(PrivateKey privateKey, String input)
             throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException, SignatureException {
         Signature dsa = Signature.getInstance("DSA", "SUN");

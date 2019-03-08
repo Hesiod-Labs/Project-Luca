@@ -2,54 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcb3d37e-cdb1-4788-b1a6-47c6f881ba98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/rdtat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/rdtat.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/dictionaries/rdtat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/dictionaries/rdtat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Bank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Portfolio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/ABP/Portfolio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset$OrderType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset$OrderType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset$Sector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset$Sector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Asset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Balance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Balance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/BTA/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Basic_Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Basic_Testing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/auth/module/LucaLoginModule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/JAAS/luca_jaas.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LASER/Laser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LASER/Laser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserSector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserSector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User$UserType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/LucaMember/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing$Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing$Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/Testing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/TransactionHistory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project-Luca/TransactionHistory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/auth/LucaLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/auth/MyCallbackHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/auth/principal/LucaPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-Luca/src/JAAS/luca_jaas.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABP/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABP/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABP/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABP/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABP/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABP/Portfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTA/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTA/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTA/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTA/Balance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTA/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BTA/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Basic_Testing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/Luca_jaas.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/LucaLogin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/MyCallbackHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JAAS/auth/principal/LucaPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LASER/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LASER/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LucaMember/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LucaMember/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LucaApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LASER/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LASER/Encryption.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,11 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LucaMember/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10584">
-              <caret line="480" column="4" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
+            <state relative-caret-position="300">
+              <caret line="222" column="22" selection-start-line="222" selection-start-column="22" selection-end-line="222" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,19 +65,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Testing.class">
+        <entry file="file://$PROJECT_DIR$/src/LASER/Encryption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="792">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LucaApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+            <state relative-caret-position="792">
+              <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -231,7 +188,6 @@
         <option value="$PROJECT_DIR$/src/Asset.java" />
         <option value="$PROJECT_DIR$/src/Block.java" />
         <option value="$PROJECT_DIR$/src/Laser.java" />
-        <option value="$PROJECT_DIR$/src/LASER/Encryption.java" />
         <option value="$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" />
         <option value="$PROJECT_DIR$/src/ABP/Account.java" />
         <option value="$PROJECT_DIR$/src/ABP/Bank.java" />
@@ -241,10 +197,11 @@
         <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/ABP/Portfolio.java" />
         <option value="$PROJECT_DIR$/src/BTA/Asset.java" />
-        <option value="$PROJECT_DIR$/src/LucaApp.java" />
         <option value="$PROJECT_DIR$/src/BTA/Balance.java" />
         <option value="$PROJECT_DIR$/src/BTA/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/LucaApp.java" />
         <option value="$PROJECT_DIR$/src/LucaMember/User.java" />
+        <option value="$PROJECT_DIR$/src/LASER/Encryption.java" />
       </list>
     </option>
   </component>
@@ -254,7 +211,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -264,7 +221,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -292,12 +248,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551467078318" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551469031019" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -477,6 +434,8 @@
       <workItem from="1550857507123" duration="7187000" />
       <workItem from="1551029112506" duration="594000" />
       <workItem from="1551457325569" duration="9887000" />
+      <workItem from="1551467471283" duration="1682000" />
+      <workItem from="1551491132965" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="Set src folder as source in IntelliJ Project Structure (i.e. recognizes classes within src folder)">
       <created>1546198879446</created>
@@ -552,7 +511,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="397428000" />
+    <option name="totallyTimeSpent" value="399702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,8 +524,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.16272825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63645834" visible="true" weight="0.1670247" />
       <window_info id="Structure" order="1" sideWeight="0.12605043" side_tool="true" weight="0.12191192" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -577,7 +537,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.23020834" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.4125" />
-      <window_info anchor="bottom" x="3" y="3" width="1914" height="1034" id="Run" order="4" weight="0.4721346" />
+      <window_info anchor="bottom" x="3" y="3" width="1914" height="1034" id="Run" order="4" weight="0.828125" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -772,23 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LASER/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LASER/Encryption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2747">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JAAS/auth/module/LucaLoginModule.java" />
     <entry file="file://$PROJECT_DIR$/src/BTA/Transaction.class">
       <provider selected="true" editor-type-id="text-editor" />
@@ -809,16 +752,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Basic_Testing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-773">
-          <caret line="70" column="63" selection-start-line="70" selection-start-column="63" selection-end-line="70" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Basic_Testing.java" />
     <entry file="file://$PROJECT_DIR$/src/LASER/Laser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -926,27 +860,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Testing.class" />
+    <entry file="file://$PROJECT_DIR$/src/LASER/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LucaMember/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10584">
-          <caret line="480" column="4" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
+        <state relative-caret-position="300">
+          <caret line="222" column="22" selection-start-line="222" selection-start-column="22" selection-end-line="222" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing.class">
+    <entry file="file://$PROJECT_DIR$/src/LASER/Encryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="792">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LucaApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="792">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
