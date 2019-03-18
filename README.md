@@ -8,11 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Your computer will need to have Java installed. A good explanation of how to do this is available on the [Java Website](https://www.java.com/en/download/help/download_options.xml)
-
-### Installing
-
-You can find the most recent version of Luca at hesiodfinancial.com/Luca {This isn't real yet, just an idea}
+Your computer will need to have Java installed. A good explanation of how to do this is available on the [Java Website](https://www.python.org/)
 
 ## Documentation
 
@@ -20,21 +16,18 @@ See the Wiki files in the repository for a more in depth look at the roadmap of 
 
 ## Built With
 
-Java backend developed with IntelliJ
+Python 3.6 with Django for Backend
 
-Frontend wireframe design developed with Adobe XD
+Bootstrap for Frontend
 
 ## Authors
 
-* **Jay Jayewardene** - *Product Manager* - [GitHub](https://github.com/jay-5)
-* **Connor McMurry** - *Backend Development Engineer* - [GitHub](https://github.com/csmcmurry)
-* **Ryan Tatton** - *Backend Development Engineer* - [GitHub](https://github.com/rtatton)
 * **Thomas Patton** - *Backend Development Engineer* - [GitHub](https://github.com/thomaspttn)
-* **Daniel Soares** - *Frontend Development Engineer* - [GitHub](https://github.com/HubMaster9000)
-* **Shaan Patel** - *Quality Assurance Engineer* - [GitHub](https://github.com/Coolsnail123)
-
+* **Andres Beltran** - *Frontend Development Engineer* - [GitHub](https://github.com/andresbeltran98)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+A special thanks to Corey Shafer for in depth Django tutorials.
 
 ## License
 
