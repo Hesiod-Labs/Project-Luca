@@ -8,11 +8,45 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Your computer will need to have Java installed. A good explanation of how to do this is available on the [Java Website](https://www.python.org/)
+Your computer will need to have Java installed. A good explanation of how to do this is available on the [Java Website](https://www.java.com/en/download/help/download_options.xml)
+
+### Installing
+
+You can find the most recent version of Luca at hesiodfinancial.com/Luca {This isn't real yet, just an idea}
 
 ## Documentation
 
 See the Wiki files in the repository for a more in depth look at the roadmap of the project and the most recent documentation.
+
+## Built With
+
+Java backend developed with IntelliJ
+
+Frontend wireframe design developed with Adobe XD
+
+## Authors
+
+* **Jay Jayewardene** - *Product Manager* - [GitHub](https://github.com/jay-5)
+* **Connor McMurry** - *Backend Development Engineer* - [GitHub](https://github.com/csmcmurry)
+* **Ryan Tatton** - *Backend Development Engineer* - [GitHub](https://github.com/rtatton)
+* **Thomas Patton** - *Backend Development Engineer* - [GitHub](https://github.com/thomaspttn)
+* **Daniel Soares** - *Frontend Development Engineer* - [GitHub](https://github.com/HubMaster9000)
+* **Shaan Patel** - *Quality Assurance Engineer* - [GitHub](https://github.com/Coolsnail123)
+
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Anyone who helped us
+
+
+
+
 
 ## Built With
 
@@ -28,11 +62,3 @@ Bootstrap for Frontend
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 A special thanks to Corey Shafer for in depth Django tutorials.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Anyone who helped us
