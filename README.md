@@ -48,4 +48,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Anyone who helped us
-A special thanks to Corey Shafer for in depth Django tutorials.
+* A special thanks to Corey Shafer for in depth Django tutorials.
