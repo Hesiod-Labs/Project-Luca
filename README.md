@@ -22,10 +22,6 @@ See the Wiki files in the repository for a more in depth look at the roadmap of 
 
 Java backend developed with IntelliJ
 
-Python 3.6 with Django for Backend
-
-Bootstrap for Frontend
-
 Frontend wireframe design developed with Adobe XD
 
 ## Authors
@@ -34,7 +30,6 @@ Frontend wireframe design developed with Adobe XD
 * **Connor McMurry** - *Backend Development Engineer* - [GitHub](https://github.com/csmcmurry)
 * **Ryan Tatton** - *Backend Development Engineer* - [GitHub](https://github.com/rtatton)
 * **Thomas Patton** - *Backend Development Engineer* - [GitHub](https://github.com/thomaspttn)
-* **Andres Beltran** - *Frontend Development Engineer* - [GitHub](https://github.com/andresbeltran98)
 * **Daniel Soares** - *Frontend Development Engineer* - [GitHub](https://github.com/HubMaster9000)
 * **Shaan Patel** - *Quality Assurance Engineer* - [GitHub](https://github.com/Coolsnail123)
 
@@ -48,4 +43,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Anyone who helped us
-* A special thanks to Corey Shafer for in depth Django tutorials.
+
